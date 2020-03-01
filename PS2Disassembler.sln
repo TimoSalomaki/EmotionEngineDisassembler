@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS2Disassembler", "PS2Disassembler\PS2Disassembler.csproj", "{A5CF9736-DAE9-401E-969F-1B143EAA763E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS2Disassembler.Core", "PS2Disassembler.Core\PS2Disassembler.Core.csproj", "{8FCF813E-58D3-49A4-B129-A196D9D3E1BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5CF9736-DAE9-401E-969F-1B143EAA763E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CF9736-DAE9-401E-969F-1B143EAA763E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CF9736-DAE9-401E-969F-1B143EAA763E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5CF9736-DAE9-401E-969F-1B143EAA763E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FCF813E-58D3-49A4-B129-A196D9D3E1BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCF813E-58D3-49A4-B129-A196D9D3E1BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FCF813E-58D3-49A4-B129-A196D9D3E1BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCF813E-58D3-49A4-B129-A196D9D3E1BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDB40CD1-3F1E-49DA-B93F-C6899DF845DC}
+	EndGlobalSection
+EndGlobal
