@@ -1,7 +1,7 @@
 # Emotion Engine Disassembler
 ![Disassembler screenshot](https://raw.githubusercontent.com/HankiDesign/EmotionEngineDisassembler/master/Screenshots/EmotionEngineDisassembler01.PNG)
 
-Work-in-progress disassembler capable of disassembling machine code of PlayStation 2's Emotion Engine CPU (C790), built with C#.
+Work-in-progress disassembler capable of disassembling machine code of PlayStation 2's Emotion Engine CPU (C790), built with C#. It's currently very slow and doesn't output proper assembly (for example, register names are not shown as they're just binary for now). Also, not much thought has been put into how this solution should be generalized to possibly allow for other instruction sets to be implemented in the future.
 
 ## TODO
 
