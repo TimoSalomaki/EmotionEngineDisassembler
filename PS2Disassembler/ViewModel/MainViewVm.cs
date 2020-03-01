@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using ICSharpCode.AvalonEdit.Document;
 using PS2Disassembler.Commands;
 using PS2Disassembler.Core;
 using PS2Disassembler.Core.Parser;
@@ -22,17 +23,21 @@ namespace PS2Disassembler.ViewModel
             get
             {
                 return _disassembleCommand ??
-                       (_disassembleCommand = new CommandHandler(Disassemble, () => Input != string.Empty));
+                       (_disassembleCommand = new CommandHandler(Disassemble, () => true));
             }
         }
 
-        public string Input { get; set; }
-        public string Output { get; set; }
+        public TextDocument Input { get; set; } = new TextDocument();
+        public TextDocument Output { get; set; } = new TextDocument();
 
         public void Disassemble()
         {
-            var parsedInput = _parser.ParseContent(Input);
-            Output = _disassembler.Disassemble(parsedInput);
+            var parsedInput = _parser.ParseContent(Input.Text);
+            
+            Output.BeginUpdate();
+            Output.Remove(0, Output.TextLength);
+            Output.Insert(0, _disassembler.Disassemble(parsedInput));
+            Output.EndUpdate();
         }
     }
 }

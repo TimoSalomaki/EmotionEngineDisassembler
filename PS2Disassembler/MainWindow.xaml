@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:PS2Disassembler.ViewModel"
+        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" 
+        Title="Emotion Engine Disassembler" Height="450" Width="800" 
         d:DataContext="{d:DesignInstance viewModel:MainViewVM}">
     <Grid>
         <Grid.RowDefinitions>
@@ -16,8 +17,8 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBox Text="{Binding Input, Mode=TwoWay}" Margin="6" AcceptsReturn="True" TextWrapping="Wrap"/>
-        <TextBox Text="{Binding Output, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" Margin="6" AcceptsReturn="True" TextWrapping="Wrap"/>
+        <avalonedit:TextEditor Document="{Binding Input}" Margin="6" ShowLineNumbers="True" FontFamily="Consolas"/>
+        <avalonedit:TextEditor Document="{Binding Output}" Grid.Column="1" Grid.Row="0" Margin="6" ShowLineNumbers="True" FontFamily="Consolas"/>
         <Button Content="Disassemble" Command="{Binding DisassembleCommand}" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="6"/>
     </Grid>
 </Window>
