@@ -2,9 +2,9 @@
 {
     public class MFHI : RegisterBase
     {
-        public MFHI()
+        public MFHI(string rs, string rt, string rd, string sa, string funct)
+            : base("MFHI", rs, rt, rd, sa, funct)
         {
-            OP = "MFHI";
         }
 
         public override string ToString()

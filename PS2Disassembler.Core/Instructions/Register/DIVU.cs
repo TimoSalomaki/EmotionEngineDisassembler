@@ -2,9 +2,9 @@
 {
     public class DIVU : RegisterBase
     {
-        public DIVU()
+        public DIVU(string rs, string rt, string rd, string sa, string funct)
+            : base("DIVU", rs, rt, rd, sa, funct)
         {
-            OP = "DIVU";
         }
 
         public override string ToString()

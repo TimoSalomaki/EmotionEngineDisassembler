@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PS2Disassembler.Core.Instructions;
 using PS2Disassembler.Core.Instructions.Factory;
 
 namespace PS2Disassembler.Core
@@ -16,7 +17,7 @@ namespace PS2Disassembler.Core
 
         public string Disassemble(int hexInput)
         {
-            return _instructionFactory.CreateInstruction(hexInput).OP;
+            return ((InstructionBase)_instructionFactory.CreateInstruction(hexInput)).ToString();
         }
 
         public string Disassemble(List<int> hexInputList)

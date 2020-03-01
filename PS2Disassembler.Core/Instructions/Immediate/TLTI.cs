@@ -2,9 +2,8 @@
 {
     public class TLTI : ImmediateBase
     {
-        public TLTI()
+        public TLTI(string rs, string rt, short imm) : base("TLTI", rs, rt, imm)
         {
-            OP = "TLTI";
         }
 
         public override string ToString()

@@ -1,10 +1,9 @@
 ﻿namespace PS2Disassembler.Core.Instructions.Branch
 {
-    public class BLTZALL : BranchBase
+    public class BLTZL : BranchBase
     {
-        public BLTZALL()
+        public BLTZL(string rs, string rt, short offset) : base("BLTZL", rs, rt, offset)
         {
-            OP = "BLTZALL";
         }
     }
 }

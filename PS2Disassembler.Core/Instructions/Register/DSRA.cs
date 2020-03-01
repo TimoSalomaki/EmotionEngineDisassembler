@@ -2,9 +2,9 @@
 {
     public class DSRA : RegisterBase
     {
-        public DSRA()
+        public DSRA(string rs, string rt, string rd, string sa, string funct)
+            : base("DSRA", rs, rt, rd, sa, funct)
         {
-            OP = "DSRA";
         }
 
         public override string ToString()

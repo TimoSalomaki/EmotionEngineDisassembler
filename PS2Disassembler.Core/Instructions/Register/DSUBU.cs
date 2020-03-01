@@ -2,9 +2,9 @@
 {
     public class DSUBU : RegisterBase
     {
-        public DSUBU()
+        public DSUBU(string rs, string rt, string rd, string sa, string funct)
+            : base("DSUBU", rs, rt, rd, sa, funct)
         {
-            OP = "DSUBU";
         }
     }
 }

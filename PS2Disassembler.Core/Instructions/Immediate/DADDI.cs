@@ -2,9 +2,8 @@
 {
     public class DADDI : ImmediateBase
     {
-        public DADDI()
+        public DADDI(string rs, string rt, short imm) : base("DADDI", rs, rt, imm)
         {
-            OP = "DADDI";
         }
     }
 }

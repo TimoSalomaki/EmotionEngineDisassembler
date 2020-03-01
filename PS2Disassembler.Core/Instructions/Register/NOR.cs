@@ -2,9 +2,9 @@
 {
     public class NOR : RegisterBase
     {
-        public NOR()
+        public NOR(string rs, string rt, string rd, string sa, string funct)
+            : base("NOR", rs, rt, rd, sa, funct)
         {
-            OP = "NOR";
         }
     }
 }

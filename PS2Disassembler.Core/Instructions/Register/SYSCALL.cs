@@ -2,9 +2,9 @@
 {
     public class SYSCALL : RegisterBase
     {
-        public SYSCALL()
+        public SYSCALL(string rs, string rt, string rd, string sa, string funct)
+            : base("SYSCALL", rs, rt, rd, sa, funct)
         {
-            OP = "SYSCALL";
         }
 
         public override string ToString()

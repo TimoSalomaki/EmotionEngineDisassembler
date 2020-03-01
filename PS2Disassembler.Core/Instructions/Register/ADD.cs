@@ -2,9 +2,9 @@
 {
     public class ADD : RegisterBase
     {
-        public ADD()
+        public ADD(string rs, string rt, string rd, string sa, string funct) 
+            : base("ADD", rs, rt, rd, sa, funct)
         {
-            OP = "ADD";
         }
     }
 }

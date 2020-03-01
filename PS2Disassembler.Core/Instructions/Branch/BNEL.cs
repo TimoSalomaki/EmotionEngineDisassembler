@@ -2,14 +2,13 @@
 {
     public class BNEL : BranchBase
     {
-        public BNEL()
+        public BNEL(string rs, string rt, short offset) : base("BNEL", rs, rt, offset)
         {
-            OP = "BNEL";
         }
 
         public override string ToString()
         {
-            return $"{OP} {RS}, {RT}, {Offset}";
+            return $"{OP} {RS}, {RT}, {Imm}";
         }
     }
 }

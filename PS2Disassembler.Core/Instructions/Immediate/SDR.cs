@@ -2,9 +2,8 @@
 {
     public class SDR : ImmediateBase
     {
-        public SDR()
+        public SDR(string rs, string rt, short imm) : base("SDR", rs, rt, imm)
         {
-            OP = "SDR";
         }
 
         public override string ToString()

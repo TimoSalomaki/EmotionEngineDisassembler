@@ -2,9 +2,8 @@
 {
     public class LDR : ImmediateBase
     {
-        public LDR()
+        public LDR(string rs, string rt, short imm) : base("LDR", rs, rt, imm)
         {
-            OP = "LDR";
         }
 
         public override string ToString()

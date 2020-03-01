@@ -2,9 +2,8 @@
 {
     public class XORI : ImmediateBase
     {
-        public XORI()
+        public XORI(string rs, string rt, short imm) : base("XORI", rs, rt, imm)
         {
-            OP = "XORI";
         }
 
         public override string ToString()

@@ -2,9 +2,9 @@
 {
     public class TGEU : RegisterBase
     {
-        public TGEU()
+        public TGEU(string rs, string rt, string rd, string sa, string funct)
+            : base("TGEU", rs, rt, rd, sa, funct)
         {
-            OP = "TGEU";
         }
 
         public override string ToString()

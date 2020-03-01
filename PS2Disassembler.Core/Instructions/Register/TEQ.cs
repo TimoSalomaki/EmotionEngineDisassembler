@@ -2,9 +2,9 @@
 {
     public class TEQ : RegisterBase
     {
-        public TEQ()
+        public TEQ(string rs, string rt, string rd, string sa, string funct)
+            : base("TEQ", rs, rt, rd, sa, funct)
         {
-            OP = "TEQ";
         }
 
         public override string ToString()

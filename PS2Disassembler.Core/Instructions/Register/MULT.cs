@@ -2,9 +2,9 @@
 {
     public class MULT : RegisterBase
     {
-        public MULT()
+        public MULT(string rs, string rt, string rd, string sa, string funct)
+            : base("MULT", rs, rt, rd, sa, funct)
         {
-            OP = "MULT";
         }
 
         public override string ToString()

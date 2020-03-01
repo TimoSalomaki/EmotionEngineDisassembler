@@ -4,6 +4,11 @@
     {
         public string Target { get; set; }
 
+        protected JumpBase(string op, string target) : base(op)
+        {
+            Target = target;
+        }
+
         public override string ToString()
         {
             return $"{OP} {Target}";

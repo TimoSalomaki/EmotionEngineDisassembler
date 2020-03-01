@@ -2,9 +2,8 @@
 {
     public class ANDI : ImmediateBase
     {
-        public ANDI()
+        public ANDI(string rs, string rt, short imm) : base("ANDI", rs, rt, imm)
         {
-            OP = "AANDIDDIU";
         }
     }
 }

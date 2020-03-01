@@ -2,9 +2,8 @@
 {
     public class BGTZL : BranchBase
     {
-        public BGTZL()
+        public BGTZL(string rs, string rt, short offset) : base("BGTZL", rs, rt, offset)
         {
-            OP = "BGTZL";
         }
     }
 }

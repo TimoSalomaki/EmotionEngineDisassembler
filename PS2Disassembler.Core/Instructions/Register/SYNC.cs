@@ -2,9 +2,9 @@
 {
     public class SYNC : RegisterBase
     {
-        public SYNC()
+        public SYNC(string rs, string rt, string rd, string sa, string funct)
+            : base("SYNC", rs, rt, rd, sa, funct)
         {
-            OP = "SYNC";
         }
 
         public override string ToString()

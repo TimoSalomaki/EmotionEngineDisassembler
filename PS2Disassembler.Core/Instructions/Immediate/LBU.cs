@@ -2,9 +2,8 @@
 {
     public class LBU : ImmediateBase
     {
-        public LBU()
+        public LBU(string rs, string rt, short imm) : base("LBU", rs, rt, imm)
         {
-            OP = "LBU";
         }
 
         public override string ToString()

@@ -2,9 +2,9 @@
 {
     public class BREAK : RegisterBase
     {
-        public BREAK()
+        public BREAK(string rs, string rt, string rd, string sa, string funct)
+            : base("BREAK", rs, rt, rd, sa, funct)
         {
-            OP = "BREAK";
         }
 
         public override string ToString()

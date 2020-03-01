@@ -2,14 +2,13 @@
 {
     public class BEQL : BranchBase
     {
-        public BEQL()
+        public BEQL(string rs, string rt, short offset) : base("BEQL", rs, rt, offset)
         {
-            OP = "BEQL";
         }
 
         public override string ToString()
         {
-            return $"{OP} {RS}, {RT}, {Offset}";
+            return $"{OP} {RS}, {RT}, {Imm}";
         }
     }
 }

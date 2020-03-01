@@ -2,9 +2,8 @@
 {
     public class BLEZL : BranchBase
     {
-        public BLEZL()
+        public BLEZL(string rs, string rt, short offset) : base("BLEZL", rs, rt, offset)
         {
-            OP = "BLEZL";
         }
     }
 }

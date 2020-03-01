@@ -2,9 +2,8 @@
 {
     public class LUI : ImmediateBase
     {
-        public LUI()
+        public LUI(string rs, string rt, short imm) : base("LUI", rs, rt, imm)
         {
-            OP = "LUI";
         }
 
         public override string ToString()

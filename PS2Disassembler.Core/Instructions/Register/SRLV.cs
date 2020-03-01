@@ -2,9 +2,9 @@
 {
     public class SRLV : RegisterBase
     {
-        public SRLV()
+        public SRLV(string rs, string rt, string rd, string sa, string funct)
+            : base("SRLV", rs, rt, rd, sa, funct)
         {
-            OP = "SRLV";
         }
 
         public override string ToString()

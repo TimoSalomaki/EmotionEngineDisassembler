@@ -2,9 +2,9 @@
 {
     public class MTLO : RegisterBase
     {
-        public MTLO()
+        public MTLO(string rs, string rt, string rd, string sa, string funct)
+            : base("MTLO", rs, rt, rd, sa, funct)
         {
-            OP = "MTLO";
         }
 
         public override string ToString()

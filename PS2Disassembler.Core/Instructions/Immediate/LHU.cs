@@ -2,9 +2,8 @@
 {
     public class LHU : ImmediateBase
     {
-        public LHU()
+        public LHU(string rs, string rt, short imm) : base("LHU", rs, rt, imm)
         {
-            OP = "LHU";
         }
 
         public override string ToString()

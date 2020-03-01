@@ -2,9 +2,8 @@
 {
     public class LDL : ImmediateBase
     {
-        public LDL()
+        public LDL(string rs, string rt, short imm) : base("LDL", rs, rt, imm)
         {
-            OP = "LDL";
         }
 
         public override string ToString()

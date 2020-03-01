@@ -2,9 +2,9 @@
 {
     public class DSRLV : RegisterBase
     {
-        public DSRLV()
+        public DSRLV(string rs, string rt, string rd, string sa, string funct)
+            : base("DSRLV", rs, rt, rd, sa, funct)
         {
-            OP = "DSRLV";
         }
 
         public override string ToString()

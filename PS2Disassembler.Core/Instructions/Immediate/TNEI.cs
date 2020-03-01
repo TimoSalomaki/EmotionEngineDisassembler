@@ -2,9 +2,8 @@
 {
     public class TNEI : ImmediateBase
     {
-        public TNEI()
+        public TNEI(string rs, string rt, short imm) : base("TNEI", rs, rt, imm)
         {
-            OP = "TNEI";
         }
 
         public override string ToString()

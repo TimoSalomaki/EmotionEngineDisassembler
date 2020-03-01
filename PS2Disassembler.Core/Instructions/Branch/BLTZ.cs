@@ -2,9 +2,8 @@
 {
     public class BLTZ : BranchBase
     {
-        public BLTZ()
+        public BLTZ(string rs, string rt, short offset) : base("BLTZ", rs, rt, offset)
         {
-            OP = "BLTZ";
         }
     }
 }

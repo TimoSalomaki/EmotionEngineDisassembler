@@ -2,9 +2,9 @@
 {
     public class SRL : RegisterBase
     {
-        public SRL()
+        public SRL(string rs, string rt, string rd, string sa, string funct)
+            : base("SRL", rs, rt, rd, sa, funct)
         {
-            OP = "SRL";
         }
 
         public override string ToString()

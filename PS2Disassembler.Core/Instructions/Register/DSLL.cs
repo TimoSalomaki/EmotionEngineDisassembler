@@ -2,9 +2,9 @@
 {
     public class DSLL : RegisterBase
     {
-        public DSLL()
+        public DSLL(string rs, string rt, string rd, string sa, string funct)
+            : base("DSLL", rs, rt, rd, sa, funct)
         {
-            OP = "DSLL";
         }
 
         public override string ToString()

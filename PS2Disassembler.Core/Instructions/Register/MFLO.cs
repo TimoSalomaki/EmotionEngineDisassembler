@@ -2,9 +2,9 @@
 {
     public class MFLO : RegisterBase
     {
-        public MFLO()
+        public MFLO(string rs, string rt, string rd, string sa, string funct)
+            : base("MFLO", rs, rt, rd, sa, funct)
         {
-            OP = "MFLO";
         }
 
         public override string ToString()

@@ -1,10 +1,9 @@
-﻿namespace PS2Disassembler.Core.Instructions.Immediate
+﻿namespace PS2Disassembler.Core.Instructions.Jump
 {
     public class JAL : JumpBase
     {
-        public JAL()
+        public JAL(string target) : base("JAL", target)
         {
-            OP = "JAL";
         }
     }
 }

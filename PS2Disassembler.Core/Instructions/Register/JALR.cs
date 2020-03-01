@@ -2,9 +2,9 @@
 {
     public class JALR : RegisterBase
     {
-        public JALR()
+        public JALR(string rs, string rt, string rd, string sa, string funct)
+            : base("JALR", rs, rt, rd, sa, funct)
         {
-            OP = "JALR";
         }
 
         public override string ToString()

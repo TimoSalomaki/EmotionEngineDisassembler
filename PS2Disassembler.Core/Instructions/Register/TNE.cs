@@ -2,9 +2,9 @@
 {
     public class TNE : RegisterBase
     {
-        public TNE()
+        public TNE(string rs, string rt, string rd, string sa, string funct)
+            : base("TNE", rs, rt, rd, sa, funct)
         {
-            OP = "TNE";
         }
 
         public override string ToString()

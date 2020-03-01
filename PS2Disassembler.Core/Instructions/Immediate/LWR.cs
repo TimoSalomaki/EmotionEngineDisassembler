@@ -2,9 +2,8 @@
 {
     public class LWR : ImmediateBase
     {
-        public LWR()
+        public LWR(string rs, string rt, short imm) : base("LWR", rs, rt, imm)
         {
-            OP = "LWR";
         }
 
         public override string ToString()

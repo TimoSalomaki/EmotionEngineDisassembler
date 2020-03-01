@@ -2,9 +2,8 @@
 {
     public class PREF : ImmediateBase
     {
-        public PREF()
+        public PREF(string rs, string rt, short imm) : base("PREF", rs, rt, imm)
         {
-            OP = "PREF";
         }
 
         public override string ToString()

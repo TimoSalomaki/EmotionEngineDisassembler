@@ -2,9 +2,9 @@
 {
     public class SRAV : RegisterBase
     {
-        public SRAV()
+        public SRAV(string rs, string rt, string rd, string sa, string funct)
+            : base("SRAV", rs, rt, rd, sa, funct)
         {
-            OP = "SRAV";
         }
 
         public override string ToString()

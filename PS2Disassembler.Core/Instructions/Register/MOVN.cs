@@ -2,9 +2,9 @@
 {
     public class MOVN : RegisterBase
     {
-        public MOVN()
+        public MOVN(string rs, string rt, string rd, string sa, string funct)
+            : base("MOVN", rs, rt, rd, sa, funct)
         {
-            OP = "MOVN";
         }
     }
 }

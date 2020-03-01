@@ -2,9 +2,8 @@
 {
     public class SH : ImmediateBase
     {
-        public SH()
+        public SH(string rs, string rt, short imm) : base("SH", rs, rt, imm)
         {
-            OP = "SH";
         }
 
         public override string ToString()

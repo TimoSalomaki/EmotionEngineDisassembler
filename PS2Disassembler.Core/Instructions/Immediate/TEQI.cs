@@ -2,9 +2,8 @@
 {
     public class TEQI : ImmediateBase
     {
-        public TEQI()
+        public TEQI(string rs, string rt, short imm) : base("TEQI", rs, rt, imm)
         {
-            OP = "TEQI";
         }
 
         public override string ToString()

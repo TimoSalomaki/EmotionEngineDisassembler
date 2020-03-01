@@ -2,9 +2,9 @@
 {
     public class TLT : RegisterBase
     {
-        public TLT()
+        public TLT(string rs, string rt, string rd, string sa, string funct)
+            : base("TLT", rs, rt, rd, sa, funct)
         {
-            OP = "TLT";
         }
 
         public override string ToString()

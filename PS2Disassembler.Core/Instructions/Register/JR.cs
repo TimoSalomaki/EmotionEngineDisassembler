@@ -2,9 +2,9 @@
 {
     public class JR : RegisterBase
     {
-        public JR()
+        public JR(string rs, string rt, string rd, string sa, string funct)
+            : base("JR", rs, rt, rd, sa, funct)
         {
-            OP = "JR";
         }
 
         public override string ToString()

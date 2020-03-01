@@ -2,9 +2,9 @@
 {
     public class MULTU : RegisterBase
     {
-        public MULTU()
+        public MULTU(string rs, string rt, string rd, string sa, string funct)
+            : base("MULTU", rs, rt, rd, sa, funct)
         {
-            OP = "MULTU";
         }
 
         public override string ToString()

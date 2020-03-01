@@ -2,6 +2,11 @@
 {
     public abstract class InstructionBase
     {
+        public InstructionBase(string op)
+        {
+            OP = op;
+        }
+
         public InstructionType Type { get; set; }
         public string OP { get; set; }
     }

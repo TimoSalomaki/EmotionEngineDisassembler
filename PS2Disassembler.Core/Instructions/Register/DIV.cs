@@ -2,9 +2,9 @@
 {
     public class DIV : RegisterBase
     {
-        public DIV()
+        public DIV(string rs, string rt, string rd, string sa, string funct)
+            : base("DIV", rs, rt, rd, sa, funct)
         {
-            OP = "DIV";
         }
 
         public override string ToString()

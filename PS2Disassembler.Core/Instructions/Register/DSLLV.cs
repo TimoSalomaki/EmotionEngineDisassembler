@@ -2,9 +2,9 @@
 {
     public class DSLLV : RegisterBase
     {
-        public DSLLV()
+        public DSLLV(string rs, string rt, string rd, string sa, string funct)
+            : base("DSLLV", rs, rt, rd, sa, funct)
         {
-            OP = "DSLLV";
         }
 
         public override string ToString()

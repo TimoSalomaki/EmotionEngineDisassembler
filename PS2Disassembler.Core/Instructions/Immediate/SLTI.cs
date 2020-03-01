@@ -2,9 +2,8 @@
 {
     public class SLTI : ImmediateBase
     {
-        public SLTI()
+        public SLTI(string rs, string rt, short imm) : base("SLTI", rs, rt, imm)
         {
-            OP = "SLTI";
         }
     }
 }

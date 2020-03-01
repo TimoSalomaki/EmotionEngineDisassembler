@@ -2,9 +2,8 @@
 {
     public class SDL : ImmediateBase
     {
-        public SDL()
+        public SDL(string rs, string rt, short imm) : base("SDL", rs, rt, imm)
         {
-            OP = "SDL";
         }
 
         public override string ToString()

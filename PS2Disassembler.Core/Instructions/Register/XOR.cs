@@ -2,9 +2,9 @@
 {
     public class XOR : RegisterBase
     {
-        public XOR()
+        public XOR(string rs, string rt, string rd, string sa, string funct)
+            : base("XOR", rs, rt, rd, sa, funct)
         {
-            OP = "XOR";
         }
     }
 }

@@ -2,9 +2,9 @@
 {
     public class MOVZ : RegisterBase
     {
-        public MOVZ()
+        public MOVZ(string rs, string rt, string rd, string sa, string funct)
+            : base("MOVZ", rs, rt, rd, sa, funct)
         {
-            OP = "MOVZ";
         }
     }
 }

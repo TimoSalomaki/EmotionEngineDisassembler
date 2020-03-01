@@ -17,7 +17,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <TextBox Text="{Binding Input, Mode=TwoWay}" Margin="6" AcceptsReturn="True" TextWrapping="Wrap"/>
-        <TextBox Text="{Binding Output}" Grid.Column="1" Grid.Row="0" Margin="6" AcceptsReturn="True" TextWrapping="Wrap"/>
+        <TextBox Text="{Binding Output, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" Margin="6" AcceptsReturn="True" TextWrapping="Wrap"/>
         <Button Content="Disassemble" Command="{Binding DisassembleCommand}" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="6"/>
     </Grid>
 </Window>

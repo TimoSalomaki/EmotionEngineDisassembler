@@ -2,9 +2,9 @@
 {
     public class TLTU : RegisterBase
     {
-        public TLTU()
+        public TLTU(string rs, string rt, string rd, string sa, string funct)
+            : base("TLTU", rs, rt, rd, sa, funct)
         {
-            OP = "TLTU";
         }
 
         public override string ToString()

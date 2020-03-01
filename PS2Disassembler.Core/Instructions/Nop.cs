@@ -2,9 +2,8 @@
 {
     public class Nop : InstructionBase
     {
-        public Nop()
+        public Nop() : base("NOP")
         {
-            OP = "nop";
             Type = InstructionType.Nop;
         }
 

@@ -2,9 +2,9 @@
 {
     public class ADDU : RegisterBase
     {
-        public ADDU()
+        public ADDU(string rs, string rt, string rd, string sa, string funct)
+            : base("ADDU", rs, rt, rd, sa, funct)
         {
-            OP = "ADDU";
         }
     }
 }

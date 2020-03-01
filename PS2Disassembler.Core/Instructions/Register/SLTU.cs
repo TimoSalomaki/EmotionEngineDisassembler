@@ -2,9 +2,9 @@
 {
     public class SLTU : RegisterBase
     {
-        public SLTU()
+        public SLTU(string rs, string rt, string rd, string sa, string funct)
+            : base("SLTU", rs, rt, rd, sa, funct)
         {
-            OP = "SLTU";
         }
     }
 }

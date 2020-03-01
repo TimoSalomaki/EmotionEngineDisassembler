@@ -2,6 +2,6 @@
 {
     public interface IInstructionFactory
     {
-        InstructionBase CreateInstruction(int input);
+        object CreateInstruction(int input);
     }
 }

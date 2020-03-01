@@ -2,9 +2,8 @@
 {
     public class TGEIU : ImmediateBase
     {
-        public TGEIU()
+        public TGEIU(string rs, string rt, short imm) : base("TGEIU", rs, rt, imm)
         {
-            OP = "TGEIU";
         }
 
         public override string ToString()
