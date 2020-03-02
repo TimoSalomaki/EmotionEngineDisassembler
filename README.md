@@ -9,7 +9,7 @@ All the implementation so far has been done by following the [official documenta
 
 ### CPU
 - [X] Support the default instruction set
-- [ ] Support the extended C790-specific instruction set 
+- [X] Support the extended C790-specific instruction set 
 - [ ] Assembler
 
 ### UI
