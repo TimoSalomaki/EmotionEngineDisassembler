@@ -14,6 +14,7 @@ All the implementation so far has been done by following the [official documenta
 
 ### UI
 - [X] AvalonEdit integration
+- [X] Syntax highlighting for MIPS instructions
 - [ ] Hierarchical code view (custom-drawn SkiaSharp control?)
 - [ ] Jump and branch arrows
 - [ ] Go to address functionality
