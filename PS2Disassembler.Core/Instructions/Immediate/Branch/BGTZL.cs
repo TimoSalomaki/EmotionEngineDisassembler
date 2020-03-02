@@ -1,4 +1,4 @@
-﻿namespace PS2Disassembler.Core.Instructions.Branch
+﻿namespace PS2Disassembler.Core.Instructions.Immediate.Branch
 {
     public class BGTZL : BranchBase
     {

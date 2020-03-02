@@ -7,32 +7,26 @@ namespace PS2Disassembler.Core.Parser
     {
         public List<int> ParseContent(string input)
         {
-            input = input.Replace("\r", "");
+            input = input.Replace("\r", "").Replace(" ", "");
             var lines = input.Split('\n');
             var output = new List<int>();
 
             foreach (var line in lines)
             {
-                var parts = line.Split(' ');
-
-                output.Add(HexPartsToInt(parts[0], parts[1]));
-
-                if(parts.Length > 2)
-                    output.Add(HexPartsToInt(parts[2], parts[3]));
-
-                if (parts.Length > 4)
-                    output.Add(HexPartsToInt(parts[4], parts[5]));
-
-                if (parts.Length > 6)
-                    output.Add(HexPartsToInt(parts[6], parts[7]));
+                // TODO: Really ugly hack to convert to little endian, FIX!
+                for (int i = 0; i < line.Length; i += 8)
+                {
+                    var hex = line.Substring(i, 8);
+                    output.Add(HexPartsToInt($"{hex[6]}{hex[7]}{hex[4]}{hex[5]}{hex[2]}{hex[3]}{hex[0]}{hex[1]}"));
+                }
             }
 
             return output;
         }
 
-        private int HexPartsToInt(string first, string second)
+        private int HexPartsToInt(string input)
         {
-            return Convert.ToInt32($"0x{first}{second}", 16);
+            return Convert.ToInt32($"0x{input}", 16);
         }
     }
 }

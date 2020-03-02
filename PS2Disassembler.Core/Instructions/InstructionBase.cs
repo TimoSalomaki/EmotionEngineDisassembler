@@ -15,6 +15,7 @@
     {
         Immediate,
         Jump,
+        MMI,
         Register,
         Regimm,
         Nop
