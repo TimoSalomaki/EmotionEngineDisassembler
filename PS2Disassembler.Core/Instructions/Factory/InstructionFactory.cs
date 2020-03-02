@@ -145,7 +145,12 @@ namespace PS2Disassembler.Core.Instructions.Factory
                 {"101011", InstructionType.Immediate}, // SW
                 {"101010", InstructionType.Immediate}, // SWL
                 {"101110", InstructionType.Immediate}, // SWR
-                {"001110", InstructionType.Immediate} // XORI
+                {"001110", InstructionType.Immediate}, // XORI
+
+                // C790 specific
+                {"011100", InstructionType.Register},  // MMI (Register)
+                {"011110", InstructionType.Immediate},  // LQ
+                {"011111", InstructionType.Immediate},  // SQ
             };
 
             _instructionOpCodes = new Dictionary<string, Type>()
