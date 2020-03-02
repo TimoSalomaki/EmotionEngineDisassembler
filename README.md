@@ -10,6 +10,7 @@ All the implementation so far has been done by following the [official documenta
 ### CPU
 - [X] Support the default instruction set
 - [X] Support the extended C790-specific instruction set 
+- [ ] Register name parsing
 - [ ] Assembler
 
 ### UI
