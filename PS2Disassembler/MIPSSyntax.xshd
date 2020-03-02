@@ -1,0 +1,161 @@
+﻿<SyntaxDefinition name="MIPS"
+        xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <Color name="Comment" foreground="#a1a1a1" />
+  <Color name="String" foreground="Blue" />
+
+  <!-- This is the main ruleset. -->
+  <RuleSet>
+    <Span color="Comment" begin="#" />
+
+    <!--<Span color="String">
+      <Begin>"</Begin>
+      <End>"</End>
+      <RuleSet>
+        --><!-- nested span for escape sequences --><!--
+        <Span begin="\\" end="." />
+      </RuleSet>
+    </Span>-->
+
+    <Keywords foreground="#d1d1d1">
+      <Word>NOP</Word>
+    </Keywords>
+
+    <Keywords foreground="#c84630" fontWeight="bold">
+      <Word>BREAK</Word>
+    </Keywords>
+
+    <Keywords foreground="#2e86ab" fontWeight="bold">
+      <Word>J</Word>
+      <Word>JAL</Word>
+      <Word>JALR</Word>
+      <Word>JR</Word>
+    </Keywords>
+
+    <Keywords foreground="#b39c4d" fontWeight="bold">
+      <Word>BEQ</Word>
+      <Word>BEQL</Word>
+      <Word>BGEZ</Word>
+      <Word>BGEZAL</Word>
+      <Word>BGEZALL</Word>
+      <Word>BGEZL</Word>
+      <Word>BGTZ</Word>
+      <Word>BGTZL</Word>
+      <Word>BLEZ</Word>
+      <Word>BLEZL</Word>
+      <Word>BLTZ</Word>
+      <Word>BLTZAL</Word>
+      <Word>BLTZALL</Word>
+      <Word>BLTZL</Word>
+      <Word>BNE</Word>
+      <Word>BNEL</Word>
+    </Keywords>
+
+      <Keywords foreground="#ddb967" fontWeight="bold">
+      <Word>ADD</Word>
+      <Word>ADDU</Word>
+      <Word>AND</Word>
+      <Word>BREAK</Word>
+      <Word>DADD</Word>
+      <Word>DADDU</Word>
+      <Word>DIV</Word>
+      <Word>DIVU</Word>
+      <Word>DSLL</Word>
+      <Word>DSLL32</Word>
+      <Word>DSLLV</Word>
+      <Word>DSRA</Word>
+      <Word>DSRA32</Word>
+      <Word>DSRAV</Word>
+      <Word>DSRL</Word>
+      <Word>DSRL32</Word>
+      <Word>DSRLV</Word>
+      <Word>DSUB</Word>
+      <Word>DSUBU</Word>
+      <!--<Word>JALR</Word>
+      <Word>JR</Word>-->
+      <Word>MFHI</Word>
+      <Word>MFLO</Word>
+      <Word>MOVN</Word>
+      <Word>MOVZ</Word>
+      <Word>MTHI</Word>
+      <Word>MTLO</Word>
+      <Word>MULT</Word>
+      <Word>MULTU</Word>
+      <Word>NOR</Word>
+      <Word>OR</Word>
+      <Word>SLL</Word>
+      <Word>SLLV</Word>
+      <Word>SLT</Word>
+      <Word>SLTU</Word>
+      <Word>SRA</Word>
+      <Word>SRAV</Word>
+      <Word>SRL</Word>
+      <Word>SRLV</Word>
+      <Word>SUB</Word>
+      <Word>SUBU</Word>
+      <Word>SYNC</Word>
+      <Word>XOR</Word>
+    </Keywords>
+
+    <Keywords foreground="#8a1515" fontWeight="bold">
+      <Word>SYSCALL</Word>
+    </Keywords>
+
+    <Keywords foreground="#e5beed" fontWeight="bold">
+      <Word>TEQ</Word>
+      <Word>TGE</Word>
+      <Word>TGEU</Word>
+      <Word>TLT</Word>
+      <Word>TLTU</Word>
+      <Word>TNE</Word>
+      <Word>TEQI</Word>
+      <Word>TGEI</Word>
+      <Word>TGEIU</Word>
+      <Word>TLTI</Word>
+      <Word>TLTIU</Word>
+      <Word>TNEI</Word>
+    </Keywords>
+
+    <Keywords foreground="#64b6ac" fontWeight="bold">
+      <Word>ADDI</Word>
+      <Word>ADDIU</Word>
+      <Word>ANDI</Word>
+      <Word>DADDI</Word>
+      <Word>DADDIU</Word>
+      <Word>LB</Word>
+      <Word>LBU</Word>
+      <Word>LD</Word>
+      <Word>LDL</Word>
+      <Word>LDR</Word>
+      <Word>LH</Word>
+      <Word>LHU</Word>
+      <Word>LUI</Word>
+      <Word>LW</Word>
+      <Word>LWL</Word>
+      <Word>LWR</Word>
+      <Word>LWU</Word>
+      <Word>ORI</Word>
+      <Word>PREF</Word>
+      <Word>SB</Word>
+      <Word>SD</Word>
+      <Word>SDL</Word>
+      <Word>SDR</Word>
+      <Word>SH</Word>
+      <Word>SLTI</Word>
+      <Word>SLTIU</Word>
+      <Word>SW</Word>
+      <Word>SWL</Word>
+      <Word>SWR</Word>
+      <Word>XORI</Word>
+    </Keywords>
+
+    <!-- Digits -->
+    <!--<Rule foreground="DarkBlue">
+      \b0[xX][0-9a-fA-F]+  # hex number
+      |    \b
+      (    \d+(\.[0-9]+)?   #number with optional floating point
+      |    \.[0-9]+         #or just starting with floating point
+      )
+      ([eE][+-]?[0-9]+)? # optional exponent
+    </Rule>-->
+  </RuleSet>
+</SyntaxDefinition>
