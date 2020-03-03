@@ -2,7 +2,7 @@
 {
     public class PCPYH : RegisterBase
     {
-        public PCPYH(string rs, string rt, string rd, string sa, string funct) 
+        public PCPYH(int rs, int rt, int rd, int sa, int funct) 
             : base("PCPYH", rs, rt, rd, sa, funct)
         {
         }

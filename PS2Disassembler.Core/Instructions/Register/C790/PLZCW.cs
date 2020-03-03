@@ -2,7 +2,7 @@
 {
     public class PLZCW : RegisterBase
     {
-        public PLZCW(string rs, string rt, string rd, string sa, string funct) 
+        public PLZCW(int rs, int rt, int rd, int sa, int funct) 
             : base("PLZCW", rs, rt, rd, sa, funct)
         {
         }

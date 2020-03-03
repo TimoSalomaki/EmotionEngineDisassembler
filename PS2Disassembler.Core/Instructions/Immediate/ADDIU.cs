@@ -2,7 +2,7 @@
 {
     public class ADDIU : ImmediateBase
     {
-        public ADDIU(string rs, string rt, short imm) : base("ADDIU", rs, rt, imm)
+        public ADDIU(int rs, int rt, int imm) : base("ADDIU", rs, rt, imm)
         {
         }
     }

@@ -2,7 +2,7 @@
 {
     public class TLTIU : ImmediateBase
     {
-        public TLTIU(string rs, string rt, short imm) : base("TLTIU", rs, rt, imm)
+        public TLTIU(int rs, int rt, int imm) : base("TLTIU", rs, rt, imm)
         {
         }
 

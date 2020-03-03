@@ -2,7 +2,7 @@
 {
     public class SLT : RegisterBase
     {
-        public SLT(string rs, string rt, string rd, string sa, string funct)
+        public SLT(int rs, int rt, int rd, int sa, int funct)
             : base("SLT", rs, rt, rd, sa, funct)
         {
         }

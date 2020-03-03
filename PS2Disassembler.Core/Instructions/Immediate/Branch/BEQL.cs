@@ -2,7 +2,7 @@
 {
     public class BEQL : BranchBase
     {
-        public BEQL(string rs, string rt, short offset) : base("BEQL", rs, rt, offset)
+        public BEQL(int rs, int rt, int offset) : base("BEQL", rs, rt, offset)
         {
         }
 

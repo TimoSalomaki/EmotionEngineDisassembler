@@ -2,7 +2,7 @@
 {
     public class SRLV : RegisterBase
     {
-        public SRLV(string rs, string rt, string rd, string sa, string funct)
+        public SRLV(int rs, int rt, int rd, int sa, int funct)
             : base("SRLV", rs, rt, rd, sa, funct)
         {
         }

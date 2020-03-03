@@ -2,7 +2,7 @@
 {
     public class PADDUW : RegisterBase
     {
-        public PADDUW(string rs, string rt, string rd, string sa, string funct) 
+        public PADDUW(int rs, int rt, int rd, int sa, int funct) 
             : base("PADDUW", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class SYSCALL : RegisterBase
     {
-        public SYSCALL(string rs, string rt, string rd, string sa, string funct)
+        public SYSCALL(int rs, int rt, int rd, int sa, int funct)
             : base("SYSCALL", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class PMSUBW : RegisterBase
     {
-        public PMSUBW(string rs, string rt, string rd, string sa, string funct) 
+        public PMSUBW(int rs, int rt, int rd, int sa, int funct) 
             : base("PMSUBW", rs, rt, rd, sa, funct)
         {
         }

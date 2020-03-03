@@ -2,7 +2,7 @@
 {
     public class PMINH : RegisterBase
     {
-        public PMINH(string rs, string rt, string rd, string sa, string funct) 
+        public PMINH(int rs, int rt, int rd, int sa, int funct) 
             : base("PMINH", rs, rt, rd, sa, funct)
         {
         }

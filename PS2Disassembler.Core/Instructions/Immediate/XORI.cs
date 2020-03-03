@@ -2,7 +2,7 @@
 {
     public class XORI : ImmediateBase
     {
-        public XORI(string rs, string rt, short imm) : base("XORI", rs, rt, imm)
+        public XORI(int rs, int rt, int imm) : base("XORI", rs, rt, imm)
         {
         }
 

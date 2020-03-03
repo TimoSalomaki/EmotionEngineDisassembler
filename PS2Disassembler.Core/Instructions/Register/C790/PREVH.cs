@@ -2,7 +2,7 @@
 {
     public class PREVH : RegisterBase
     {
-        public PREVH(string rs, string rt, string rd, string sa, string funct) 
+        public PREVH(int rs, int rt, int rd, int sa, int funct) 
             : base("PREVH", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class MTLO : RegisterBase
     {
-        public MTLO(string rs, string rt, string rd, string sa, string funct)
+        public MTLO(int rs, int rt, int rd, int sa, int funct)
             : base("MTLO", rs, rt, rd, sa, funct)
         {
         }

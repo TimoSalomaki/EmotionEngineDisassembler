@@ -2,7 +2,7 @@
 {
     public class DSLL32 : RegisterBase
     {
-        public DSLL32(string rs, string rt, string rd, string sa, string funct)
+        public DSLL32(int rs, int rt, int rd, int sa, int funct)
             : base("DSLL32", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class JAL : JumpBase
     {
-        public JAL(string target) : base("JAL", target)
+        public JAL(int target) : base("JAL", target)
         {
         }
     }

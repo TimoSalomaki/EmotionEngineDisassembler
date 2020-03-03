@@ -2,7 +2,7 @@
 {
     public class PXOR : RegisterBase
     {
-        public PXOR(string rs, string rt, string rd, string sa, string funct) 
+        public PXOR(int rs, int rt, int rd, int sa, int funct) 
             : base("PXOR", rs, rt, rd, sa, funct)
         {
         }

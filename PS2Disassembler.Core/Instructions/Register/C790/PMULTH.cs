@@ -2,7 +2,7 @@
 {
     public class PMULTH : RegisterBase
     {
-        public PMULTH(string rs, string rt, string rd, string sa, string funct) 
+        public PMULTH(int rs, int rt, int rd, int sa, int funct) 
             : base("PMULTH", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class DSRL : RegisterBase
     {
-        public DSRL(string rs, string rt, string rd, string sa, string funct)
+        public DSRL(int rs, int rt, int rd, int sa, int funct)
             : base("DSRL", rs, rt, rd, sa, funct)
         {
         }

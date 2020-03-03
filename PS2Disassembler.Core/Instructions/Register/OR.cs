@@ -2,7 +2,7 @@
 {
     public class OR : RegisterBase
     {
-        public OR(string rs, string rt, string rd, string sa, string funct)
+        public OR(int rs, int rt, int rd, int sa, int funct)
             : base("OR", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class BLTZAL : BranchBase
     {
-        public BLTZAL(string rs, string rt, short offset) : base("BLTZAL", rs, rt, offset)
+        public BLTZAL(int rs, int rt, int offset) : base("BLTZAL", rs, rt, offset)
         {
         }
     }

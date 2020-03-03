@@ -2,7 +2,7 @@
 {
     public class PEXEH : RegisterBase
     {
-        public PEXEH(string rs, string rt, string rd, string sa, string funct) 
+        public PEXEH(int rs, int rt, int rd, int sa, int funct) 
             : base("PEXEH", rs, rt, rd, sa, funct)
         {
         }

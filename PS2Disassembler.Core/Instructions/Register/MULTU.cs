@@ -2,7 +2,7 @@
 {
     public class MULTU : RegisterBase
     {
-        public MULTU(string rs, string rt, string rd, string sa, string funct)
+        public MULTU(int rs, int rt, int rd, int sa, int funct)
             : base("MULTU", rs, rt, rd, sa, funct)
         {
         }

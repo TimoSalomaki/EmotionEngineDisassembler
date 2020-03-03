@@ -2,7 +2,7 @@
 {
     public class DIVU1 : RegisterBase
     {
-        public DIVU1(string rs, string rt, string rd, string sa, string funct) 
+        public DIVU1(int rs, int rt, int rd, int sa, int funct) 
             : base("DIVU1", rs, rt, rd, sa, funct)
         {
         }

@@ -6,9 +6,9 @@ namespace PS2Disassembler.Core.Instructions
     {
         public string Target { get; set; }
 
-        protected JumpBase(string op, string target) : base(op)
+        protected JumpBase(string op, int target) : base(op)
         {
-            Target = "0x" + Convert.ToInt32(target, 2).ToString("X");
+            Target = "0x" + target.ToString("X");
         }
 
         public override string ToString()

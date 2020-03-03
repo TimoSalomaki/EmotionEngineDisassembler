@@ -2,7 +2,7 @@
 {
     public class PMTHI : RegisterBase
     {
-        public PMTHI(string rs, string rt, string rd, string sa, string funct) 
+        public PMTHI(int rs, int rt, int rd, int sa, int funct) 
             : base("PMTHI", rs, rt, rd, sa, funct)
         {
         }

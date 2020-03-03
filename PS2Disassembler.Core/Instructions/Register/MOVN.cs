@@ -2,7 +2,7 @@
 {
     public class MOVN : RegisterBase
     {
-        public MOVN(string rs, string rt, string rd, string sa, string funct)
+        public MOVN(int rs, int rt, int rd, int sa, int funct)
             : base("MOVN", rs, rt, rd, sa, funct)
         {
         }

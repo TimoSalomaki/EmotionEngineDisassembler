@@ -2,7 +2,7 @@
 {
     public class LWL : ImmediateBase
     {
-        public LWL(string rs, string rt, short imm) : base("LWL", rs, rt, imm)
+        public LWL(int rs, int rt, int imm) : base("LWL", rs, rt, imm)
         {
         }
 

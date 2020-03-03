@@ -2,7 +2,7 @@
 {
     public class JALR : RegisterBase
     {
-        public JALR(string rs, string rt, string rd, string sa, string funct)
+        public JALR(int rs, int rt, int rd, int sa, int funct)
             : base("JALR", rs, rt, rd, sa, funct)
         {
         }

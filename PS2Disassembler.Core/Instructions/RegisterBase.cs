@@ -2,14 +2,14 @@
 {
     public abstract class RegisterBase : InstructionBase
     {
-        protected RegisterBase(string op, string rs, string rt, string rd, string sa, string funct)
+        protected RegisterBase(string op, int rs, int rt, int rd, int sa, int funct)
             : base(op)
         {
-            RS = rs;
-            RT = rt;
-            RD = rd;
-            SA = sa;
-            Funct = funct; // Probably not needed
+            RS = "0x" + rs.ToString("X");
+            RT = "0x" + rt.ToString("X");
+            RD = "0x" + rd.ToString("X");
+            SA = "0x" + sa.ToString("X");
+            Funct = "0x" + funct.ToString("X"); // Probably not needed
         }
 
         public string RS { get; set; }

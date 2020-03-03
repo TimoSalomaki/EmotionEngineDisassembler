@@ -2,7 +2,7 @@
 {
     public class MADDU : RegisterBase
     {
-        public MADDU(string rs, string rt, string rd, string sa, string funct) 
+        public MADDU(int rs, int rt, int rd, int sa, int funct) 
             : base("MADDU", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class ANDI : ImmediateBase
     {
-        public ANDI(string rs, string rt, short imm) : base("ANDI", rs, rt, imm)
+        public ANDI(int rs, int rt, int imm) : base("ANDI", rs, rt, imm)
         {
         }
     }

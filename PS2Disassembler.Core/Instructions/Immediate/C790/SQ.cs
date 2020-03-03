@@ -2,7 +2,7 @@
 {
     public class SQ : ImmediateBase
     {
-        public SQ(string rs, string rt, short imm) : base("SQ", rs, rt, imm)
+        public SQ(int rs, int rt, int imm) : base("SQ", rs, rt, imm)
         {
         }
 

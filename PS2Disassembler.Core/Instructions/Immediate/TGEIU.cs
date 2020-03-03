@@ -2,7 +2,7 @@
 {
     public class TGEIU : ImmediateBase
     {
-        public TGEIU(string rs, string rt, short imm) : base("TGEIU", rs, rt, imm)
+        public TGEIU(int rs, int rt, int imm) : base("TGEIU", rs, rt, imm)
         {
         }
 

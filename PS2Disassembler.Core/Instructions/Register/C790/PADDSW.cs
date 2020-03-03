@@ -2,7 +2,7 @@
 {
     public class PADDSW : RegisterBase
     {
-        public PADDSW(string rs, string rt, string rd, string sa, string funct) 
+        public PADDSW(int rs, int rt, int rd, int sa, int funct) 
             : base("PADDSW", rs, rt, rd, sa, funct)
         {
         }

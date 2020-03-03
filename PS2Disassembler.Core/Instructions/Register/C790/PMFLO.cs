@@ -2,7 +2,7 @@
 {
     public class PMFLO : RegisterBase
     {
-        public PMFLO(string rs, string rt, string rd, string sa, string funct) 
+        public PMFLO(int rs, int rt, int rd, int sa, int funct) 
             : base("PMFLO", rs, rt, rd, sa, funct)
         {
         }

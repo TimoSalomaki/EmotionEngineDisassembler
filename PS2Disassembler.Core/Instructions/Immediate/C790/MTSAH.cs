@@ -2,7 +2,7 @@
 {
     public class MTSAH : ImmediateBase
     {
-        public MTSAH(string rs, string rt, short imm) : base("MTSAH", rs, rt, imm)
+        public MTSAH(int rs, int rt, int imm) : base("MTSAH", rs, rt, imm)
         {
         }
 

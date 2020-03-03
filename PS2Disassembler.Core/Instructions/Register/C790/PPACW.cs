@@ -2,7 +2,7 @@
 {
     public class PPACW : RegisterBase
     {
-        public PPACW(string rs, string rt, string rd, string sa, string funct) 
+        public PPACW(int rs, int rt, int rd, int sa, int funct) 
             : base("PPACW", rs, rt, rd, sa, funct)
         {
         }

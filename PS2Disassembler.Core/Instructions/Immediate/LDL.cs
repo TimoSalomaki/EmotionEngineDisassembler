@@ -2,7 +2,7 @@
 {
     public class LDL : ImmediateBase
     {
-        public LDL(string rs, string rt, short imm) : base("LDL", rs, rt, imm)
+        public LDL(int rs, int rt, int imm) : base("LDL", rs, rt, imm)
         {
         }
 

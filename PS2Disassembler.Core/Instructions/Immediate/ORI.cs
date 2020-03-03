@@ -2,7 +2,7 @@
 {
     public class ORI : ImmediateBase
     {
-        public ORI(string rs, string rt, short imm) : base("ORI", rs, rt, imm)
+        public ORI(int rs, int rt, int imm) : base("ORI", rs, rt, imm)
         {
         }
     }

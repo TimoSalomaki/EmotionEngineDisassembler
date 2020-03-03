@@ -8,10 +8,10 @@ namespace PS2Disassembler.Core.Instructions
         public string RT { get; set; }
         public string Imm { get; set; }
 
-        protected ImmediateBase(string op, string rs, string rt, short imm) : base(op)
+        protected ImmediateBase(string op, int rs, int rt, int imm) : base(op)
         {
-            RS = rs;
-            RT = rt;
+            RS = "0x" + rs.ToString("X"); 
+            RT = "0x" + rt.ToString("X");
             Imm = "0x" + imm.ToString("X");
         }
 

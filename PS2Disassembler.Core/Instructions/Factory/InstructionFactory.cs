@@ -38,13 +38,8 @@ namespace PS2Disassembler.Core.Instructions.Factory
             if (input == 0)
                 return new Nop();
 
-            var binary = Convert.ToString(input, 2);
+            var opBin = Convert.ToString((input >> 26) & 0x3F, 2);
 
-            if (binary.Length < 32) // Make sure we always have 32 bits with leading zeros
-                binary = binary.PadLeft(32, '0');
-
-            var opBin = _instructionParser.GetBinary(binary, 0, 6);
-            
             Type instructionClassType = default;
             var args = new object[]{};
 
@@ -56,16 +51,16 @@ namespace PS2Disassembler.Core.Instructions.Factory
                         instructionClassType = _instructionOpCodes[opBin];
                         args = new object[]
                         {
-                            _instructionParser.GetBinary(binary, 6, 5), // RS
-                            _instructionParser.GetBinary(binary, 11, 5), // RT
-                            Convert.ToInt16(_instructionParser.GetBinary(binary, 16, 16), 2) // Immediate
+                            (input >> 21) & 0x1F,
+                            (input >> 16) & 0x1F,
+                            input & 0xFFFF,
                         };
                         break;
                     case InstructionType.Jump:
                         instructionClassType = _instructionOpCodes[opBin];
                         args = new object[]
                         {
-                            _instructionParser.GetBinary(binary, 6, 26) // Target
+                            input & 0x3FFFFFF,
                         };
                         break;
 
@@ -73,30 +68,30 @@ namespace PS2Disassembler.Core.Instructions.Factory
                         instructionClassType = _regimmCodes[opBin];
                         args = new object[]
                         {
-                            _instructionParser.GetBinary(binary, 6, 5), // RS
-                            _instructionParser.GetBinary(binary, 11, 5), // RT
-                            Convert.ToInt16(_instructionParser.GetBinary(binary, 16, 16), 2) // Offset (Immediate)
+                            (input >> 21) & 0x1F,
+                            (input >> 16) & 0x1F,
+                            input & 0xFFFF,
                         };
                         break;
 
                     case InstructionType.Register:
-                        var funct = _instructionParser.GetBinary(binary, 26, 6);
+                        var funct = Convert.ToString(input & 0x3F, 2);
                         instructionClassType = _specialCodes[funct];
                         args = new object[]
                         {
-                            _instructionParser.GetBinary(binary, 6, 5), // RS
-                            _instructionParser.GetBinary(binary, 11, 5), // RT
-                            _instructionParser.GetBinary(binary, 16, 5), // RD
-                            _instructionParser.GetBinary(binary, 21, 5), // SA
-                            _instructionParser.GetBinary(binary, 26, 5), // Funct
+                            (input >> 21) & 0x1F,
+                            (input >> 16) & 0x1F,
+                            (input >> 11) & 0x1F,
+                            (input >> 6) & 0x1F,
+                            input & 0x1F,
                         };
                         break;
 
                     case InstructionType.MMI:
-                        var mmiNr = _instructionParser.GetBinary(binary, 26, 6);
+                        var mmiNr = Convert.ToString(input & 0x3F, 2);
 
                         // For MMI0, MMI1, MMI2 and MMI3, the opcode is in the SA part of the instruction
-                        var mmiOpCode = _instructionParser.GetBinary(binary, 21, 5);
+                        var mmiOpCode = Convert.ToString((input >> 6) & 0x1F, 2);
 
                         switch (mmiNr)
                         {
@@ -123,11 +118,11 @@ namespace PS2Disassembler.Core.Instructions.Factory
                         
                         args = new object[]
                         {
-                            _instructionParser.GetBinary(binary, 6, 5), // RS
-                            _instructionParser.GetBinary(binary, 11, 5), // RT
-                            _instructionParser.GetBinary(binary, 16, 5), // RD
-                            _instructionParser.GetBinary(binary, 21, 5), // SA
-                            _instructionParser.GetBinary(binary, 26, 5), // Funct
+                            (input >> 21) & 0x1F,
+                            (input >> 16) & 0x1F,
+                            (input >> 11) & 0x1F,
+                            (input >> 6) & 0x1F,
+                            input & 0x1F,
                         };
                         break;
                 }
@@ -152,121 +147,121 @@ namespace PS2Disassembler.Core.Instructions.Factory
         {
             _instructionTypes = new Dictionary<string, InstructionType>()
             {
-                {"000000", InstructionType.Register}, // SPECIAL
-                {"001000", InstructionType.Immediate}, // ADDI
-                {"001001", InstructionType.Immediate}, // ADDIU
-                {"001100", InstructionType.Immediate}, // ANDI
-                {"000100", InstructionType.Immediate}, // BEQ
-                {"010100", InstructionType.Immediate}, // BEQL
-                {"000001", InstructionType.Regimm}, // BGEZ,BGEZAL,BGEZALL,BGEZL,BLTZ,BLTZAL,BLTZALL,BLTZL,TEQI,TGEI,TGEIU,TLTI,TLTIU,TNEI
-                {"000111", InstructionType.Immediate}, // BGTZ
-                {"010111", InstructionType.Immediate}, // BGTZL
-                {"000110", InstructionType.Immediate}, // BLEZ
-                {"010110", InstructionType.Immediate}, // BLEZL
-                {"000101", InstructionType.Immediate}, // BNE
-                {"010101", InstructionType.Immediate}, // BNEL
-                {"011000", InstructionType.Immediate}, // DADDI
-                {"011001", InstructionType.Immediate}, // DADDIU
-                {"000010", InstructionType.Jump}, // J
-                {"000011", InstructionType.Jump}, // JAL
+                {"0", InstructionType.Register}, // SPECIAL
+                {"1000", InstructionType.Immediate}, // ADDI
+                {"1001", InstructionType.Immediate}, // ADDIU
+                {"1100", InstructionType.Immediate}, // ANDI
+                {"100", InstructionType.Immediate}, // BEQ
+                {"10100", InstructionType.Immediate}, // BEQL
+                {"1", InstructionType.Regimm}, // BGEZ,BGEZAL,BGEZALL,BGEZL,BLTZ,BLTZAL,BLTZALL,BLTZL,TEQI,TGEI,TGEIU,TLTI,TLTIU,TNEI
+                {"111", InstructionType.Immediate}, // BGTZ
+                {"10111", InstructionType.Immediate}, // BGTZL
+                {"110", InstructionType.Immediate}, // BLEZ
+                {"10110", InstructionType.Immediate}, // BLEZL
+                {"101", InstructionType.Immediate}, // BNE
+                {"10101", InstructionType.Immediate}, // BNEL
+                {"11000", InstructionType.Immediate}, // DADDI
+                {"11001", InstructionType.Immediate}, // DADDIU
+                {"10", InstructionType.Jump}, // J
+                {"11", InstructionType.Jump}, // JAL
                 {"100000", InstructionType.Immediate}, // LB
                 {"100100", InstructionType.Immediate}, // LBU
                 {"110111", InstructionType.Immediate}, // LD
-                {"011010", InstructionType.Immediate}, // LDL
-                {"011011", InstructionType.Immediate}, // LDR
+                {"11010", InstructionType.Immediate}, // LDL
+                {"11011", InstructionType.Immediate}, // LDR
                 {"100001", InstructionType.Immediate}, // LH
                 {"100101", InstructionType.Immediate}, // LHU
-                {"001111", InstructionType.Immediate}, // LUI
+                {"1111", InstructionType.Immediate}, // LUI
                 {"100011", InstructionType.Immediate}, // LW
                 {"100010", InstructionType.Immediate}, // LWL
                 {"100110", InstructionType.Immediate}, // LWR
                 {"100111", InstructionType.Immediate}, // LWU
-                {"001101", InstructionType.Immediate}, // ORI
+                {"1101", InstructionType.Immediate}, // ORI
                 {"110011", InstructionType.Immediate}, // PREF
                 {"101000", InstructionType.Immediate}, // SB
                 {"111111", InstructionType.Immediate}, // SD
                 {"101100", InstructionType.Immediate}, // SDL
                 {"101101", InstructionType.Immediate}, // SDR
                 {"101001", InstructionType.Immediate}, // SH
-                {"001010", InstructionType.Immediate}, // SLTI
-                {"001011", InstructionType.Immediate}, // SLTIU
+                {"1010", InstructionType.Immediate}, // SLTI
+                {"1011", InstructionType.Immediate}, // SLTIU
                 {"101011", InstructionType.Immediate}, // SW
                 {"101010", InstructionType.Immediate}, // SWL
                 {"101110", InstructionType.Immediate}, // SWR
-                {"001110", InstructionType.Immediate}, // XORI
+                {"1110", InstructionType.Immediate}, // XORI
 
                 // C790 specific
-                {"011100", InstructionType.MMI}, // MMI (Register)
-                {"011110", InstructionType.Immediate}, // LQ
-                {"011111", InstructionType.Immediate}, // SQ
+                {"11100", InstructionType.MMI}, // MMI (Register)
+                {"11110", InstructionType.Immediate}, // LQ
+                {"11111", InstructionType.Immediate}, // SQ
             };
 
             _instructionOpCodes = new Dictionary<string, Type>()
             {
                 //{"000000", typeof(SPECIAL)},
-                {"001000", typeof(ADDI)},
-                {"001001", typeof(ADDIU)},
-                {"001100", typeof(ANDI)},
-                {"000100", typeof(BEQ)},
-                {"010100", typeof(BEQL)},
+                {"1000", typeof(ADDI)},
+                {"1001", typeof(ADDIU)},
+                {"1100", typeof(ANDI)},
+                {"100", typeof(BEQ)},
+                {"10100", typeof(BEQL)},
                 //{"000001", typeof(REGIMM)},
-                {"000111", typeof(BGTZ)},
-                {"010111", typeof(BGTZL)},
-                {"000110", typeof(BLEZ)},
-                {"010110", typeof(BLEZL)},
-                {"000101", typeof(BNE)},
-                {"010101", typeof(BNEL)},
-                {"011000", typeof(DADDI)},
-                {"011001", typeof(DADDIU)},
-                {"000010", typeof(J)},
-                {"000011", typeof(JAL)},
+                {"111", typeof(BGTZ)},
+                {"10111", typeof(BGTZL)},
+                {"110", typeof(BLEZ)},
+                {"10110", typeof(BLEZL)},
+                {"101", typeof(BNE)},
+                {"10101", typeof(BNEL)},
+                {"11000", typeof(DADDI)},
+                {"11001", typeof(DADDIU)},
+                {"10", typeof(J)},
+                {"11", typeof(JAL)},
                 {"100000", typeof(LB)},
                 {"100100", typeof(LBU)},
                 {"110111", typeof(LD)},
-                {"011010", typeof(LDL)},
-                {"011011", typeof(LDR)},
+                {"11010", typeof(LDL)},
+                {"11011", typeof(LDR)},
                 {"100001", typeof(LH)},
                 {"100101", typeof(LHU)},
-                {"001111", typeof(LUI)},
+                {"1111", typeof(LUI)},
                 {"100011", typeof(LW)},
                 {"100010", typeof(LWL)},
                 {"100110", typeof(LWR)},
                 {"100111", typeof(LWU)},
-                {"001101", typeof(ORI)},
+                {"1101", typeof(ORI)},
                 {"110011", typeof(PREF)},
                 {"101000", typeof(SB)},
                 {"111111", typeof(SD)},
                 {"101100", typeof(SDL)},
                 {"101101", typeof(SDR)},
                 {"101001", typeof(SH)},
-                {"001010", typeof(SLTI)},
-                {"001011", typeof(SLTIU)},
+                {"1010", typeof(SLTI)},
+                {"1011", typeof(SLTIU)},
                 {"101011", typeof(SW)},
                 {"101010", typeof(SWL)},
                 {"101110", typeof(SWR)},
-                {"001110", typeof(XORI)},
+                {"1110", typeof(XORI)},
 
                 // C790 specific
-                {"011110", typeof(LQ)},
-                {"011111", typeof(SQ)},
+                {"11110", typeof(LQ)},
+                {"11111", typeof(SQ)},
             };
 
             _regimmCodes = new Dictionary<string, Type>()
             {
-                {"00001", typeof(BGEZ)},
+                {"1", typeof(BGEZ)},
                 {"10001", typeof(BGEZAL)},
                 {"10011", typeof(BGEZALL)},
-                {"00011", typeof(BGEZL)},
-                {"00000", typeof(BLTZ)},
+                {"11", typeof(BGEZL)},
+                {"0", typeof(BLTZ)},
                 {"10000", typeof(BLTZAL)},
                 {"10010", typeof(BLTZALL)},
-                {"00010", typeof(BLTZL)},
-                {"01100", typeof(TEQI)},
-                {"01000", typeof(TGEI)},
-                {"01001", typeof(TGEIU)},
-                {"01010", typeof(TLTI)},
-                {"01011", typeof(TLTIU)},
-                {"01110", typeof(TNEI)},
+                {"10", typeof(BLTZL)},
+                {"1100", typeof(TEQI)},
+                {"1000", typeof(TGEI)},
+                {"1001", typeof(TGEIU)},
+                {"1010", typeof(TLTI)},
+                {"1011", typeof(TLTIU)},
+                {"1110", typeof(TNEI)},
                 {"11000", typeof(MTSAB)},
                 {"11001", typeof(MTSAH)}
             };
@@ -276,46 +271,46 @@ namespace PS2Disassembler.Core.Instructions.Factory
                 {"100000", typeof(ADD)},
                 {"100001", typeof(ADDU)},
                 {"100100", typeof(AND)},
-                {"001101", typeof(BREAK)},
+                {"1101", typeof(BREAK)},
                 {"101100", typeof(DADD)},
                 {"101101", typeof(DADDU)},
-                {"011010", typeof(DIV)},
-                {"011011", typeof(DIVU)},
+                {"11010", typeof(DIV)},
+                {"11011", typeof(DIVU)},
                 {"111000", typeof(DSLL)},
                 {"111100", typeof(DSLL32)},
-                {"010100", typeof(DSLLV)},
+                {"10100", typeof(DSLLV)},
                 {"111011", typeof(DSRA)},
                 {"111111", typeof(DSRA32)},
-                {"010111", typeof(DSRAV)},
+                {"10111", typeof(DSRAV)},
                 {"111010", typeof(DSRL)},
                 {"111110", typeof(DSRL32)},
-                {"010110", typeof(DSRLV)},
+                {"10110", typeof(DSRLV)},
                 {"101110", typeof(DSUB)},
                 {"101111", typeof(DSUBU)},
-                {"001001", typeof(JALR)},
-                {"001000", typeof(JR)},
-                {"010000", typeof(MFHI)},
-                {"010010", typeof(MFLO)},
-                {"001011", typeof(MOVN)},
-                {"001010", typeof(MOVZ)},
-                {"010001", typeof(MTHI)},
-                {"010011", typeof(MTLO)},
-                {"011000", typeof(MULT)},
-                {"011001", typeof(MULTU)},
+                {"1001", typeof(JALR)},
+                {"1000", typeof(JR)},
+                {"10000", typeof(MFHI)},
+                {"10010", typeof(MFLO)},
+                {"1011", typeof(MOVN)},
+                {"1010", typeof(MOVZ)},
+                {"10001", typeof(MTHI)},
+                {"10011", typeof(MTLO)},
+                {"11000", typeof(MULT)},
+                {"11001", typeof(MULTU)},
                 {"100111", typeof(NOR)},
                 {"100101", typeof(OR)},
-                {"000000", typeof(SLL)},
-                {"000100", typeof(SLLV)},
+                {"0", typeof(SLL)},
+                {"100", typeof(SLLV)},
                 {"101010", typeof(SLT)},
                 {"101011", typeof(SLTU)},
-                {"000011", typeof(SRA)},
-                {"000111", typeof(SRAV)},
-                {"000010", typeof(SRL)},
-                {"000110", typeof(SRLV)},
+                {"11", typeof(SRA)},
+                {"111", typeof(SRAV)},
+                {"10", typeof(SRL)},
+                {"110", typeof(SRLV)},
                 {"100010", typeof(SUB)},
                 {"100011", typeof(SUBU)},
-                {"001111", typeof(SYNC)},
-                {"001100", typeof(SYSCALL)},
+                {"1111", typeof(SYNC)},
+                {"1100", typeof(SYSCALL)},
                 {"110100", typeof(TEQ)},
                 {"110000", typeof(TGE)},
                 {"110001", typeof(TGEU)},
@@ -331,19 +326,19 @@ namespace PS2Disassembler.Core.Instructions.Factory
 
             _mmiCodes = new Dictionary<string, Type>()
             {
-                {"011010", typeof(DIV1)},
-                {"011011", typeof(DIVU1)},
-                {"000000", typeof(MADD)},
+                {"11010", typeof(DIV1)},
+                {"11011", typeof(DIVU1)},
+                {"0", typeof(MADD)},
                 {"100000", typeof(MADD1)},
-                {"000001", typeof(MADDU)},
+                {"01", typeof(MADDU)},
                 {"100001", typeof(MADDU1)},
-                {"010000", typeof(MFHI1)},
-                {"010010", typeof(MFLO1)},
-                {"010001", typeof(MTHI1)},
-                {"010011", typeof(MTLO1)},
-                {"011000", typeof(MULT1)},
-                {"011001", typeof(MULTU1)},
-                {"000100", typeof(PLZCW)},
+                {"10000", typeof(MFHI1)},
+                {"10010", typeof(MFLO1)},
+                {"10001", typeof(MTHI1)},
+                {"10011", typeof(MTLO1)},
+                {"11000", typeof(MULT1)},
+                {"11001", typeof(MULTU1)},
+                {"100", typeof(PLZCW)},
                 {"110000", typeof(PMFHLfmt)},
                 {"110001", typeof(PMTHLfmt)},
                 {"110100", typeof(PSLLH)},
@@ -357,49 +352,49 @@ namespace PS2Disassembler.Core.Instructions.Factory
             _mmi0Codes = new Dictionary<string, Type>()
             {
                 
-                {"01000", typeof(PADDB)},
-                {"00100", typeof(PADDH)},
+                {"1000", typeof(PADDB)},
+                {"100", typeof(PADDH)},
                 {"11000", typeof(PADDSB)},
                 {"10100", typeof(PADDSH)},
                 {"10000", typeof(PADDSW)},
-                {"00000", typeof(PADDW)},
-                {"01010", typeof(PCGTB)},
-                {"00110", typeof(PCGTH)},
-                {"00010", typeof(PCGTW)},
+                {"0", typeof(PADDW)},
+                {"1010", typeof(PCGTB)},
+                {"110", typeof(PCGTH)},
+                {"10", typeof(PCGTW)},
                 {"11110", typeof(PEXT5)},
                 {"11010", typeof(PEXTLB)},
                 {"10110", typeof(PEXTLH)},
                 {"10010", typeof(PEXTLW)},
-                {"00111", typeof(PMAXH)},
-                {"00011", typeof(PMAXW)},
+                {"111", typeof(PMAXH)},
+                {"11", typeof(PMAXW)},
                 {"11111", typeof(PPAC5)},
                 {"11011", typeof(PPACB)},
                 {"10111", typeof(PPACH)},
                 {"10011", typeof(PPACW)},
-                {"01001", typeof(PSUBB)},
-                {"00101", typeof(PSUBH)},
+                {"1001", typeof(PSUBB)},
+                {"101", typeof(PSUBH)},
                 {"11001", typeof(PSUBSB)},
                 {"10101", typeof(PSUBSH)},
                 {"10001", typeof(PSUBSW)},
-                {"00001", typeof(PSUBW)}
+                {"1", typeof(PSUBW)}
             };
 
             _mmi1Codes = new Dictionary<string, Type>()
             {
-                {"00010", typeof(PCEQW)},
-                {"00110", typeof(PCEQH)},
-                {"01010", typeof(PCEQB)},
-                {"00100", typeof(PADSBH)},
+                {"10", typeof(PCEQW)},
+                {"110", typeof(PCEQH)},
+                {"1010", typeof(PCEQB)},
+                {"100", typeof(PADSBH)},
                 {"10000", typeof(PADDUW)},
                 {"10100", typeof(PADDUH)},
                 {"11000", typeof(PADDUB)},
-                {"00101", typeof(PABSH)},
-                {"00001", typeof(PABSW)},
+                {"101", typeof(PABSH)},
+                {"1", typeof(PABSW)},
                 {"11010", typeof(PEXTUB)},
                 {"10110", typeof(PEXTUH)},
                 {"10010", typeof(PEXTUW)},
-                {"00111", typeof(PMINH)},
-                {"00011", typeof(PMINW)},
+                {"111", typeof(PMINH)},
+                {"011", typeof(PMINW)},
                 {"11001", typeof(PSUBUB)},
                 {"10101", typeof(PSUBUH)},
                 {"10001", typeof(PSUBUW)},
@@ -410,25 +405,25 @@ namespace PS2Disassembler.Core.Instructions.Factory
             {
                 {"11110", typeof(PEXEW)},
                 {"11010", typeof(PEXEH)},
-                {"01101", typeof(PDIVW)},
+                {"1101", typeof(PDIVW)},
                 {"11101", typeof(PDIVBW)},
-                {"01110", typeof(PCPYLD)},
+                {"1110", typeof(PCPYLD)},
                 {"10010", typeof(PAND)},
                 {"10001", typeof(PHMADH)},
                 {"10101", typeof(PHMSBH)},
-                {"01010", typeof(PINTH)},
+                {"1010", typeof(PINTH)},
                 {"10000", typeof(PMADDH)},
-                {"00000", typeof(PMADDW)},
-                {"01000", typeof(PMFHI)},
-                {"01001", typeof(PMFLO)},
+                {"0", typeof(PMADDW)},
+                {"1000", typeof(PMFHI)},
+                {"1001", typeof(PMFLO)},
                 {"10100", typeof(PMSUBH)},
-                {"00100", typeof(PMSUBW)},
+                {"100", typeof(PMSUBW)},
                 {"11100", typeof(PMULTH)},
-                {"01100", typeof(PMULTW)},
+                {"1100", typeof(PMULTW)},
                 {"11011", typeof(PREVH)},
                 {"11111", typeof(PROT3W)},
-                {"00010", typeof(PSLLVW)},
-                {"00011", typeof(PSRLVW)},
+                {"10", typeof(PSLLVW)},
+                {"11", typeof(PSRLVW)},
                 {"10011", typeof(PXOR)}
             };
 
@@ -436,17 +431,17 @@ namespace PS2Disassembler.Core.Instructions.Factory
             {
                 {"11110", typeof(PEXCW)},
                 {"11010", typeof(PEXCH)},
-                {"01101", typeof(PDIVUW)},
-                {"01110", typeof(PCPYUD)},
+                {"1101", typeof(PDIVUW)},
+                {"1110", typeof(PCPYUD)},
                 {"11011", typeof(PCPYH)},
-                {"01010", typeof(PINTEH)},
-                {"00000", typeof(PMADDUW)},
-                {"01000", typeof(PMTHI)},
-                {"01001", typeof(PMTLO)},
-                {"01100", typeof(PMULTUW)},
+                {"1010", typeof(PINTEH)},
+                {"0", typeof(PMADDUW)},
+                {"1000", typeof(PMTHI)},
+                {"1001", typeof(PMTLO)},
+                {"1100", typeof(PMULTUW)},
                 {"10011", typeof(PNOR)},
                 {"10010", typeof(POR)},
-                {"00011", typeof(PSRAVW)}
+                {"11", typeof(PSRAVW)}
             };
         }
     }

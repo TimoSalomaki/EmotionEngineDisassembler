@@ -2,7 +2,7 @@
 {
     public class PMADDW : RegisterBase
     {
-        public PMADDW(string rs, string rt, string rd, string sa, string funct) 
+        public PMADDW(int rs, int rt, int rd, int sa, int funct) 
             : base("PMADDW", rs, rt, rd, sa, funct)
         {
         }

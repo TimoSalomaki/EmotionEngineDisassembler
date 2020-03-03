@@ -2,7 +2,7 @@
 {
     public class PROT3W : RegisterBase
     {
-        public PROT3W(string rs, string rt, string rd, string sa, string funct) 
+        public PROT3W(int rs, int rt, int rd, int sa, int funct) 
             : base("PROT3W", rs, rt, rd, sa, funct)
         {
         }

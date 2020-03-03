@@ -2,7 +2,7 @@
 {
     public class SYNC : RegisterBase
     {
-        public SYNC(string rs, string rt, string rd, string sa, string funct)
+        public SYNC(int rs, int rt, int rd, int sa, int funct)
             : base("SYNC", rs, rt, rd, sa, funct)
         {
         }

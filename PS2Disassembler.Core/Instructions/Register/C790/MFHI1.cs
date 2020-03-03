@@ -2,7 +2,7 @@
 {
     public class MFHI1 : RegisterBase
     {
-        public MFHI1(string rs, string rt, string rd, string sa, string funct) 
+        public MFHI1(int rs, int rt, int rd, int sa, int funct) 
             : base("MFHI1", rs, rt, rd, sa, funct)
         {
         }

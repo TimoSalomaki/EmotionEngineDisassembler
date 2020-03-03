@@ -2,7 +2,7 @@
 {
     public class DSLLV : RegisterBase
     {
-        public DSLLV(string rs, string rt, string rd, string sa, string funct)
+        public DSLLV(int rs, int rt, int rd, int sa, int funct)
             : base("DSLLV", rs, rt, rd, sa, funct)
         {
         }

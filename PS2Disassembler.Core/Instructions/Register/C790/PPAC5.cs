@@ -2,7 +2,7 @@
 {
     public class PPAC5 : RegisterBase
     {
-        public PPAC5(string rs, string rt, string rd, string sa, string funct) 
+        public PPAC5(int rs, int rt, int rd, int sa, int funct) 
             : base("PPAC5", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class BNE : BranchBase
     {
-        public BNE(string rs, string rt, short offset) : base("BNE", rs, rt, offset)
+        public BNE(int rs, int rt, int offset) : base("BNE", rs, rt, offset)
         {
         }
 

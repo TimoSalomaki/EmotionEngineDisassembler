@@ -2,7 +2,7 @@
 {
     public class SLTIU : ImmediateBase
     {
-        public SLTIU(string rs, string rt, short imm) : base("SLTIU", rs, rt, imm)
+        public SLTIU(int rs, int rt, int imm) : base("SLTIU", rs, rt, imm)
         {
         }
     }

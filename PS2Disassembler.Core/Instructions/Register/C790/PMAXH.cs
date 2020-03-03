@@ -2,7 +2,7 @@
 {
     public class PMAXH : RegisterBase
     {
-        public PMAXH(string rs, string rt, string rd, string sa, string funct) 
+        public PMAXH(int rs, int rt, int rd, int sa, int funct) 
             : base("PMAXH", rs, rt, rd, sa, funct)
         {
         }

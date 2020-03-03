@@ -2,7 +2,7 @@
 {
     public class DSRLV : RegisterBase
     {
-        public DSRLV(string rs, string rt, string rd, string sa, string funct)
+        public DSRLV(int rs, int rt, int rd, int sa, int funct)
             : base("DSRLV", rs, rt, rd, sa, funct)
         {
         }

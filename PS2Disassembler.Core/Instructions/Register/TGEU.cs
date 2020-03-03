@@ -2,7 +2,7 @@
 {
     public class TGEU : RegisterBase
     {
-        public TGEU(string rs, string rt, string rd, string sa, string funct)
+        public TGEU(int rs, int rt, int rd, int sa, int funct)
             : base("TGEU", rs, rt, rd, sa, funct)
         {
         }

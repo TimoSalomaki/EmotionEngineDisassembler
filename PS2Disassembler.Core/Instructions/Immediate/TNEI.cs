@@ -2,7 +2,7 @@
 {
     public class TNEI : ImmediateBase
     {
-        public TNEI(string rs, string rt, short imm) : base("TNEI", rs, rt, imm)
+        public TNEI(int rs, int rt, int imm) : base("TNEI", rs, rt, imm)
         {
         }
 

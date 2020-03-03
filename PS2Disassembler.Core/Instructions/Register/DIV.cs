@@ -2,7 +2,7 @@
 {
     public class DIV : RegisterBase
     {
-        public DIV(string rs, string rt, string rd, string sa, string funct)
+        public DIV(int rs, int rt, int rd, int sa, int funct)
             : base("DIV", rs, rt, rd, sa, funct)
         {
         }

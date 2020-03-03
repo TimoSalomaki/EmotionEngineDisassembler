@@ -2,7 +2,7 @@
 {
     public class MULT : RegisterBase
     {
-        public MULT(string rs, string rt, string rd, string sa, string funct) 
+        public MULT(int rs, int rt, int rd, int sa, int funct) 
             : base("MULT", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class BREAK : RegisterBase
     {
-        public BREAK(string rs, string rt, string rd, string sa, string funct)
+        public BREAK(int rs, int rt, int rd, int sa, int funct)
             : base("BREAK", rs, rt, rd, sa, funct)
         {
         }

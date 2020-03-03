@@ -2,7 +2,7 @@
 {
     public class SLTI : ImmediateBase
     {
-        public SLTI(string rs, string rt, short imm) : base("SLTI", rs, rt, imm)
+        public SLTI(int rs, int rt, int imm) : base("SLTI", rs, rt, imm)
         {
         }
     }

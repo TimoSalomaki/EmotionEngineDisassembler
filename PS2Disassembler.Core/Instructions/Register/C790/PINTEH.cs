@@ -2,7 +2,7 @@
 {
     public class PINTEH : RegisterBase
     {
-        public PINTEH(string rs, string rt, string rd, string sa, string funct) 
+        public PINTEH(int rs, int rt, int rd, int sa, int funct) 
             : base("PINTEH", rs, rt, rd, sa, funct)
         {
         }

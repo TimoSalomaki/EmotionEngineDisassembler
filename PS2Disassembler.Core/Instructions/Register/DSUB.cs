@@ -2,7 +2,7 @@
 {
     public class DSUB : RegisterBase
     {
-        public DSUB(string rs, string rt, string rd, string sa, string funct)
+        public DSUB(int rs, int rt, int rd, int sa, int funct)
             : base("DSUB", rs, rt, rd, sa, funct)
         {
         }

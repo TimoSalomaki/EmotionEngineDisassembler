@@ -2,7 +2,7 @@
 {
     public class TNE : RegisterBase
     {
-        public TNE(string rs, string rt, string rd, string sa, string funct)
+        public TNE(int rs, int rt, int rd, int sa, int funct)
             : base("TNE", rs, rt, rd, sa, funct)
         {
         }

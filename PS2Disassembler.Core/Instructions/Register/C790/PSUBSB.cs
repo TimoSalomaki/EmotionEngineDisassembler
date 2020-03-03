@@ -2,7 +2,7 @@
 {
     public class PSUBSB : RegisterBase
     {
-        public PSUBSB(string rs, string rt, string rd, string sa, string funct) 
+        public PSUBSB(int rs, int rt, int rd, int sa, int funct) 
             : base("PSUBSB", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class PSUBUB : RegisterBase
     {
-        public PSUBUB(string rs, string rt, string rd, string sa, string funct) 
+        public PSUBUB(int rs, int rt, int rd, int sa, int funct) 
             : base("PSUBUB", rs, rt, rd, sa, funct)
         {
         }

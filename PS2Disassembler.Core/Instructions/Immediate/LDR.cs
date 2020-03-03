@@ -2,7 +2,7 @@
 {
     public class LDR : ImmediateBase
     {
-        public LDR(string rs, string rt, short imm) : base("LDR", rs, rt, imm)
+        public LDR(int rs, int rt, int imm) : base("LDR", rs, rt, imm)
         {
         }
 

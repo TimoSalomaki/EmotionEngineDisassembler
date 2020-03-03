@@ -2,7 +2,7 @@
 {
     public class LBU : ImmediateBase
     {
-        public LBU(string rs, string rt, short imm) : base("LBU", rs, rt, imm)
+        public LBU(int rs, int rt, int imm) : base("LBU", rs, rt, imm)
         {
         }
 

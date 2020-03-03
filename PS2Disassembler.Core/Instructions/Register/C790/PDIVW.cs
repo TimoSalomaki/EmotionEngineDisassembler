@@ -2,7 +2,7 @@
 {
     public class PDIVW : RegisterBase
     {
-        public PDIVW(string rs, string rt, string rd, string sa, string funct) 
+        public PDIVW(int rs, int rt, int rd, int sa, int funct) 
             : base("PDIVW", rs, rt, rd, sa, funct)
         {
         }

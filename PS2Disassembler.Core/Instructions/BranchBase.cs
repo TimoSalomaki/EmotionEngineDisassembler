@@ -2,7 +2,7 @@
 {
     public abstract class BranchBase : ImmediateBase
     {
-        protected BranchBase(string op, string rs, string rt, short offset) : base(op, rs, rt, offset)
+        protected BranchBase(string op, int rs, int rt, int offset) : base(op, rs, rt, offset)
         {
 
         }

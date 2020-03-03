@@ -2,7 +2,7 @@
 {
     public class MTSA : RegisterBase
     {
-        public MTSA(string rs, string rt, string rd, string sa, string funct) 
+        public MTSA(int rs, int rt, int rd, int sa, int funct) 
             : base("MTSA", rs, rt, rd, sa, funct)
         {
         }

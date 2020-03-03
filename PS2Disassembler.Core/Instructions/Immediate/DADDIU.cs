@@ -2,7 +2,7 @@
 {
     public class DADDIU : ImmediateBase
     {
-        public DADDIU(string rs, string rt, short imm) : base("DADDIU", rs, rt, imm)
+        public DADDIU(int rs, int rt, int imm) : base("DADDIU", rs, rt, imm)
         {
         }
     }
