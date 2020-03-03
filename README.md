@@ -26,3 +26,4 @@ All the implementation so far has been done by following the [official documenta
 
 ### General
 - [ ] Optimizations (there's way too many conversions, allocations etc. going on right now but that's on purpose to get everything up and running before optimizing)
+- [ ] Unit tests
