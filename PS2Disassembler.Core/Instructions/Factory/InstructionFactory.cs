@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using PS2Disassembler.Core.Helper;
+using PS2Disassembler.Core.Instructions.Immediate.COP0;
+using PS2Disassembler.Core.Instructions.Register.COP0;
 
 namespace PS2Disassembler.Core.Instructions.Factory
 {
@@ -22,10 +25,18 @@ namespace PS2Disassembler.Core.Instructions.Factory
         private Dictionary<int, Type> _mmi1Codes;
         private Dictionary<int, Type> _mmi2Codes;
         private Dictionary<int, Type> _mmi3Codes;
+        private Dictionary<int, Type> _bc0Codes;
+        private Dictionary<int, Type> _mf0DebugCodes;
+        private Dictionary<int, Type> _mf0PerfCodes;
+        private Dictionary<int, Type> _mt0DebugCodes;
+        private Dictionary<int, Type> _mt0PerfCodes;
+        private Dictionary<int, Type> _c0Codes;
+        private readonly CacheMnemonicHelper _cacheMnemonicHelper;
 
         public InstructionFactory()
         {
             InitializeDictionaries();
+            _cacheMnemonicHelper = new CacheMnemonicHelper();
         }
 
         public object CreateInstruction(int input)
@@ -40,6 +51,7 @@ namespace PS2Disassembler.Core.Instructions.Factory
 
             try
             {
+                // TODO: Reduce duplicate code below once the logic works
                 switch (_instructionTypes[opBin])
                 {
                     case InstructionType.Immediate:
@@ -70,7 +82,6 @@ namespace PS2Disassembler.Core.Instructions.Factory
                         break;
 
                     case InstructionType.Register:
-                        //var funct = Convert.ToString(input & 0x3F, 2);
                         var funct = input & 0x3F;
                         instructionClassType = _specialCodes[funct];
 
@@ -138,6 +149,117 @@ namespace PS2Disassembler.Core.Instructions.Factory
                             input & 0x1F,
                         };
                         break;
+
+                    case InstructionType.Cop0:
+                        var typeNr = (input >> 21) & 0x1F;
+
+                        switch (typeNr)
+                        {
+                            case 8: // BC0
+                                instructionClassType = _bc0Codes[(input >> 16) & 0x1F];
+
+                                args = new object[]
+                                {
+                                    input & 0xFFFF
+                                };
+                                break;
+
+                            case 16: // C0
+                                instructionClassType = _c0Codes[input & 0x3F];
+                                break;
+
+                            case 0: // MF0
+                                var mfType = (input >> 11) & 0x1F;
+
+                                switch (mfType)
+                                {
+                                    case 24: // Debug
+                                        instructionClassType = _mf0DebugCodes[input & 0x7];
+
+                                        args = new object[]
+                                        {
+                                            (input >> 16) & 0x1F, // RT
+                                            (input >> 11) & 0x1F // RD (= Debug 11000)
+                                        };
+                                        break;
+
+                                    case 25: // Perf
+                                        instructionClassType = _mf0PerfCodes[input & 0x1];
+
+                                        args = new object[]
+                                        {
+                                            (input >> 16) & 0x1F, // RT
+                                            (input >> 1) & 0x1F // Reg
+                                        };
+                                        break;
+
+                                    default: //MFC0
+                                        instructionClassType = typeof(MFC0);
+
+                                        args = new object[]
+                                        {
+                                            (input >> 16) & 0x1F, // RT
+                                            (input >> 11) & 0x1F // RD
+                                        };
+                                        break;
+                                }
+                                break;
+
+                            case 4: // MT0
+                                var mtType = (input >> 11) & 0x1F;
+
+                                switch (mtType)
+                                {
+                                    case 24: // Debug
+                                        instructionClassType = _mt0DebugCodes[input & 0x7];
+
+                                        args = new object[]
+                                        {
+                                            (input >> 16) & 0x1F, // RT
+                                            (input >> 11) & 0x1F // RD (= Debug 11000)
+                                        };
+                                        break;
+
+                                    case 25: // Perf
+                                        instructionClassType = _mf0PerfCodes[input & 0x1];
+                                        args = new object[]
+                                        {
+                                            (input >> 16) & 0x1F, // RT
+                                            (input >> 1) & 0x1F // Reg
+                                        };
+                                        break;
+
+                                    default: //MFC0
+                                        instructionClassType = typeof(MTC0);
+
+                                        args = new object[]
+                                        {
+                                            (input >> 16) & 0x1F, // RT
+                                            (input >> 11) & 0x1F // RD
+                                        };
+                                        break;
+                                }
+                                break;
+                        }
+                        break;
+
+                    case InstructionType.Cop1:
+
+                        break;
+
+                    case InstructionType.CACHE:
+                        instructionClassType = typeof(CACHE);
+
+                        var cacheOpCode = (input >> 16) & 0x1F;
+                        var cacheMnemonic = _cacheMnemonicHelper.GetMnemonic(cacheOpCode);
+
+                        args = new object[]
+                        {
+                            (input >> 21) & 0x1F, // BASE
+                            cacheMnemonic, // OP
+                            input & 0xFFFF // OFFSET
+                        };
+                        break;
                 }
             }
 
@@ -203,21 +325,26 @@ namespace PS2Disassembler.Core.Instructions.Factory
                 {46, InstructionType.Immediate}, // SWR
                 {14, InstructionType.Immediate}, // XORI
 
-                // C790 specific
+                // C790 
                 {28, InstructionType.MMI}, // MMI (Register)
                 {30, InstructionType.Immediate}, // LQ
                 {31, InstructionType.Immediate}, // SQ
+
+                // COP0 
+                {16, InstructionType.Cop0},
+                {47, InstructionType.CACHE},
+
+                // COP1 
+                //{17, InstructionType.Cop1} // Not implemented yet
             };
 
             _instructionOpCodes = new Dictionary<int, Type>()
             {
-                //{0, typeof(SPECIAL)},
                 {8, typeof(ADDI)},
                 {9, typeof(ADDIU)},
                 {12, typeof(ANDI)},
                 {4, typeof(BEQ)},
                 {20, typeof(BEQL)},
-                //{1, typeof(REGIMM)},
                 {7, typeof(BGTZ)},
                 {23, typeof(BGTZL)},
                 {6, typeof(BLEZ)},
@@ -457,6 +584,60 @@ namespace PS2Disassembler.Core.Instructions.Factory
                 {3, typeof(PSRAVW)}
             };
 
+            _bc0Codes = new Dictionary<int, Type>()
+            {
+                {0, typeof(BC0F)},
+                {2, typeof(BC0FL)},
+                {1, typeof(BC0T)},
+                {3, typeof(BC0TL)}
+            };
+            
+            _mf0DebugCodes = new Dictionary<int, Type>()
+            {
+                {0, typeof(MFBPC)},
+                {4, typeof(MFDAB)},
+                {5, typeof(MFDABM)},
+                {6, typeof(MFDVB)},
+                {7, typeof(MFDVBM)},
+                {2, typeof(MFIAB)},
+                {3, typeof(MFIABM)}
+            };
+
+            // TODO: Probably doesn't make sense to have such a small dictionary
+            _mf0PerfCodes = new Dictionary<int, Type>()
+            {
+                {1, typeof(MFBPC)},
+                {0, typeof(MFPS)}
+            };
+
+            _mt0DebugCodes = new Dictionary<int, Type>()
+            {
+                {0, typeof(MTBPC)},
+                {4, typeof(MTDAB)},
+                {5, typeof(MTDABM)},
+                {6, typeof(MTDVB)},
+                {7, typeof(MTDVBM)},
+                {2, typeof(MTIAB)},
+                {3, typeof(MTIABM)},
+            };
+
+            // TODO: Probably doesn't make sense to have such a small dictionary
+            _mt0PerfCodes = new Dictionary<int, Type>()
+            {
+                {1, typeof(MTPC)},
+                {0, typeof(MTPS)}
+            };
+
+            _c0Codes = new Dictionary<int, Type>()
+            {
+                {57, typeof(DI)},
+                {56, typeof(EI)},
+                {24, typeof(ERET)},
+                {8, typeof(TLBP)},
+                {1, typeof(TLBR)},
+                {2, typeof(TLBWI)},
+                {6, typeof(TLBWR)}
+            };
         }
     }
 }

@@ -18,6 +18,9 @@
         MMI,
         Register,
         Regimm,
-        Nop
+        Nop,
+        Cop0,
+        Cop1,
+        CACHE
     }
 }
