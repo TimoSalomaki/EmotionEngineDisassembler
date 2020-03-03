@@ -1,8 +1,7 @@
-﻿using System;
+﻿using PS2Disassembler.Core.Instructions;
+using PS2Disassembler.Core.Instructions.Factory;
 using System.Collections.Generic;
 using System.Text;
-using PS2Disassembler.Core.Instructions;
-using PS2Disassembler.Core.Instructions.Factory;
 
 namespace PS2Disassembler.Core
 {

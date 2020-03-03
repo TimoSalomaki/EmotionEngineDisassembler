@@ -68,6 +68,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\CommandHandler.cs" />
+    <Compile Include="ViewModel\BaseVM.cs" />
     <Compile Include="ViewModel\MainViewVM.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

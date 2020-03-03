@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Reflection;
-using PS2Disassembler.Core.Helper;
-using PS2Disassembler.Core.Instructions.Immediate;
+﻿using PS2Disassembler.Core.Instructions.Immediate;
 using PS2Disassembler.Core.Instructions.Immediate.Branch;
 using PS2Disassembler.Core.Instructions.Immediate.C790;
 using PS2Disassembler.Core.Instructions.Jump;
 using PS2Disassembler.Core.Instructions.Register;
 using PS2Disassembler.Core.Instructions.Register.C790;
 using PS2Disassembler.Core.Parser;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Reflection;
 using MULT = PS2Disassembler.Core.Instructions.Register.MULT;
 using MULTU = PS2Disassembler.Core.Instructions.Register.MULTU;
 

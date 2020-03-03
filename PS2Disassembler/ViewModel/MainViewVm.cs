@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Diagnostics;
+using System.Windows.Input;
 using ICSharpCode.AvalonEdit.Document;
 using PS2Disassembler.Commands;
 using PS2Disassembler.Core;
@@ -6,11 +7,12 @@ using PS2Disassembler.Core.Parser;
 
 namespace PS2Disassembler.ViewModel
 {
-    public class MainViewVM
+    public class MainViewVM : BaseVM
     {
         private ICommand _disassembleCommand;
         private readonly IDisassembler _disassembler;
         private readonly IInputParser _parser;
+        private string statusText;
 
         public MainViewVM()
         {
@@ -30,14 +32,35 @@ namespace PS2Disassembler.ViewModel
         public TextDocument Input { get; set; } = new TextDocument();
         public TextDocument Output { get; set; } = new TextDocument();
 
+        public string StatusText
+        {
+            get => statusText;
+
+            set
+            {
+                if (value == statusText) return;
+
+                statusText = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public void Disassemble()
         {
+            var sWatch = new Stopwatch();
+            sWatch.Start();
+
+            StatusText = "Parsing input";
             var parsedInput = _parser.ParseContent(Input.Text);
-            
+
+            StatusText = "Disassembling";
             Output.BeginUpdate();
             Output.Remove(0, Output.TextLength);
             Output.Insert(0, _disassembler.Disassemble(parsedInput));
             Output.EndUpdate();
+
+            sWatch.Stop();
+            StatusText = $"Disassembly finished in {sWatch.Elapsed}";
         }
     }
 }
