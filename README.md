@@ -14,6 +14,7 @@ All the implementation so far has been done by following the [official documenta
 - [ ] Support the COP1 (FPU) coprocessor instruction set
 - [ ] Register name parsing
 - [ ] Assembler
+- [ ] Pseudo instructions (nop is already one)
 
 ### UI
 - [X] AvalonEdit integration
@@ -22,7 +23,10 @@ All the implementation so far has been done by following the [official documenta
 - [ ] Jump and branch arrows
 - [ ] Go to address functionality
 - [ ] Hex line numbers
+- [ ] Docking
 
 
 ### General
 - [ ] Optimizations (there's way too many conversions, allocations etc. going on right now but that's on purpose to get everything up and running before optimizing)
+- [ ] Unit tests
+- [ ] Open/save file
