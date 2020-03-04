@@ -1,9 +1,8 @@
 ﻿namespace PS2Disassembler.Core.Instructions
 {
-    // TODO: Wrong file, switch
-    public abstract class COP0ImmediateBase : InstructionBase
+    public abstract class FPUImmediateBase : InstructionBase
     {
-        protected COP0ImmediateBase(string op, int offset) : base(op)
+        protected FPUImmediateBase(string op, int offset) : base(op)
         {
             Offset = "0x" + offset.ToString("X");
         }
