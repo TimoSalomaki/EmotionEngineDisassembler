@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"FLOOR.L.S {FD}, {FS}" +
+            return $"FLOOR.L.S {FD}, {FS}\n" +
                    $"FLOOR.L.D {FD}, {FS}";
         }
     }

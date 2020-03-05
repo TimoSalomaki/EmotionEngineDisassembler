@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"NEG.S {FD}, {FS}" +
+            return $"NEG.S {FD}, {FS}\n" +
                    $"NEG.D {FD}, {FS}";
         }
     }

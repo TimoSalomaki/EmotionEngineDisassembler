@@ -16,7 +16,7 @@
 
         public override string ToString()
         {
-            return $"C.{CondMnemonic}.S {FS}, {FT}" +
+            return $"C.{CondMnemonic}.S {FS}, {FT}\n" +
                    $"C.{CondMnemonic}.D {FS}, {FT}";
         }
     }

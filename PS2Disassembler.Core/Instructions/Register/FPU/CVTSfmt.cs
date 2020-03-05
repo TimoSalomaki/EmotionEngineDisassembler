@@ -9,8 +9,8 @@
 
         public override string ToString()
         {
-            return $"CVT.S.D {FD}, {FS}" +
-                   $"CVT.S.W {FD}, {FS}" +
+            return $"CVT.S.D {FD}, {FS}\n" +
+                   $"CVT.S.W {FD}, {FS}\n" +
                    $"CVT.S.L {FD}, {FS}";
         }
     }

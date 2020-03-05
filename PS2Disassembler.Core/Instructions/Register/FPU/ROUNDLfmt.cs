@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"ROUND.L.S {FD}, {FS}" +
+            return $"ROUND.L.S {FD}, {FS}\n" +
                    $"ROUND.L.D {FD}, {FS}";
         }
     }

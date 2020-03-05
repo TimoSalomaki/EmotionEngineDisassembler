@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"TRUNC.L.S {FD}, {FS}" +
+            return $"TRUNC.L.S {FD}, {FS}\n" +
                    $"TRUNC.L.D {FD}, {FS}";
         }
     }

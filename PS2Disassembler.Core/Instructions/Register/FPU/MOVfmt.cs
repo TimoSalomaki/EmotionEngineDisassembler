@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"MOV.S {FD}, {FS}" +
+            return $"MOV.S {FD}, {FS}\n" +
                    $"MOV.D {FD}, {FS}";
         }
     }

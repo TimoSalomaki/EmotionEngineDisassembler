@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"MUL.S {FD}, {FS}, {FT}" +
+            return $"MUL.S {FD}, {FS}, {FT}\n" +
                    $"MUL.D {FD}, {FS}, {FT}";
         }
     }

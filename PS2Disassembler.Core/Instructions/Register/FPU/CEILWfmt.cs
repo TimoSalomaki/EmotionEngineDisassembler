@@ -9,7 +9,7 @@
 
         public override string ToString()
         {
-            return $"CEIL.W.S {FD}, {FS}" +
+            return $"CEIL.W.S {FD}, {FS}\n" +
                    $"CEIL.W.D {FD}, {FS}";
         }
     }

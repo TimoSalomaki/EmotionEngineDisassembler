@@ -250,66 +250,6 @@ namespace PS2Disassembler.Core.Instructions.Factory
                         break;
 
                     case InstructionType.Cop1:
-                    //    var last11Bits = input & 0x7FF;
-                    //    var fmtBits = (input >> 21) & 0x1F;
-                    //    var ftBits= (input >> 16) & 0x1F;
-                    //    var fsBits = (input >> 11) & 0x1F;
-                    //    var fdBits = (input >> 6) & 0x1F;
-
-                    //    args = new object[]
-                    //    {
-                    //        fmtBits,
-                    //        ftBits,
-                    //        fsBits,
-                    //        fdBits
-                    //    };
-
-                    //    if (last11Bits == 0) // CTC1, CFC1, DMFC1, DMTC1, MFC1 and MTC1
-                    //    {
-                    //        var opCode = (input >> 21) & 0x1F;
-                    //        instructionClassType = _fpuRSOpCodes[opCode];
-                    //    }
-
-                    //    else if (ftBits == 0)
-                    //    {
-                    //        var opCode = input & 0x3F;
-                    //        instructionClassType = _fpuFuncOpCodes[opCode];
-                    //    }
-
-                    //    else if (fdBits == 0 && ((input >> 4) & 0xF) == 3) // C.cond.fmt
-                    //    {
-                    //        instructionClassType = typeof(Ccondfmt);
-                    //    }
-
-                    //    else if (fmtBits == 8)
-                    //    {
-                    //        instructionClassType = ftBits == 0 ? typeof(BC1F) : typeof(BC1T);
-                    //        args = new object[]
-                    //        {
-                    //            input & 0xFFFF
-                    //        };
-                    //    }
-
-                    //    else
-                    //    {
-                    //        instructionClassType = _fpuRegisterOpCodes[input & 0x3F];
-                    //    }
-                    //    break;
-
-                    //case InstructionType.CACHE:
-                    //    instructionClassType = typeof(CACHE);
-
-                    //    var cacheOpCode = (input >> 16) & 0x1F;
-                    //    var cacheMnemonic = _cacheMnemonicHelper.GetMnemonic(cacheOpCode);
-
-                    //    args = new object[]
-                    //    {
-                    //        (input >> 21) & 0x1F, // BASE
-                    //        cacheMnemonic, // OP
-                    //        input & 0xFFFF // OFFSET
-                    //    };
-                    //    break;
-
                         var rs = (input >> 21) & 0x1F;
                         var rt = (input >> 16) & 0x1F;
                         var fs = (input >> 11) & 0x1F;
@@ -373,15 +313,8 @@ namespace PS2Disassembler.Core.Instructions.Factory
                     instructionClassType = typeof(Nop);
                     break;
                 }
-            //}
 
-            //catch (KeyNotFoundException e)
-            //{
-            //    var test = e;
-            //    return new Nop();
-            //}
-
-            var newInstance = GetInstance(instructionClassType, args);
+                var newInstance = GetInstance(instructionClassType, args);
 
             return newInstance;
         }
