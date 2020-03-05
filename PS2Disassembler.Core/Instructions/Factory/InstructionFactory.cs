@@ -35,7 +35,6 @@ namespace PS2Disassembler.Core.Instructions.Factory
         private Dictionary<uint, Type> _c0Codes;
         private Dictionary<uint, Type> _fpuRSOpCodes;
         private Dictionary<uint, Type> _fpuFuncOpCodes;
-        private Dictionary<uint, Type> _fpuRegisterOpCodes;
         private Dictionary<uint, string> _cCondMnemonics;
         private readonly CacheMnemonicHelper _cacheMnemonicHelper;
 
