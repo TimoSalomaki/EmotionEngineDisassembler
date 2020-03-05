@@ -1,23 +1,25 @@
-﻿using PS2Disassembler.Core.Instructions.Immediate;
+﻿using PS2Disassembler.Core.Helper;
+using PS2Disassembler.Core.Instructions.Immediate;
 using PS2Disassembler.Core.Instructions.Immediate.Branch;
 using PS2Disassembler.Core.Instructions.Immediate.C790;
+using PS2Disassembler.Core.Instructions.Immediate.COP0;
+using PS2Disassembler.Core.Instructions.Immediate.FPU;
 using PS2Disassembler.Core.Instructions.Jump;
 using PS2Disassembler.Core.Instructions.Register;
 using PS2Disassembler.Core.Instructions.Register.C790;
+using PS2Disassembler.Core.Instructions.Register.COP0;
+using PS2Disassembler.Core.Instructions.Register.FPU;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
-using PS2Disassembler.Core.Helper;
-using PS2Disassembler.Core.Instructions.Immediate.COP0;
-using PS2Disassembler.Core.Instructions.Register.COP0;
 
 namespace PS2Disassembler.Core.Instructions.Factory
 {
     public class InstructionFactory : IInstructionFactory
     {
         private Dictionary<int, InstructionType> _instructionTypes;
-        private Dictionary<int, Type> _instructionOpCodes;
+        private Dictionary<int, Type> _immediateOpCodes;
         private Dictionary<int, Type> _regimmCodes;
         private Dictionary<int, Type> _specialCodes;
         private Dictionary<int, Type> _mmiCodes;
@@ -31,6 +33,9 @@ namespace PS2Disassembler.Core.Instructions.Factory
         private Dictionary<int, Type> _mt0DebugCodes;
         private Dictionary<int, Type> _mt0PerfCodes;
         private Dictionary<int, Type> _c0Codes;
+        private Dictionary<int, Type> _fpu11Specials;
+        private Dictionary<int, Type> _fpu12Specials;
+        private Dictionary<int, Type> _fpuRegisterOpCodes;
         private readonly CacheMnemonicHelper _cacheMnemonicHelper;
 
         public InstructionFactory()
@@ -55,7 +60,7 @@ namespace PS2Disassembler.Core.Instructions.Factory
                 switch (_instructionTypes[opBin])
                 {
                     case InstructionType.Immediate:
-                        instructionClassType = _instructionOpCodes[opBin];
+                        instructionClassType = _immediateOpCodes[opBin];
                         args = new object[]
                         {
                             (input >> 21) & 0x1F,
@@ -64,7 +69,7 @@ namespace PS2Disassembler.Core.Instructions.Factory
                         };
                         break;
                     case InstructionType.Jump:
-                        instructionClassType = _instructionOpCodes[opBin];
+                        instructionClassType = _immediateOpCodes[opBin];
                         args = new object[]
                         {
                             input & 0x3FFFFFF,
@@ -244,7 +249,50 @@ namespace PS2Disassembler.Core.Instructions.Factory
                         break;
 
                     case InstructionType.Cop1:
+                        var last11Bits = input & 0x7FF;
+                        var fmtBits = (input >> 21) & 0x1F;
+                        var ftBits= (input >> 16) & 0x1F;
+                        var fsBits = (input >> 11) & 0x1F;
+                        var fdBits = (input >> 6) & 0x1F;
 
+                        args = new object[]
+                        {
+                            fmtBits,
+                            ftBits,
+                            fsBits,
+                            fdBits
+                        };
+
+                        if (last11Bits == 0) // CTC1, CFC1, DMFC1, DMTC1, MFC1 and MTC1
+                        {
+                            var opCode = (input >> 21) & 0x1F;
+                            instructionClassType = _fpu11Specials[opCode];
+                        }
+
+                        else if (ftBits == 0)
+                        {
+                            var opCode = input & 0x3F;
+                            instructionClassType = _fpu12Specials[opCode];
+                        }
+
+                        else if (fdBits == 0 && ((input >> 4) & 0xF) == 3) // C.cond.fmt
+                        {
+                            instructionClassType = typeof(Ccondfmt);
+                        }
+
+                        else if (fmtBits == 8)
+                        {
+                            instructionClassType = ftBits == 0 ? typeof(BC1F) : typeof(BC1T);
+                            args = new object[]
+                            {
+                                input & 0xFFFF
+                            };
+                        }
+
+                        else
+                        {
+                            instructionClassType = _fpuRegisterOpCodes[input & 0x3F];
+                        }
                         break;
 
                     case InstructionType.CACHE:
@@ -335,10 +383,10 @@ namespace PS2Disassembler.Core.Instructions.Factory
                 {47, InstructionType.CACHE},
 
                 // COP1 
-                //{17, InstructionType.Cop1} // Not implemented yet
+                {17, InstructionType.Cop1}
             };
 
-            _instructionOpCodes = new Dictionary<int, Type>()
+            _immediateOpCodes = new Dictionary<int, Type>()
             {
                 {8, typeof(ADDI)},
                 {9, typeof(ADDIU)},
@@ -384,6 +432,12 @@ namespace PS2Disassembler.Core.Instructions.Factory
                 // C790 specific
                 {30, typeof(LQ)},
                 {31, typeof(SQ)},
+
+                // COP1 (FPU) specific
+                {53, typeof(LDC1)},
+                {49, typeof(LWC1)},
+                {61, typeof(SDC1)},
+                {57, typeof(SWC1)}
             };
 
             _regimmCodes = new Dictionary<int, Type>()
@@ -637,6 +691,44 @@ namespace PS2Disassembler.Core.Instructions.Factory
                 {1, typeof(TLBR)},
                 {2, typeof(TLBWI)},
                 {6, typeof(TLBWR)}
+            };
+
+            _fpu11Specials = new Dictionary<int, Type>()
+            {
+                {2, typeof(CFC1)},
+                {6, typeof(CTC1)},
+                {1, typeof(DMFC1)},
+                {5, typeof(DMTC1)},
+                {0, typeof(MFC1)},
+                {4, typeof(MTC1)}
+            };
+
+            _fpu12Specials = new Dictionary<int, Type>()
+            {
+                {5, typeof(ABSfmt)},
+                {10, typeof(CEILLfmt)},
+                {14, typeof(CEILWfmt)},
+                {33, typeof(CVTDfmt)},
+                {37, typeof(CVTSfmt)},
+                {32, typeof(CVTLfmt)},
+                {36, typeof(CVTWfmt)},
+                {11, typeof(FLOORLfmt)},
+                {15, typeof(FLOORWfmt)},
+                {6, typeof(MOVfmt)},
+                {7, typeof(NEGfmt)},
+                {8, typeof(ROUNDLfmt)},
+                {12, typeof(ROUNDWfmt)},
+                {4, typeof(SQRTfmt)},
+                {9, typeof(TRUNCLfmt)},
+                {13, typeof(TRUNCWfmt)},
+            };
+
+            _fpuRegisterOpCodes = new Dictionary<int, Type>()
+            {
+                {0, typeof(ADDfmt)},
+                {3, typeof(DIVfmt)},
+                {2, typeof(MULfmt)},
+                {1, typeof(SUBfmt)}
             };
         }
     }
