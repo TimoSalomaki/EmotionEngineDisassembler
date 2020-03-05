@@ -2,6 +2,6 @@
 {
     public interface IInstructionFactory
     {
-        object CreateInstruction(int input);
+        object CreateInstruction(uint input);
     }
 }

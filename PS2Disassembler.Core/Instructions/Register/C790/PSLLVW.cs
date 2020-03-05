@@ -2,7 +2,7 @@
 {
     public class PSLLVW : RegisterBase
     {
-        public PSLLVW(int rs, int rt, int rd, int sa, int funct) 
+        public PSLLVW(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PSLLVW", rs, rt, rd, sa, funct)
         {
         }

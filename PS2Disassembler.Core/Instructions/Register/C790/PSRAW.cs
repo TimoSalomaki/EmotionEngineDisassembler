@@ -2,7 +2,7 @@
 {
     public class PSRAW : RegisterBase
     {
-        public PSRAW(int rs, int rt, int rd, int sa, int funct) 
+        public PSRAW(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PSRAW", rs, rt, rd, sa, funct)
         {
         }

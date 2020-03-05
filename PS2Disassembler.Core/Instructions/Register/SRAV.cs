@@ -2,7 +2,7 @@
 {
     public class SRAV : RegisterBase
     {
-        public SRAV(int rs, int rt, int rd, int sa, int funct)
+        public SRAV(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("SRAV", rs, rt, rd, sa, funct)
         {
         }

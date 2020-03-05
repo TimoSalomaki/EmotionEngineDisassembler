@@ -2,7 +2,7 @@
 {
     public abstract class FPURegisterBase : InstructionBase
     {
-        protected FPURegisterBase(string op, int fmt, int ft, int fs, int fd)
+        protected FPURegisterBase(string op, uint fmt, uint ft, uint fs, uint fd)
             : base(op)
         {
             FMT = "0x" + fmt.ToString("X");

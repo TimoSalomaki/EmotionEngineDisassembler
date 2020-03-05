@@ -4,11 +4,11 @@ namespace PS2Disassembler.Core.Helper
 {
     public class CacheMnemonicHelper
     {
-        private readonly Dictionary<int, string> _cacheInstructions;
+        private readonly Dictionary<uint, string> _cacheInstructions;
 
         public CacheMnemonicHelper()
         {
-            _cacheInstructions = new Dictionary<int, string>()
+            _cacheInstructions = new Dictionary<uint, string>()
             {
                 {7, "IXIN"},
                 {0, "IXLTG"},
@@ -33,7 +33,7 @@ namespace PS2Disassembler.Core.Helper
             };
         }
 
-        public string GetMnemonic(int opCode)
+        public string GetMnemonic(uint opCode)
         {
             return _cacheInstructions[opCode];
         }

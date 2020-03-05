@@ -2,7 +2,7 @@
 {
     public class LDC1 : ImmediateBase
     {
-        public LDC1(int rs, int rt, int imm) : base("LDC1", rs, rt, imm)
+        public LDC1(uint rs, uint rt, uint imm) : base("LDC1", rs, rt, imm)
         {
         }
 

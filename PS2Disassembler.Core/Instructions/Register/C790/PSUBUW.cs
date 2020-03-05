@@ -2,7 +2,7 @@
 {
     public class PSUBUW : RegisterBase
     {
-        public PSUBUW(int rs, int rt, int rd, int sa, int funct) 
+        public PSUBUW(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PSUBUW", rs, rt, rd, sa, funct)
         {
         }

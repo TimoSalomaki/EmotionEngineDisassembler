@@ -2,7 +2,7 @@
 {
     public class PEXEW : RegisterBase
     {
-        public PEXEW(int rs, int rt, int rd, int sa, int funct) 
+        public PEXEW(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PEXEW", rs, rt, rd, sa, funct)
         {
         }

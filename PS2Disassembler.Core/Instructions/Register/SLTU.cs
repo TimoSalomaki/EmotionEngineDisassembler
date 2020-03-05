@@ -2,7 +2,7 @@
 {
     public class SLTU : RegisterBase
     {
-        public SLTU(int rs, int rt, int rd, int sa, int funct)
+        public SLTU(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("SLTU", rs, rt, rd, sa, funct)
         {
         }

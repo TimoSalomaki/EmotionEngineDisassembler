@@ -2,7 +2,7 @@
 {
     public class PEXT5 : RegisterBase
     {
-        public PEXT5(int rs, int rt, int rd, int sa, int funct) 
+        public PEXT5(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PEXT5", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class CTC1 : FPURegisterBase
     {
-        public CTC1(int fmt, int ft, int fs, int fd)
+        public CTC1(uint fmt, uint ft, uint fs, uint fd)
             : base("CTC1", fmt, ft, fs, fd)
         {
         }

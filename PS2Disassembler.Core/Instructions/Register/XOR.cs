@@ -2,7 +2,7 @@
 {
     public class XOR : RegisterBase
     {
-        public XOR(int rs, int rt, int rd, int sa, int funct)
+        public XOR(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("XOR", rs, rt, rd, sa, funct)
         {
         }

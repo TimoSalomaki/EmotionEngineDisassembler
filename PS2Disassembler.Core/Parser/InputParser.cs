@@ -5,11 +5,11 @@ namespace PS2Disassembler.Core.Parser
 {
     public class InputParser : IInputParser
     {
-        public List<int> ParseContent(string input)
+        public List<uint> ParseContent(string input)
         {
             input = input.Replace("\r", "").Replace(" ", "");
             var lines = input.Split('\n');
-            var output = new List<int>();
+            var output = new List<uint>();
 
             //foreach (var line in lines)
             for(int i = 0; i < lines.Length; i++)
@@ -25,9 +25,9 @@ namespace PS2Disassembler.Core.Parser
             return output;
         }
 
-        private int HexPartsToInt(string input)
+        private uint HexPartsToInt(string input)
         {
-            var result = Convert.ToInt32($"0x{input}", 16);
+            var result = Convert.ToUInt32($"0x{input}", 16);
             
             return result;
         }

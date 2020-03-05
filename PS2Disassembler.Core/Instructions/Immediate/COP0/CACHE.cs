@@ -2,7 +2,7 @@
 {
     public class CACHE : CacheBase
     {
-        public CACHE(int baseAddr, string mnemonic, int offset) : base("CACHE", baseAddr, mnemonic, offset)
+        public CACHE(uint baseAddr, string mnemonic, uint offset) : base("CACHE", baseAddr, mnemonic, offset)
         {
         }
     }

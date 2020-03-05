@@ -2,7 +2,7 @@
 {
     public class PEXTUB : RegisterBase
     {
-        public PEXTUB(int rs, int rt, int rd, int sa, int funct) 
+        public PEXTUB(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PEXTUB", rs, rt, rd, sa, funct)
         {
         }

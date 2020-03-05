@@ -2,7 +2,7 @@
 {
     public class TGE : RegisterBase
     {
-        public TGE(int rs, int rt, int rd, int sa, int funct)
+        public TGE(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("TGE", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class MTC0 : RegisterBase
     {
-        public MTC0(int rs, int rt, int rd, int sa, int funct)
+        public MTC0(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("MTC0", rs, rt, rd, sa, funct)
         {
         }

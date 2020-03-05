@@ -2,7 +2,7 @@
 {
     public class MTDABM : MSpecial3Base
     {
-        public MTDABM(int rt)
+        public MTDABM(uint rt)
             : base("MTDABM", rt)
         {
         }

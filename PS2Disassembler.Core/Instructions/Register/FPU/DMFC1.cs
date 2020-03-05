@@ -2,7 +2,7 @@
 {
     public class DMFC1 : FPURegisterBase
     {
-        public DMFC1(int fmt, int ft, int fs, int fd)
+        public DMFC1(uint fmt, uint ft, uint fs, uint fd)
             : base("DMFC1", fmt, ft, fs, fd)
         {
         }

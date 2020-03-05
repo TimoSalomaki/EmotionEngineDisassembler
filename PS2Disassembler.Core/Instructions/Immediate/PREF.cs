@@ -2,7 +2,7 @@
 {
     public class PREF : ImmediateBase
     {
-        public PREF(int rs, int rt, int imm) : base("PREF", rs, rt, imm)
+        public PREF(uint rs, uint rt, uint imm) : base("PREF", rs, rt, imm)
         {
         }
 

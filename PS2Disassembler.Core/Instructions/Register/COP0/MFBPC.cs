@@ -2,7 +2,7 @@
 {
     public class MFBPC : MSpecial3Base
     {
-        public MFBPC(int rt)
+        public MFBPC(uint rt)
             : base("MFBPC", rt)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class MOVfmt : FPURegisterBase
     {
-        public MOVfmt(int fmt, int ft, int fs, int fd)
+        public MOVfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("MOVfmt", fmt, ft, fs, fd)
         {
         }

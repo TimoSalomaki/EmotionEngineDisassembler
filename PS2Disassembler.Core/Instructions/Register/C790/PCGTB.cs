@@ -2,7 +2,7 @@
 {
     public class PCGTB : RegisterBase
     {
-        public PCGTB(int rs, int rt, int rd, int sa, int funct) 
+        public PCGTB(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PCGTB", rs, rt, rd, sa, funct)
         {
         }

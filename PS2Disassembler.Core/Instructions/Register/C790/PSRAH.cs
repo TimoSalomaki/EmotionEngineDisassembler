@@ -2,7 +2,7 @@
 {
     public class PSRAH : RegisterBase
     {
-        public PSRAH(int rs, int rt, int rd, int sa, int funct) 
+        public PSRAH(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PSRAH", rs, rt, rd, sa, funct)
         {
         }

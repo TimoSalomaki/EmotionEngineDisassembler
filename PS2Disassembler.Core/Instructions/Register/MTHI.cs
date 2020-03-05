@@ -2,7 +2,7 @@
 {
     public class MTHI : RegisterBase
     {
-        public MTHI(int rs, int rt, int rd, int sa, int funct)
+        public MTHI(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("MTHI", rs, rt, rd, sa, funct)
         {
         }

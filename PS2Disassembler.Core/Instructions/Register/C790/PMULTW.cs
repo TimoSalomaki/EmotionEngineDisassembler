@@ -2,7 +2,7 @@
 {
     public class PMULTW : RegisterBase
     {
-        public PMULTW(int rs, int rt, int rd, int sa, int funct) 
+        public PMULTW(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PMULTW", rs, rt, rd, sa, funct)
         {
         }

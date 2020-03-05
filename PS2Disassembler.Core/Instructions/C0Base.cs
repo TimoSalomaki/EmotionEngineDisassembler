@@ -3,7 +3,7 @@
     // TODO: Wrong file, switch
     public abstract class COP0ImmediateBase : InstructionBase
     {
-        protected COP0ImmediateBase(string op, int offset) : base(op)
+        protected COP0ImmediateBase(string op, uint offset) : base(op)
         {
             Offset = "0x" + offset.ToString("X");
         }

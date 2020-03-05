@@ -2,7 +2,7 @@
 {
     public class BC1T : FPUImmediateBase
     {
-        public BC1T(int offset) : base("BC1T", offset)
+        public BC1T(uint offset) : base("BC1T", offset)
         {
         }
     }

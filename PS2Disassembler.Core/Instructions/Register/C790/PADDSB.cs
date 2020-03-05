@@ -2,7 +2,7 @@
 {
     public class PADDSB : RegisterBase
     {
-        public PADDSB(int rs, int rt, int rd, int sa, int funct) 
+        public PADDSB(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PADDSB", rs, rt, rd, sa, funct)
         {
         }

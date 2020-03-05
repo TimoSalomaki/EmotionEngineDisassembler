@@ -2,7 +2,7 @@
 {
     public class LD : ImmediateBase
     {
-        public LD(int rs, int rt, int imm) : base("LD", rs, rt, imm)
+        public LD(uint rs, uint rt, uint imm) : base("LD", rs, rt, imm)
         {
         }
 

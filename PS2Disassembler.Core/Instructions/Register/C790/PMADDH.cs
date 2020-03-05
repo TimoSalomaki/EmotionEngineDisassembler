@@ -2,7 +2,7 @@
 {
     public class PMADDH : RegisterBase
     {
-        public PMADDH(int rs, int rt, int rd, int sa, int funct) 
+        public PMADDH(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PMADDH", rs, rt, rd, sa, funct)
         {
         }

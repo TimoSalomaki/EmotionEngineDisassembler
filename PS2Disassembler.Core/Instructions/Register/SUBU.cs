@@ -2,7 +2,7 @@
 {
     public class SUBU : RegisterBase
     {
-        public SUBU(int rs, int rt, int rd, int sa, int funct)
+        public SUBU(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("SUBU", rs, rt, rd, sa, funct)
         {
         }

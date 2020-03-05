@@ -2,7 +2,7 @@
 {
     public class PMTHLfmt : RegisterBase
     {
-        public PMTHLfmt(int rs, int rt, int rd, int sa, int funct) 
+        public PMTHLfmt(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PMTHL.LW", rs, rt, rd, sa, funct)
         {
         }

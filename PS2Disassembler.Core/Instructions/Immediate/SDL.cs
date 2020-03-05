@@ -2,7 +2,7 @@
 {
     public class SDL : ImmediateBase
     {
-        public SDL(int rs, int rt, int imm) : base("SDL", rs, rt, imm)
+        public SDL(uint rs, uint rt, uint imm) : base("SDL", rs, rt, imm)
         {
         }
 

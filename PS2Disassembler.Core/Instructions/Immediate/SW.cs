@@ -2,7 +2,7 @@
 {
     public class SW : ImmediateBase
     {
-        public SW(int rs, int rt, int imm) : base("SW", rs, rt, imm)
+        public SW(uint rs, uint rt, uint imm) : base("SW", rs, rt, imm)
         {
         }
 

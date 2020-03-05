@@ -2,7 +2,7 @@
 {
     public class POR : RegisterBase
     {
-        public POR(int rs, int rt, int rd, int sa, int funct) 
+        public POR(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("POR", rs, rt, rd, sa, funct)
         {
         }

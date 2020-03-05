@@ -2,7 +2,7 @@
 {
     public class NEGfmt : FPURegisterBase
     {
-        public NEGfmt(int fmt, int ft, int fs, int fd)
+        public NEGfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("NEGfmt", fmt, ft, fs, fd)
         {
         }

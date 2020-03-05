@@ -2,7 +2,7 @@
 {
     public class PMAXW : RegisterBase
     {
-        public PMAXW(int rs, int rt, int rd, int sa, int funct) 
+        public PMAXW(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PMAXW", rs, rt, rd, sa, funct)
         {
         }

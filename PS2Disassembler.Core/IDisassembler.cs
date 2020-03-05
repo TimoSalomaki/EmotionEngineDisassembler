@@ -4,7 +4,7 @@ namespace PS2Disassembler.Core
 {
     public interface IDisassembler
     {
-        string Disassemble(int hexInput);
-        string Disassemble(List<int> hexInput);
+        string Disassemble(uint hexInput);
+        string Disassemble(List<uint> hexInput);
     }
 }

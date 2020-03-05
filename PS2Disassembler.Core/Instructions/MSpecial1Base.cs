@@ -2,7 +2,7 @@
 {
     public abstract class MSpecial1Base : InstructionBase
     {
-        protected MSpecial1Base(string op, int rt, int reg)
+        protected MSpecial1Base(string op, uint rt, uint reg)
             : base(op)
         {
             RT = "0x" + rt.ToString("X");

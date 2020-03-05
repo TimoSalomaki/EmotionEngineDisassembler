@@ -2,7 +2,7 @@
 {
     public abstract class CacheBase : InstructionBase
     {
-        protected CacheBase(string op, int baseAddr, string mnemonic, int offset) : base(op)
+        protected CacheBase(string op, uint baseAddr, string mnemonic, uint offset) : base(op)
         {
             BaseAddr = "0x" + baseAddr.ToString("X");
             Mnemonic = mnemonic;

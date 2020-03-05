@@ -2,7 +2,7 @@
 {
     public class CVTSfmt : FPURegisterBase
     {
-        public CVTSfmt(int fmt, int ft, int fs, int fd)
+        public CVTSfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("CVTSfmt", fmt, ft, fs, fd)
         {
         }

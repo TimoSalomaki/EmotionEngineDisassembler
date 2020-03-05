@@ -2,7 +2,7 @@
 {
     public class TRUNCWfmt : FPURegisterBase
     {
-        public TRUNCWfmt(int fmt, int ft, int fs, int fd)
+        public TRUNCWfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("TRUNCWfmt", fmt, ft, fs, fd)
         {
         }

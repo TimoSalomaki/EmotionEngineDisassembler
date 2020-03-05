@@ -14,12 +14,12 @@ namespace PS2Disassembler.Core
             _instructionFactory = new InstructionFactory();
         }
 
-        public string Disassemble(int hexInput)
+        public string Disassemble(uint hexInput)
         {
             return ((InstructionBase)_instructionFactory.CreateInstruction(hexInput)).ToString();
         }
 
-        public string Disassemble(List<int> hexInputList)
+        public string Disassemble(List<uint> hexInputList)
         {
             var outputBuilder = new StringBuilder();
 

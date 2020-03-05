@@ -2,7 +2,7 @@
 {
     public class TEQI : ImmediateBase
     {
-        public TEQI(int rs, int rt, int imm) : base("TEQI", rs, rt, imm)
+        public TEQI(uint rs, uint rt, uint imm) : base("TEQI", rs, rt, imm)
         {
         }
 

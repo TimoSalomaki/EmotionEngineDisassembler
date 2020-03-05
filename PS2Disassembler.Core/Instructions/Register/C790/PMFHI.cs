@@ -2,7 +2,7 @@
 {
     public class PMFHI : RegisterBase
     {
-        public PMFHI(int rs, int rt, int rd, int sa, int funct) 
+        public PMFHI(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PMFHI", rs, rt, rd, sa, funct)
         {
         }

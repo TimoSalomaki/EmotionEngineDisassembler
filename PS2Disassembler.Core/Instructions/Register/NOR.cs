@@ -2,7 +2,7 @@
 {
     public class NOR : RegisterBase
     {
-        public NOR(int rs, int rt, int rd, int sa, int funct)
+        public NOR(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("NOR", rs, rt, rd, sa, funct)
         {
         }

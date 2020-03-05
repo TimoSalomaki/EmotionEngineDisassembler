@@ -2,7 +2,7 @@
 {
     public class SQRTfmt : FPURegisterBase
     {
-        public SQRTfmt(int fmt, int ft, int fs, int fd)
+        public SQRTfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("SQRTfmt", fmt, ft, fs, fd)
         {
         }

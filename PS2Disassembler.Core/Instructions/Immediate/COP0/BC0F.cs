@@ -2,7 +2,7 @@
 {
     public class BC0F : COP0ImmediateBase
     {
-        public BC0F(int offset) : base("BC0F", offset)
+        public BC0F(uint offset) : base("BC0F", offset)
         {
         }
     }

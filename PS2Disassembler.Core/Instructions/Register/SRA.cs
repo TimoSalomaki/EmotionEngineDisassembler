@@ -2,7 +2,7 @@
 {
     public class SRA : RegisterBase
     {
-        public SRA(int rs, int rt, int rd, int sa, int funct)
+        public SRA(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("SRA", rs, rt, rd, sa, funct)
         {
         }

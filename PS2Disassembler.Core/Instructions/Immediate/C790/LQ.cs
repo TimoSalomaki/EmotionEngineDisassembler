@@ -2,7 +2,7 @@
 {
     public class LQ : ImmediateBase
     {
-        public LQ(int rs, int rt, int imm) : base("LQ", rs, rt, imm)
+        public LQ(uint rs, uint rt, uint imm) : base("LQ", rs, rt, imm)
         {
         }
 

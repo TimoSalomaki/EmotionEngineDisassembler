@@ -2,7 +2,7 @@
 {
     public class MULfmt : FPURegisterBase
     {
-        public MULfmt(int fmt, int ft, int fs, int fd)
+        public MULfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("MULfmt", fmt, ft, fs, fd)
         {
         }

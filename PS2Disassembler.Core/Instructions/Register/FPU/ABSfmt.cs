@@ -2,7 +2,7 @@
 {
     public class ABSfmt : FPURegisterBase
     {
-        public ABSfmt(int fmt, int ft, int fs, int fd) 
+        public ABSfmt(uint fmt, uint ft, uint fs, uint fd) 
             : base("ABSfmt", fmt, ft, fs, fd)
         {
         }

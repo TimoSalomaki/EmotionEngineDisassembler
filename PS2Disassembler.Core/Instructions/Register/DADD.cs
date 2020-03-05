@@ -2,7 +2,7 @@
 {
     public class DADD : RegisterBase
     {
-        public DADD(int rs, int rt, int rd, int sa, int funct)
+        public DADD(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("DADD", rs, rt, rd, sa, funct)
         {
         }

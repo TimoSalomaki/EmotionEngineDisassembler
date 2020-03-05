@@ -2,7 +2,7 @@
 {
     public class MFDVBM : MSpecial3Base
     {
-        public MFDVBM(int rt)
+        public MFDVBM(uint rt)
             : base("MFDVBM", rt)
         {
         }

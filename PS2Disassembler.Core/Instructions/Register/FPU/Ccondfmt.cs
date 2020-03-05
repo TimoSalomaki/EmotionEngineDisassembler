@@ -2,18 +2,22 @@
 {
     public class Ccondfmt : FPURegisterBase
     {
-        public Ccondfmt(int fmt, int ft, int fs, int fd)
+        public Ccondfmt(uint fmt, uint ft, uint fs, uint fd, string condMnemonic)
             : base("Ccondfmt", fmt, ft, fs, fd)
         {
-            Cond = "0x" + (fd & 0xF).ToString("X");
+            FMT = "0x" + fmt.ToString("X");
+            FT = "0x" + ft.ToString("X");
+            FS = "0x" + fs.ToString("X");
+            FD = "0x" + fd.ToString("X");
+            CondMnemonic = condMnemonic;
         }
 
-        public string Cond { get; set; }
+        public string CondMnemonic { get; set; }
 
         public override string ToString()
         {
-            return $"C.{Cond}.S {FS}, {FT}" +
-                   $"C.{Cond}.D {FS}, {FT}";
+            return $"C.{CondMnemonic}.S {FS}, {FT}" +
+                   $"C.{CondMnemonic}.D {FS}, {FT}";
         }
     }
 }

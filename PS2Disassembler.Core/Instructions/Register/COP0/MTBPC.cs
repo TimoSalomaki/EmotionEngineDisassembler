@@ -2,7 +2,7 @@
 {
     public class MTBPC : MSpecial3Base
     {
-        public MTBPC(int rt)
+        public MTBPC(uint rt)
             : base("MTBPC", rt)
         {
         }

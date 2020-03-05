@@ -2,7 +2,7 @@
 {
     public class BEQ : BranchBase
     {
-        public BEQ(int rs, int rt, int offset) : base("BEQ", rs, rt, offset)
+        public BEQ(uint rs, uint rt, uint offset) : base("BEQ", rs, rt, offset)
         {
 
         }

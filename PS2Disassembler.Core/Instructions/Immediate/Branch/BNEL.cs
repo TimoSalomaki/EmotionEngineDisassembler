@@ -2,7 +2,7 @@
 {
     public class BNEL : BranchBase
     {
-        public BNEL(int rs, int rt, int offset) : base("BNEL", rs, rt, offset)
+        public BNEL(uint rs, uint rt, uint offset) : base("BNEL", rs, rt, offset)
         {
         }
 

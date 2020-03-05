@@ -2,7 +2,7 @@
 {
     public class MFPS : MSpecial1Base
     {
-        public MFPS(int rt, int reg)
+        public MFPS(uint rt, uint reg)
             : base("MFPS", rt, reg)
         {
         }

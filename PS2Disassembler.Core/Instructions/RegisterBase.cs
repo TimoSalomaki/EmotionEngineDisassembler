@@ -2,7 +2,7 @@
 {
     public abstract class RegisterBase : InstructionBase
     {
-        protected RegisterBase(string op, int rs, int rt, int rd, int sa, int funct)
+        protected RegisterBase(string op, uint rs, uint rt, uint rd, uint sa, uint funct)
             : base(op)
         {
             RS = "0x" + rs.ToString("X");

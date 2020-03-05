@@ -2,7 +2,7 @@
 {
     public class TRUNCLfmt : FPURegisterBase
     {
-        public TRUNCLfmt(int fmt, int ft, int fs, int fd)
+        public TRUNCLfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("TRUNCLfmt", fmt, ft, fs, fd)
         {
         }

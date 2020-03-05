@@ -2,7 +2,7 @@
 {
     public class AND : RegisterBase
     {
-        public AND(int rs, int rt, int rd, int sa, int funct)
+        public AND(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("AND", rs, rt, rd, sa, funct)
         {
         }

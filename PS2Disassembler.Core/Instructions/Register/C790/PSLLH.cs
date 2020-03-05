@@ -2,7 +2,7 @@
 {
     public class PSLLH : RegisterBase
     {
-        public PSLLH(int rs, int rt, int rd, int sa, int funct) 
+        public PSLLH(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PSLLH", rs, rt, rd, sa, funct)
         {
         }

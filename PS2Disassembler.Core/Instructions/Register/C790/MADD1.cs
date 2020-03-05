@@ -2,7 +2,7 @@
 {
     public class MADD1 : RegisterBase
     {
-        public MADD1(int rs, int rt, int rd, int sa, int funct) 
+        public MADD1(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("MADD1", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class MTPC : MSpecial1Base
     {
-        public MTPC(int rt, int reg)
+        public MTPC(uint rt, uint reg)
             : base("MTPC", rt, reg)
         {
         }

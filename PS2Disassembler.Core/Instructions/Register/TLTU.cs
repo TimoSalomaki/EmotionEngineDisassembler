@@ -2,7 +2,7 @@
 {
     public class TLTU : RegisterBase
     {
-        public TLTU(int rs, int rt, int rd, int sa, int funct)
+        public TLTU(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("TLTU", rs, rt, rd, sa, funct)
         {
         }

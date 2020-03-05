@@ -2,7 +2,7 @@
 {
     public class ROUNDLfmt : FPURegisterBase
     {
-        public ROUNDLfmt(int fmt, int ft, int fs, int fd)
+        public ROUNDLfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("ROUNDLfmt", fmt, ft, fs, fd)
         {
         }

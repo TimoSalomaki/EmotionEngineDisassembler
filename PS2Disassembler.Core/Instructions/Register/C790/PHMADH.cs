@@ -2,7 +2,7 @@
 {
     public class PHMADH : RegisterBase
     {
-        public PHMADH(int rs, int rt, int rd, int sa, int funct) 
+        public PHMADH(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PHMADH", rs, rt, rd, sa, funct)
         {
         }

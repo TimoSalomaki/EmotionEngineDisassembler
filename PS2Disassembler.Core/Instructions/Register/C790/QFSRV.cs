@@ -2,7 +2,7 @@
 {
     public class QFSRV : RegisterBase
     {
-        public QFSRV(int rs, int rt, int rd, int sa, int funct) 
+        public QFSRV(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("QFSRV", rs, rt, rd, sa, funct)
         {
         }

@@ -2,7 +2,7 @@
 {
     public abstract class FPUImmediateBase : InstructionBase
     {
-        protected FPUImmediateBase(string op, int offset) : base(op)
+        protected FPUImmediateBase(string op, uint offset) : base(op)
         {
             Offset = "0x" + offset.ToString("X");
         }

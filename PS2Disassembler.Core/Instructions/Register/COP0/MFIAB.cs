@@ -2,7 +2,7 @@
 {
     public class MFIAB : MSpecial3Base
     {
-        public MFIAB(int rt)
+        public MFIAB(uint rt)
             : base("MFIAB", rt)
         {
         }

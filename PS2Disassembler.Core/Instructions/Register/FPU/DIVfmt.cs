@@ -2,7 +2,7 @@
 {
     public class DIVfmt : FPURegisterBase
     {
-        public DIVfmt(int fmt, int ft, int fs, int fd)
+        public DIVfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("DIVfmt", fmt, ft, fs, fd)
         {
         }

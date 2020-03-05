@@ -2,7 +2,7 @@
 {
     public class SD : ImmediateBase
     {
-        public SD(int rs, int rt, int imm) : base("SD", rs, rt, imm)
+        public SD(uint rs, uint rt, uint imm) : base("SD", rs, rt, imm)
         {
         }
 

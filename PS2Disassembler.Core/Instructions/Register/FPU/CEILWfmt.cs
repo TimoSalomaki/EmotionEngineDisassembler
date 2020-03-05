@@ -2,7 +2,7 @@
 {
     public class CEILWfmt : FPURegisterBase
     {
-        public CEILWfmt(int fmt, int ft, int fs, int fd)
+        public CEILWfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("CEILWfmt", fmt, ft, fs, fd)
         {
         }

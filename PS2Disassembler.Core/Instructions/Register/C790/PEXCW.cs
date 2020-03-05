@@ -2,7 +2,7 @@
 {
     public class PEXCW : RegisterBase
     {
-        public PEXCW(int rs, int rt, int rd, int sa, int funct) 
+        public PEXCW(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PEXCW", rs, rt, rd, sa, funct)
         {
         }

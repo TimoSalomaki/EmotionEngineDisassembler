@@ -2,7 +2,7 @@
 {
     public class SUBfmt : FPURegisterBase
     {
-        public SUBfmt(int fmt, int ft, int fs, int fd)
+        public SUBfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("SUBfmt", fmt, ft, fs, fd)
         {
         }

@@ -2,7 +2,7 @@
 {
     public class FLOORWfmt : FPURegisterBase
     {
-        public FLOORWfmt(int fmt, int ft, int fs, int fd)
+        public FLOORWfmt(uint fmt, uint ft, uint fs, uint fd)
             : base("FLOORWfmt", fmt, ft, fs, fd)
         {
         }

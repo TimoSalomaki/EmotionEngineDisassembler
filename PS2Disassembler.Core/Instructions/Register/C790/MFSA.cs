@@ -2,7 +2,7 @@
 {
     public class MFSA : RegisterBase
     {
-        public MFSA(int rs, int rt, int rd, int sa, int funct) 
+        public MFSA(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("MFSA", rs, rt, rd, sa, funct)
         {
         }

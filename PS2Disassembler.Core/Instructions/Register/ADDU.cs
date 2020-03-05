@@ -2,7 +2,7 @@
 {
     public class ADDU : RegisterBase
     {
-        public ADDU(int rs, int rt, int rd, int sa, int funct)
+        public ADDU(uint rs, uint rt, uint rd, uint sa, uint funct)
             : base("ADDU", rs, rt, rd, sa, funct)
         {
         }

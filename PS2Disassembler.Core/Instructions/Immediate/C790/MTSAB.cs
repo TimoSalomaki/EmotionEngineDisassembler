@@ -2,7 +2,7 @@
 {
     public class MTSAB : ImmediateBase
     {
-        public MTSAB(int rs, int rt, int imm) : base("MTSAB", rs, rt, imm)
+        public MTSAB(uint rs, uint rt, uint imm) : base("MTSAB", rs, rt, imm)
         {
         }
 

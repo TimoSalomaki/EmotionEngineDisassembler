@@ -2,7 +2,7 @@
 {
     public class PPACH : RegisterBase
     {
-        public PPACH(int rs, int rt, int rd, int sa, int funct) 
+        public PPACH(uint rs, uint rt, uint rd, uint sa, uint funct) 
             : base("PPACH", rs, rt, rd, sa, funct)
         {
         }
