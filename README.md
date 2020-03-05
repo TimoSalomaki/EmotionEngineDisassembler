@@ -10,8 +10,8 @@ All the implementation so far has been done by following the [official documenta
 ### CPU
 - [X] Support the default instruction set
 - [X] Support the extended C790-specific instruction set 
-- [ ] Support the COP0 system control coprocessor instruction set
-- [ ] Support the COP1 (FPU) coprocessor instruction set
+- [X] Support the COP0 system control coprocessor instruction set
+- [X] Support the COP1 (FPU) coprocessor instruction set
 - [ ] Register name parsing
 - [ ] Assembler
 - [ ] Pseudo instructions (nop is already one)
@@ -30,3 +30,4 @@ All the implementation so far has been done by following the [official documenta
 - [ ] Optimizations (there's way too many conversions, allocations etc. going on right now but that's on purpose to get everything up and running before optimizing)
 - [ ] Unit tests
 - [ ] Open/save file
+- [ ] Multithreading
