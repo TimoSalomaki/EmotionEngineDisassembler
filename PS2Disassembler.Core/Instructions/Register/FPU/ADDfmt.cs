@@ -1,17 +1,16 @@
-﻿namespace PS2Disassembler.Core.Instructions.Register
+﻿namespace PS2Disassembler.Core.Instructions.Register.FPU
 {
-    public class ADDfmt : RegisterBase
+    public class ADDfmt : FPURegisterBase
     {
-        // TODO: Create own base class with correct field names
-        public ADDfmt(int rs, int rt, int rd, int sa, int funct) 
-            : base("ADDfmt", rs, rt, rd, sa, funct)
+        public ADDfmt(int fmt, int ft, int fs, int fd)
+            : base("ADDfmt", fmt, ft, fs, fd)
         {
         }
 
         public override string ToString()
         {
-            return $"ADD.S {SA}, {RD}, {RT}" + // SA = FD, RD = FS, RT = FT
-                   $"ADD.D {SA}, {RD}, {RT}";
+            return $"ABS.S {FD}, {FS}, {FT}" +
+                   $"ABS.D {FD}, {FS}, {FT}";
         }
     }
 }
