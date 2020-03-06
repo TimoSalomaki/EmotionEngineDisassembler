@@ -1,13 +1,15 @@
-﻿namespace PS2Disassembler.Core.Instructions
+﻿using PS2Disassembler.Core.Helper;
+
+namespace PS2Disassembler.Core.Instructions
 {
     public abstract class RegisterBase : InstructionBase
     {
         protected RegisterBase(string op, uint rs, uint rt, uint rd, uint sa, uint funct)
             : base(op)
         {
-            RS = "0x" + rs.ToString("X");
-            RT = "0x" + rt.ToString("X");
-            RD = "0x" + rd.ToString("X");
+            RS = RegisterHelper.GetGprRegister(rs);
+            RT = RegisterHelper.GetGprRegister(rt);
+            RD = RegisterHelper.GetGprRegister(rd);
             SA = "0x" + sa.ToString("X");
             Funct = "0x" + funct.ToString("X"); // Probably not needed
         }

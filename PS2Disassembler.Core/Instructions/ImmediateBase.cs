@@ -1,4 +1,5 @@
 ﻿using System;
+using PS2Disassembler.Core.Helper;
 
 namespace PS2Disassembler.Core.Instructions
 {
@@ -10,8 +11,8 @@ namespace PS2Disassembler.Core.Instructions
 
         protected ImmediateBase(string op, uint rs, uint rt, uint imm) : base(op)
         {
-            RS = "0x" + rs.ToString("X"); 
-            RT = "0x" + rt.ToString("X");
+            RS = RegisterHelper.GetGprRegister(rs); 
+            RT = RegisterHelper.GetGprRegister(rt);
             Imm = "0x" + imm.ToString("X");
         }
 

@@ -36,12 +36,10 @@ namespace PS2Disassembler.Core.Instructions.Factory
         private Dictionary<uint, Type> _fpuRSOpCodes;
         private Dictionary<uint, Type> _fpuFuncOpCodes;
         private Dictionary<uint, string> _cCondMnemonics;
-        private readonly CacheMnemonicHelper _cacheMnemonicHelper;
 
         public InstructionFactory()
         {
             InitializeDictionaries();
-            _cacheMnemonicHelper = new CacheMnemonicHelper();
         }
 
         public object CreateInstruction(uint input)
@@ -52,275 +50,292 @@ namespace PS2Disassembler.Core.Instructions.Factory
             var opBin = (input >> 26) & 0x3F;
 
             Type instructionClassType = default;
-            var args = new object[]{};
+            var args = new object[] { };
 
-            //try
-            //{
-                // TODO: Reduce duplicate code below once the logic works
-                switch (_instructionTypes[opBin])
-                {
-                    case InstructionType.Immediate:
-                        instructionClassType = _immediateOpCodes[opBin];
-                        args = new object[]
-                        {
-                            (input >> 21) & 0x1F,
-                            (input >> 16) & 0x1F,
-                            input & 0xFFFF,
-                        };
-                        break;
-                    case InstructionType.Jump:
-                        instructionClassType = _immediateOpCodes[opBin];
-                        args = new object[]
-                        {
-                            input & 0x3FFFFFF,
-                        };
-                        break;
+            // TODO: Reduce duplicate code below once the logic works
+            switch (_instructionTypes[opBin])
+            {
+                case InstructionType.Immediate:
+                    instructionClassType = _immediateOpCodes[opBin];
+                    args = new object[]
+                    {
+                        (input >> 21) & 0x1F,
+                        (input >> 16) & 0x1F,
+                        input & 0xFFFF,
+                    };
+                    break;
+                case InstructionType.Jump:
+                    instructionClassType = _immediateOpCodes[opBin];
+                    args = new object[]
+                    {
+                        input & 0x3FFFFFF,
+                    };
+                    break;
 
-                    case InstructionType.Regimm:
-                        instructionClassType = _regimmCodes[opBin];
-                        args = new object[]
-                        {
-                            (input >> 21) & 0x1F,
-                            (input >> 16) & 0x1F,
-                            input & 0xFFFF,
-                        };
-                        break;
+                case InstructionType.Regimm:
+                    instructionClassType = _regimmCodes[opBin];
+                    args = new object[]
+                    {
+                        (input >> 21) & 0x1F,
+                        (input >> 16) & 0x1F,
+                        input & 0xFFFF,
+                    };
+                    break;
 
-                    case InstructionType.Register:
-                        var funct = input & 0x3F;
-                        instructionClassType = _specialCodes[funct];
+                case InstructionType.Register:
+                    var funct = input & 0x3F;
+                    instructionClassType = _specialCodes[funct];
 
-                        if (instructionClassType == typeof(Register.C790.MULT))
+                    if (instructionClassType == typeof(Register.C790.MULT))
+                    {
+                        if (((input >> 6) & 0x1F) == 0)
                         {
-                            if (((input >> 6) & 0x1F) == 0)
-                            {
-                                instructionClassType = typeof(Register.MULT);
-                            }
+                            instructionClassType = typeof(Register.MULT);
                         }
+                    }
 
-                        else if (instructionClassType == typeof(Register.C790.MULTU))
+                    else if (instructionClassType == typeof(Register.C790.MULTU))
+                    {
+                        if (((input >> 6) & 0x1F) == 0)
                         {
-                            if (((input >> 6) & 0x1F) == 0)
-                            {
-                                instructionClassType = typeof(Register.MULTU);
-                            }
+                            instructionClassType = typeof(Register.MULTU);
                         }
+                    }
 
-                        args = new object[]
-                        {
-                            (input >> 21) & 0x1F,
-                            (input >> 16) & 0x1F,
-                            (input >> 11) & 0x1F,
-                            (input >> 6) & 0x1F,
-                            input & 0x1F,
-                        };
-                        break;
+                    args = new object[]
+                    {
+                        (input >> 21) & 0x1F,
+                        (input >> 16) & 0x1F,
+                        (input >> 11) & 0x1F,
+                        (input >> 6) & 0x1F,
+                        input & 0x1F,
+                    };
+                    break;
 
-                    case InstructionType.MMI:
-                        var mmiNr = input & 0x3F;
+                case InstructionType.MMI:
+                    var mmiNr = input & 0x3F;
 
-                        // For MMI0, MMI1, MMI2 and MMI3, the opcode is in the SA part of the instruction
-                        var mmiOpCode = (input >> 6) & 0x1F;
+                    // For MMI0, MMI1, MMI2 and MMI3, the opcode is in the SA part of the instruction
+                    var mmiOpCode = (input >> 6) & 0x1F;
 
-                        switch (mmiNr)
-                        {
-                            case 8: // MMI0
-                                instructionClassType = _mmi0Codes[mmiOpCode];
-                                break;
+                    switch (mmiNr)
+                    {
+                        case 8: // MMI0
+                            instructionClassType = _mmi0Codes[mmiOpCode];
+                            break;
 
-                            case 40: // MMI1
-                                instructionClassType = _mmi1Codes[mmiOpCode];
-                                break;
+                        case 40: // MMI1
+                            instructionClassType = _mmi1Codes[mmiOpCode];
+                            break;
 
-                            case 9: // MMI2
-                                instructionClassType = _mmi2Codes[mmiOpCode];
-                                break;
+                        case 9: // MMI2
+                            instructionClassType = _mmi2Codes[mmiOpCode];
+                            break;
 
-                            case 41: // MMI3
-                                instructionClassType = _mmi3Codes[mmiOpCode];
-                                break;
+                        case 41: // MMI3
+                            instructionClassType = _mmi3Codes[mmiOpCode];
+                            break;
 
-                            default: // MMI
-                                instructionClassType = _mmiCodes[mmiNr];
-                                break;
-                        }
-                        
-                        args = new object[]
-                        {
-                            (input >> 21) & 0x1F,
-                            (input >> 16) & 0x1F,
-                            (input >> 11) & 0x1F,
-                            (input >> 6) & 0x1F,
-                            input & 0x1F,
-                        };
-                        break;
+                        default: // MMI
+                            instructionClassType = _mmiCodes[mmiNr];
+                            break;
+                    }
 
-                    case InstructionType.Cop0:
-                        var typeNr = (input >> 21) & 0x1F;
+                    args = new object[]
+                    {
+                        (input >> 21) & 0x1F,
+                        (input >> 16) & 0x1F,
+                        (input >> 11) & 0x1F,
+                        (input >> 6) & 0x1F,
+                        input & 0x1F,
+                    };
+                    break;
 
-                        switch (typeNr)
-                        {
-                            case 8: // BC0
-                                instructionClassType = _bc0Codes[(input >> 16) & 0x1F];
+                case InstructionType.Cop0:
+                    var typeNr = (input >> 21) & 0x1F;
 
-                                args = new object[]
-                                {
-                                    input & 0xFFFF
-                                };
-                                break;
-
-                            case 16: // C0
-                                instructionClassType = _c0Codes[input & 0x3F];
-                                break;
-
-                            case 0: // MF0
-                                var mfType = (input >> 11) & 0x1F;
-
-                                switch (mfType)
-                                {
-                                    case 24: // Debug
-                                        instructionClassType = _mf0DebugCodes[input & 0x7];
-
-                                        args = new object[]
-                                        {
-                                            (input >> 16) & 0x1F, // RT
-                                            (input >> 11) & 0x1F // RD (= Debug 11000)
-                                        };
-                                        break;
-
-                                    case 25: // Perf
-                                        instructionClassType = _mf0PerfCodes[input & 0x1];
-
-                                        args = new object[]
-                                        {
-                                            (input >> 16) & 0x1F, // RT
-                                            (input >> 1) & 0x1F // Reg
-                                        };
-                                        break;
-
-                                    default: //MFC0
-                                        instructionClassType = typeof(MFC0);
-
-                                        args = new object[]
-                                        {
-                                            (input >> 16) & 0x1F, // RT
-                                            (input >> 11) & 0x1F // RD
-                                        };
-                                        break;
-                                }
-                                break;
-
-                            case 4: // MT0
-                                var mtType = (input >> 11) & 0x1F;
-
-                                switch (mtType)
-                                {
-                                    case 24: // Debug
-                                        instructionClassType = _mt0DebugCodes[input & 0x7];
-
-                                        args = new object[]
-                                        {
-                                            (input >> 16) & 0x1F, // RT
-                                            (input >> 11) & 0x1F // RD (= Debug 11000)
-                                        };
-                                        break;
-
-                                    case 25: // Perf
-                                        instructionClassType = _mf0PerfCodes[input & 0x1];
-                                        args = new object[]
-                                        {
-                                            (input >> 16) & 0x1F, // RT
-                                            (input >> 1) & 0x1F // Reg
-                                        };
-                                        break;
-
-                                    default: //MFC0
-                                        instructionClassType = typeof(MTC0);
-
-                                        args = new object[]
-                                        {
-                                            (input >> 16) & 0x1F, // RT
-                                            (input >> 11) & 0x1F // RD
-                                        };
-                                        break;
-                                }
-                                break;
-                        }
-                        break;
-
-                    case InstructionType.Cop1:
-                        var rs = (input >> 21) & 0x1F;
-                        var rt = (input >> 16) & 0x1F;
-                        var fs = (input >> 11) & 0x1F;
-                        var fd = (input >> 6) & 0x1F;
-                        var function = input & 0x3F;
-
-                        args = new object[]
-                        {
-                            rs,
-                            rt,
-                            fs,
-                            fd
-                        };
-
-                        if (rs <= 6)
-                        {
-                            instructionClassType = _fpuRSOpCodes[rs];
-                        }
-
-                        else if (rs == 8) // BC1
-                        {
-                            instructionClassType = rt == 0 ? typeof(BC1F) : typeof(BC1T);
+                    switch (typeNr)
+                    {
+                        case 8: // BC0
+                            instructionClassType = _bc0Codes[(input >> 16) & 0x1F];
 
                             args = new object[]
                             {
                                 input & 0xFFFF
                             };
-                        }
+                            break;
 
-                        else if (rs == 16 || rs == 17)
-                        {
-                            if(function <= 37)
-                                instructionClassType = _fpuFuncOpCodes[function];
+                        case 16: // C0
+                            instructionClassType = _c0Codes[input & 0x3F];
+                            break;
 
-                            else // C.cond.fmt
+                        case 0: // MF0
+                            var mfType = (input >> 11) & 0x1F;
+
+                            switch (mfType)
                             {
-                                instructionClassType = typeof(Ccondfmt);
+                                case 24: // Debug
+                                    instructionClassType = _mf0DebugCodes[input & 0x7];
 
-                                args = new object[]
-                                {
-                                    rs,
-                                    rt,
-                                    fs,
-                                    fd,
-                                    _cCondMnemonics[function]
-                                };
+                                    args = new object[]
+                                    {
+                                        (input >> 16) & 0x1F, // RT
+                                        (input >> 11) & 0x1F // RD (= Debug 11000)
+                                    };
+                                    break;
+
+                                case 25: // Perf
+                                    instructionClassType = _mf0PerfCodes[input & 0x1];
+
+                                    args = new object[]
+                                    {
+                                        (input >> 16) & 0x1F, // RT
+                                        (input >> 1) & 0x1F // Reg
+                                    };
+                                    break;
+
+                                default: //MFC0
+                                    instructionClassType = typeof(MFC0);
+
+                                    args = new object[]
+                                    {
+                                        (input >> 16) & 0x1F, // RT
+                                        (input >> 11) & 0x1F // RD
+                                    };
+                                    break;
                             }
-                        }
 
-                        else if (rs == 20 || rs == 21)
+                            break;
+
+                        case 4: // MT0
+                            var mtType = (input >> 11) & 0x1F;
+
+                            switch (mtType)
+                            {
+                                case 24: // Debug
+                                    instructionClassType = _mt0DebugCodes[input & 0x7];
+
+                                    args = new object[]
+                                    {
+                                        (input >> 16) & 0x1F, // RT
+                                        (input >> 11) & 0x1F // RD (= Debug 11000)
+                                    };
+                                    break;
+
+                                case 25: // Perf
+                                    instructionClassType = _mf0PerfCodes[input & 0x1];
+                                    args = new object[]
+                                    {
+                                        (input >> 16) & 0x1F, // RT
+                                        (input >> 1) & 0x1F // Reg
+                                    };
+                                    break;
+
+                                default: //MFC0
+                                    instructionClassType = typeof(MTC0);
+
+                                    args = new object[]
+                                    {
+                                        (input >> 16) & 0x1F, // RT
+                                        (input >> 11) & 0x1F // RD
+                                    };
+                                    break;
+                            }
+
+                            break;
+                    }
+
+                    break;
+
+                case InstructionType.Cop1:
+                    var rs = (input >> 21) & 0x1F;
+                    var rt = (input >> 16) & 0x1F;
+                    var fs = (input >> 11) & 0x1F;
+                    var fd = (input >> 6) & 0x1F;
+                    var function = input & 0x3F;
+
+                    args = new object[]
+                    {
+                        rs,
+                        rt,
+                        fs,
+                        fd
+                    };
+
+                    if (rs <= 6)
+                    {
+                        instructionClassType = _fpuRSOpCodes[rs];
+                    }
+
+                    else if (rs == 8) // BC1
+                    {
+                        instructionClassType = rt == 0 ? typeof(BC1F) : typeof(BC1T);
+
+                        args = new object[]
                         {
-                            if (function == 32)
-                                instructionClassType = typeof(CVTSfmt);
+                            input & 0xFFFF
+                        };
+                    }
 
-                            else if (function == 33)
-                                instructionClassType = typeof(CVTDfmt);
+                    else if (rs == 16 || rs == 17)
+                    {
+                        if (function <= 37)
+                            instructionClassType = _fpuFuncOpCodes[function];
+
+                        else // C.cond.fmt
+                        {
+                            instructionClassType = typeof(Ccondfmt);
+
+                            args = new object[]
+                            {
+                                rs,
+                                rt,
+                                fs,
+                                fd,
+                                _cCondMnemonics[function]
+                            };
                         }
-                        break;
+                    }
+
+                    else if (rs == 20 || rs == 21)
+                    {
+                        if (function == 32)
+                            instructionClassType = typeof(CVTSfmt);
+
+                        else if (function == 33)
+                            instructionClassType = typeof(CVTDfmt);
+                    }
+
+                    break;
+
+                case InstructionType.CACHE:
+                    instructionClassType = typeof(CACHE);
+
+                    var cacheOpCode = (input >> 16) & 0x1F;
+                    var cacheMnemonic = CacheMnemonicHelper.GetMnemonic(cacheOpCode);
+
+                    args = new object[]
+                    {
+                        (input >> 21) & 0x1F, // BASE
+                        cacheMnemonic, // OP
+                        input & 0xFFFF // OFFSET
+                    };
+                    break;
 
                 case InstructionType.Nop:
                     instructionClassType = typeof(Nop);
                     break;
-                }
+            }
 
-                var newInstance = GetInstance(instructionClassType, args);
+            var newInstance = GetInstance(instructionClassType, args);
 
             return newInstance;
         }
 
         public object GetInstance(Type typeToCreate, object[] args)
         {
-            return Activator.CreateInstance(typeToCreate, BindingFlags.CreateInstance, null, args, CultureInfo.CurrentCulture);
+            return Activator.CreateInstance(typeToCreate, BindingFlags.CreateInstance, null, args,
+                CultureInfo.CurrentCulture);
         }
 
         private void InitializeDictionaries()
@@ -333,7 +348,9 @@ namespace PS2Disassembler.Core.Instructions.Factory
                 {12, InstructionType.Immediate}, // ANDI
                 {4, InstructionType.Immediate}, // BEQ
                 {20, InstructionType.Immediate}, // BEQL
-                {1, InstructionType.Regimm}, // BGEZ,BGEZAL,BGEZALL,BGEZL,BLTZ,BLTZAL,BLTZALL,BLTZL,TEQI,TGEI,TGEIU,TLTI,TLTIU,TNEI
+                {
+                    1, InstructionType.Regimm
+                }, // BGEZ,BGEZAL,BGEZALL,BGEZL,BLTZ,BLTZAL,BLTZALL,BLTZL,TEQI,TGEI,TGEIU,TLTI,TLTIU,TNEI
                 {7, InstructionType.Immediate}, // BGTZ
                 {23, InstructionType.Immediate}, // BGTZL
                 {6, InstructionType.Immediate}, // BLEZ
@@ -660,7 +677,7 @@ namespace PS2Disassembler.Core.Instructions.Factory
                 {1, typeof(BC0T)},
                 {3, typeof(BC0TL)}
             };
-            
+
             _mf0DebugCodes = new Dictionary<uint, Type>()
             {
                 {0, typeof(MFBPC)},

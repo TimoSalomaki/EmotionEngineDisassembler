@@ -4,7 +4,6 @@
     {
         public Nop() : base("NOP")
         {
-            Type = InstructionType.Nop;
         }
 
         public override string ToString()
