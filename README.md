@@ -11,10 +11,17 @@ All the implementation so far has been done by following the [official documenta
 - [X] Support the default instruction set
 - [X] Support the extended C790-specific instruction set 
 - [X] Support the COP0 system control coprocessor instruction set
-- [X] Support the COP1 (FPU) coprocessor instruction set
-- [ ] Register name parsing
+- [X] Register name decoding
 - [ ] Assembler
 - [ ] Pseudo instructions (nop is already one)
+
+### FPU
+- [X] Support the COP1 (FPU) coprocessor instruction set
+- [ ] Registers
+
+### VPU
+- [ ] Support the VPU instruction set
+- [ ] Registers
 
 ### UI
 - [X] AvalonEdit integration
