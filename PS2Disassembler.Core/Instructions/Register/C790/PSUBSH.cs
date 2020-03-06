@@ -2,8 +2,8 @@
 {
     public class PSUBSH : RegisterBase
     {
-        public PSUBSH(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PSUBSH", rs, rt, rd, sa, funct)
+        public PSUBSH(uint rs, uint rt, uint rd, uint sa) 
+            : base("PSUBSH", rs, rt, rd, sa)
         {
         }
     }

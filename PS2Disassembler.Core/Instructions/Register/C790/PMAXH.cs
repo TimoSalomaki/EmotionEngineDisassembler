@@ -2,8 +2,8 @@
 {
     public class PMAXH : RegisterBase
     {
-        public PMAXH(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PMAXH", rs, rt, rd, sa, funct)
+        public PMAXH(uint rs, uint rt, uint rd, uint sa) 
+            : base("PMAXH", rs, rt, rd, sa)
         {
         }
     }

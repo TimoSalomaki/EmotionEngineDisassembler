@@ -1,5 +1,4 @@
 ﻿using PS2Disassembler.Core.Instructions;
-using PS2Disassembler.Core.Instructions.Factory;
 using System.Collections.Generic;
 using System.Text;
 

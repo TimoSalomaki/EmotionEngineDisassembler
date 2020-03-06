@@ -2,8 +2,8 @@
 {
     public class TLT : RegisterBase
     {
-        public TLT(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("TLT", rs, rt, rd, sa, funct)
+        public TLT(uint rs, uint rt, uint rd, uint sa)
+            : base("TLT", rs, rt, rd, sa)
         {
         }
 

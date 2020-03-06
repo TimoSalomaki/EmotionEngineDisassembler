@@ -2,8 +2,8 @@
 {
     public class ADD : RegisterBase
     {
-        public ADD(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("ADD", rs, rt, rd, sa, funct)
+        public ADD(uint rs, uint rt, uint rd, uint sa) 
+            : base("ADD", rs, rt, rd, sa)
         {
         }
     }

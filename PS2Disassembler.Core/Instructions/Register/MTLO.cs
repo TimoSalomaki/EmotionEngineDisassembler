@@ -2,8 +2,8 @@
 {
     public class MTLO : RegisterBase
     {
-        public MTLO(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("MTLO", rs, rt, rd, sa, funct)
+        public MTLO(uint rs, uint rt, uint rd, uint sa)
+            : base("MTLO", rs, rt, rd, sa)
         {
         }
 

@@ -2,8 +2,8 @@
 {
     public class PMTLO : RegisterBase
     {
-        public PMTLO(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PMTLO", rs, rt, rd, sa, funct)
+        public PMTLO(uint rs, uint rt, uint rd, uint sa) 
+            : base("PMTLO", rs, rt, rd, sa)
         {
         }
 

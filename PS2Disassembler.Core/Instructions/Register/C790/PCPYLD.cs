@@ -2,8 +2,8 @@
 {
     public class PCPYLD : RegisterBase
     {
-        public PCPYLD(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PCPYLD", rs, rt, rd, sa, funct)
+        public PCPYLD(uint rs, uint rt, uint rd, uint sa) 
+            : base("PCPYLD", rs, rt, rd, sa)
         {
         }
     }

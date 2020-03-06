@@ -2,8 +2,8 @@
 {
     public class PAND : RegisterBase
     {
-        public PAND(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PAND", rs, rt, rd, sa, funct)
+        public PAND(uint rs, uint rt, uint rd, uint sa) 
+            : base("PAND", rs, rt, rd, sa)
         {
         }
     }

@@ -2,8 +2,8 @@
 {
     public class SUB : RegisterBase
     {
-        public SUB(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("SUB", rs, rt, rd, sa, funct)
+        public SUB(uint rs, uint rt, uint rd, uint sa)
+            : base("SUB", rs, rt, rd, sa)
         {
         }
     }

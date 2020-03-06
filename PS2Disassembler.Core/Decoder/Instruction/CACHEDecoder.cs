@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using PS2Disassembler.Core.Instructions.Immediate.COP0;
 
-namespace PS2Disassembler.Core.Helper
+namespace PS2Disassembler.Core.Decoder.Instruction
 {
-    public class CacheMnemonicHelper
+    public class CACHEDecoder : InstructionDecoderBase
     {
         private static readonly Dictionary<uint, string> CacheInstructions;
 
-        static CacheMnemonicHelper()
+        static CACHEDecoder()
         {
             CacheInstructions = new Dictionary<uint, string>()
             {
@@ -33,9 +34,21 @@ namespace PS2Disassembler.Core.Helper
             };
         }
 
-        public static string GetMnemonic(uint opCode)
+        public static object Decode(uint bits)
         {
-            return CacheInstructions[opCode];
+            var classType = typeof(CACHE);
+
+            var cacheOpCode = (bits >> 16) & 0x1F;
+            var cacheMnemonic = CacheInstructions[cacheOpCode];
+
+            var args = new object[]
+            {
+                (bits >> 21) & 0x1F, // BASE
+                cacheMnemonic, // OP
+                bits & 0xFFFF // OFFSET
+            };
+
+            return GetInstance(classType, args);
         }
     }
 }

@@ -2,8 +2,8 @@
 {
     public class PINTH : RegisterBase
     {
-        public PINTH(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PINTH", rs, rt, rd, sa, funct)
+        public PINTH(uint rs, uint rt, uint rd, uint sa) 
+            : base("PINTH", rs, rt, rd, sa)
         {
         }
     }

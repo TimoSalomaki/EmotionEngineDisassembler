@@ -2,8 +2,8 @@
 {
     public class SYNC : RegisterBase
     {
-        public SYNC(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("SYNC", rs, rt, rd, sa, funct)
+        public SYNC(uint rs, uint rt, uint rd, uint sa)
+            : base("SYNC", rs, rt, rd, sa)
         {
         }
 

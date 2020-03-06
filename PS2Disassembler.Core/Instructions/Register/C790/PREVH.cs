@@ -2,8 +2,8 @@
 {
     public class PREVH : RegisterBase
     {
-        public PREVH(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PREVH", rs, rt, rd, sa, funct)
+        public PREVH(uint rs, uint rt, uint rd, uint sa) 
+            : base("PREVH", rs, rt, rd, sa)
         {
         }
 

@@ -1,4 +1,4 @@
-﻿namespace PS2Disassembler.Core.Instructions.Factory
+﻿namespace PS2Disassembler.Core
 {
     public interface IInstructionFactory
     {

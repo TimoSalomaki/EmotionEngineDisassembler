@@ -1,13 +1,13 @@
-﻿using PS2Disassembler.Core.Helper;
+﻿using PS2Disassembler.Core.Decoder.Register;
 
-namespace PS2Disassembler.Core.Instructions
+namespace PS2Disassembler.Core.Instructions.Register.COP0
 {
     public abstract class MSpecial1Base : InstructionBase
     {
         protected MSpecial1Base(string op, uint rt, uint reg)
             : base(op)
         {
-            RT = RegisterHelper.GetGprRegister(rt);
+            RT = CPURegisterDecoder.DecodeRegister(rt);
             REG = "0x" + reg.ToString("X");
         }
 

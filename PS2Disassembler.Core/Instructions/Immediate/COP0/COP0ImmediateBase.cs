@@ -1,6 +1,5 @@
-﻿namespace PS2Disassembler.Core.Instructions
+﻿namespace PS2Disassembler.Core.Instructions.Immediate.COP0
 {
-    // TODO: Wrong file, switch
     public abstract class COP0ImmediateBase : InstructionBase
     {
         protected COP0ImmediateBase(string op, uint offset) : base(op)

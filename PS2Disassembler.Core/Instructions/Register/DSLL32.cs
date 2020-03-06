@@ -2,8 +2,8 @@
 {
     public class DSLL32 : RegisterBase
     {
-        public DSLL32(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("DSLL32", rs, rt, rd, sa, funct)
+        public DSLL32(uint rs, uint rt, uint rd, uint sa)
+            : base("DSLL32", rs, rt, rd, sa)
         {
         }
 

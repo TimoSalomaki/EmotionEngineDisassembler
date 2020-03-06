@@ -2,8 +2,8 @@
 {
     public class DSUBU : RegisterBase
     {
-        public DSUBU(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("DSUBU", rs, rt, rd, sa, funct)
+        public DSUBU(uint rs, uint rt, uint rd, uint sa)
+            : base("DSUBU", rs, rt, rd, sa)
         {
         }
     }

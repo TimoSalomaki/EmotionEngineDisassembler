@@ -2,8 +2,8 @@
 {
     public class MTHI : RegisterBase
     {
-        public MTHI(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("MTHI", rs, rt, rd, sa, funct)
+        public MTHI(uint rs, uint rt, uint rd, uint sa)
+            : base("MTHI", rs, rt, rd, sa)
         {
         }
 

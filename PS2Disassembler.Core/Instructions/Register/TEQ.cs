@@ -2,8 +2,8 @@
 {
     public class TEQ : RegisterBase
     {
-        public TEQ(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("TEQ", rs, rt, rd, sa, funct)
+        public TEQ(uint rs, uint rt, uint rd, uint sa)
+            : base("TEQ", rs, rt, rd, sa)
         {
         }
 

@@ -2,8 +2,8 @@
 {
     public class SRL : RegisterBase
     {
-        public SRL(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("SRL", rs, rt, rd, sa, funct)
+        public SRL(uint rs, uint rt, uint rd, uint sa)
+            : base("SRL", rs, rt, rd, sa)
         {
         }
 

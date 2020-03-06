@@ -2,8 +2,8 @@
 {
     public class SYSCALL : RegisterBase
     {
-        public SYSCALL(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("SYSCALL", rs, rt, rd, sa, funct)
+        public SYSCALL(uint rs, uint rt, uint rd, uint sa)
+            : base("SYSCALL", rs, rt, rd, sa)
         {
         }
 

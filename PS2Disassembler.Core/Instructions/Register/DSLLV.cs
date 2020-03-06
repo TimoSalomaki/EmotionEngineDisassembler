@@ -2,8 +2,8 @@
 {
     public class DSLLV : RegisterBase
     {
-        public DSLLV(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("DSLLV", rs, rt, rd, sa, funct)
+        public DSLLV(uint rs, uint rt, uint rd, uint sa)
+            : base("DSLLV", rs, rt, rd, sa)
         {
         }
 

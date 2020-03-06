@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 
-namespace PS2Disassembler.Core.Helper
+namespace PS2Disassembler.Core.Decoder.Register
 {
-    public class RegisterHelper
+    public class CPURegisterDecoder
     {
         private static readonly Dictionary<uint, string> GprRegisters;
 
-        static RegisterHelper()
+        static CPURegisterDecoder()
         {
-            GprRegisters = new Dictionary<uint, string>()
+            GprRegisters = new Dictionary<uint, string>
             {
                 {0, "$zero"},
                 {1, "$at"},
@@ -45,7 +45,7 @@ namespace PS2Disassembler.Core.Helper
             };
         }
 
-        public static string GetGprRegister(uint registerNumber)
+        public static string DecodeRegister(uint registerNumber)
         {
             return GprRegisters[registerNumber];
         }

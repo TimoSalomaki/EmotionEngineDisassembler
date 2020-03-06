@@ -2,8 +2,8 @@
 {
     public class PADDUH : RegisterBase
     {
-        public PADDUH(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PADDUH", rs, rt, rd, sa, funct)
+        public PADDUH(uint rs, uint rt, uint rd, uint sa) 
+            : base("PADDUH", rs, rt, rd, sa)
         {
         }
     }

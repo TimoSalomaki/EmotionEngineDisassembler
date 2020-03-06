@@ -2,8 +2,8 @@
 {
     public class PCGTW : RegisterBase
     {
-        public PCGTW(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PCGTW", rs, rt, rd, sa, funct)
+        public PCGTW(uint rs, uint rt, uint rd, uint sa) 
+            : base("PCGTW", rs, rt, rd, sa)
         {
         }
     }

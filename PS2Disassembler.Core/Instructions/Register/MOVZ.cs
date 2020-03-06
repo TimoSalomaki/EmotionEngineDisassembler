@@ -2,8 +2,8 @@
 {
     public class MOVZ : RegisterBase
     {
-        public MOVZ(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("MOVZ", rs, rt, rd, sa, funct)
+        public MOVZ(uint rs, uint rt, uint rd, uint sa)
+            : base("MOVZ", rs, rt, rd, sa)
         {
         }
     }

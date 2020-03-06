@@ -2,8 +2,8 @@
 {
     public class PADDSH : RegisterBase
     {
-        public PADDSH(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PADDSH", rs, rt, rd, sa, funct)
+        public PADDSH(uint rs, uint rt, uint rd, uint sa) 
+            : base("PADDSH", rs, rt, rd, sa)
         {
         }
     }

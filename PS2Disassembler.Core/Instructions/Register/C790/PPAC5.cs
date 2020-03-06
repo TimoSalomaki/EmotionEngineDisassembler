@@ -2,8 +2,8 @@
 {
     public class PPAC5 : RegisterBase
     {
-        public PPAC5(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PPAC5", rs, rt, rd, sa, funct)
+        public PPAC5(uint rs, uint rt, uint rd, uint sa) 
+            : base("PPAC5", rs, rt, rd, sa)
         {
         }
 

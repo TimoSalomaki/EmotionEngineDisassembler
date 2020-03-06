@@ -2,8 +2,8 @@
 {
     public class MFHI1 : RegisterBase
     {
-        public MFHI1(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("MFHI1", rs, rt, rd, sa, funct)
+        public MFHI1(uint rs, uint rt, uint rd, uint sa) 
+            : base("MFHI1", rs, rt, rd, sa)
         {
         }
 

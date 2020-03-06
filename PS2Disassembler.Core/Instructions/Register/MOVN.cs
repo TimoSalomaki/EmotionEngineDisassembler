@@ -2,8 +2,8 @@
 {
     public class MOVN : RegisterBase
     {
-        public MOVN(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("MOVN", rs, rt, rd, sa, funct)
+        public MOVN(uint rs, uint rt, uint rd, uint sa)
+            : base("MOVN", rs, rt, rd, sa)
         {
         }
     }

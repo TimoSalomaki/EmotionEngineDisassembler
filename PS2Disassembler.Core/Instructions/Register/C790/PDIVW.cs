@@ -2,8 +2,8 @@
 {
     public class PDIVW : RegisterBase
     {
-        public PDIVW(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PDIVW", rs, rt, rd, sa, funct)
+        public PDIVW(uint rs, uint rt, uint rd, uint sa) 
+            : base("PDIVW", rs, rt, rd, sa)
         {
         }
 

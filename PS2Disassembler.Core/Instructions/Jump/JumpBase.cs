@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PS2Disassembler.Core.Instructions
+﻿namespace PS2Disassembler.Core.Instructions.Jump
 {
     public abstract class JumpBase : InstructionBase
     {

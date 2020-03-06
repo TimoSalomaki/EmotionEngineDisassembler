@@ -2,8 +2,8 @@
 {
     public class POR : RegisterBase
     {
-        public POR(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("POR", rs, rt, rd, sa, funct)
+        public POR(uint rs, uint rt, uint rd, uint sa) 
+            : base("POR", rs, rt, rd, sa)
         {
         }
     }

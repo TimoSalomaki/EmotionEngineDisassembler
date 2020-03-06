@@ -2,8 +2,8 @@
 {
     public class BREAK : RegisterBase
     {
-        public BREAK(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("BREAK", rs, rt, rd, sa, funct)
+        public BREAK(uint rs, uint rt, uint rd, uint sa)
+            : base("BREAK", rs, rt, rd, sa)
         {
         }
 

@@ -2,8 +2,8 @@
 {
     public class OR : RegisterBase
     {
-        public OR(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("OR", rs, rt, rd, sa, funct)
+        public OR(uint rs, uint rt, uint rd, uint sa)
+            : base("OR", rs, rt, rd, sa)
         {
         }
     }

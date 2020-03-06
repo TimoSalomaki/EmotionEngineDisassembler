@@ -2,8 +2,8 @@
 {
     public class DIVU1 : RegisterBase
     {
-        public DIVU1(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("DIVU1", rs, rt, rd, sa, funct)
+        public DIVU1(uint rs, uint rt, uint rd, uint sa) 
+            : base("DIVU1", rs, rt, rd, sa)
         {
         }
 

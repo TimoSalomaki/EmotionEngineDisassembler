@@ -2,8 +2,8 @@
 {
     public class PPACB : RegisterBase
     {
-        public PPACB(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PPACB", rs, rt, rd, sa, funct)
+        public PPACB(uint rs, uint rt, uint rd, uint sa) 
+            : base("PPACB", rs, rt, rd, sa)
         {
         }
     }

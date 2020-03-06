@@ -2,8 +2,8 @@
 {
     public class PEXTUH : RegisterBase
     {
-        public PEXTUH(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PEXTUH", rs, rt, rd, sa, funct)
+        public PEXTUH(uint rs, uint rt, uint rd, uint sa) 
+            : base("PEXTUH", rs, rt, rd, sa)
         {
         }
     }

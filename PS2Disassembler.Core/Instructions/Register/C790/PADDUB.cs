@@ -2,8 +2,8 @@
 {
     public class PADDUB : RegisterBase
     {
-        public PADDUB(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PADDUB", rs, rt, rd, sa, funct)
+        public PADDUB(uint rs, uint rt, uint rd, uint sa) 
+            : base("PADDUB", rs, rt, rd, sa)
         {
         }
     }

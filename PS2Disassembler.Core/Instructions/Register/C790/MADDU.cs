@@ -2,8 +2,8 @@
 {
     public class MADDU : RegisterBase
     {
-        public MADDU(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("MADDU", rs, rt, rd, sa, funct)
+        public MADDU(uint rs, uint rt, uint rd, uint sa) 
+            : base("MADDU", rs, rt, rd, sa)
         {
         }
 

@@ -2,8 +2,8 @@
 {
     public class QFSRV : RegisterBase
     {
-        public QFSRV(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("QFSRV", rs, rt, rd, sa, funct)
+        public QFSRV(uint rs, uint rt, uint rd, uint sa) 
+            : base("QFSRV", rs, rt, rd, sa)
         {
         }
     }

@@ -2,8 +2,8 @@
 {
     public class SRAV : RegisterBase
     {
-        public SRAV(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("SRAV", rs, rt, rd, sa, funct)
+        public SRAV(uint rs, uint rt, uint rd, uint sa)
+            : base("SRAV", rs, rt, rd, sa)
         {
         }
 

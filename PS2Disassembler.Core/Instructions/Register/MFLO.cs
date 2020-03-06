@@ -2,8 +2,8 @@
 {
     public class MFLO : RegisterBase
     {
-        public MFLO(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("MFLO", rs, rt, rd, sa, funct)
+        public MFLO(uint rs, uint rt, uint rd, uint sa)
+            : base("MFLO", rs, rt, rd, sa)
         {
         }
 

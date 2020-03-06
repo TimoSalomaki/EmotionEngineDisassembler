@@ -1,4 +1,4 @@
-﻿namespace PS2Disassembler.Core.Instructions
+﻿namespace PS2Disassembler.Core.Instructions.Immediate.COP0
 {
     public abstract class CacheBase : InstructionBase
     {

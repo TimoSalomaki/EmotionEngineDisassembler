@@ -2,8 +2,8 @@
 {
     public class DSRLV : RegisterBase
     {
-        public DSRLV(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("DSRLV", rs, rt, rd, sa, funct)
+        public DSRLV(uint rs, uint rt, uint rd, uint sa)
+            : base("DSRLV", rs, rt, rd, sa)
         {
         }
 

@@ -1,4 +1,4 @@
-﻿namespace PS2Disassembler.Core.Instructions
+﻿namespace PS2Disassembler.Core.Instructions.Register
 {
     public abstract class FPURegisterBase : InstructionBase
     {

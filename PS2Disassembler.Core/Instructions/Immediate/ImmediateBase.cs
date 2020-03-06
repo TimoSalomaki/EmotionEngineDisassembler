@@ -1,7 +1,6 @@
-﻿using System;
-using PS2Disassembler.Core.Helper;
+﻿using PS2Disassembler.Core.Decoder.Register;
 
-namespace PS2Disassembler.Core.Instructions
+namespace PS2Disassembler.Core.Instructions.Immediate
 {
     public abstract class ImmediateBase : InstructionBase
     {
@@ -11,8 +10,8 @@ namespace PS2Disassembler.Core.Instructions
 
         protected ImmediateBase(string op, uint rs, uint rt, uint imm) : base(op)
         {
-            RS = RegisterHelper.GetGprRegister(rs); 
-            RT = RegisterHelper.GetGprRegister(rt);
+            RS = CPURegisterDecoder.DecodeRegister(rs); 
+            RT = CPURegisterDecoder.DecodeRegister(rt);
             Imm = "0x" + imm.ToString("X");
         }
 

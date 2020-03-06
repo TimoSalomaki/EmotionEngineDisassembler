@@ -2,8 +2,8 @@
 {
     public class SLLV : RegisterBase
     {
-        public SLLV(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("SLLV", rs, rt, rd, sa, funct)
+        public SLLV(uint rs, uint rt, uint rd, uint sa)
+            : base("SLLV", rs, rt, rd, sa)
         {
         }
 

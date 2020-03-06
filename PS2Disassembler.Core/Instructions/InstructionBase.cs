@@ -8,6 +8,11 @@
         }
 
         public string OP { get; set; }
+
+        public override string ToString()
+        {
+            return OP;
+        }
     }
 
     public enum InstructionType
@@ -19,7 +24,7 @@
         Regimm,
         Nop,
         Cop0,
-        Cop1,
+        FPU,
         CACHE
     }
 }

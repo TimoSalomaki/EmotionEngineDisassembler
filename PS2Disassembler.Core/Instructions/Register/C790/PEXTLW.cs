@@ -2,8 +2,8 @@
 {
     public class PEXTLW : RegisterBase
     {
-        public PEXTLW(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PEXTLW", rs, rt, rd, sa, funct)
+        public PEXTLW(uint rs, uint rt, uint rd, uint sa) 
+            : base("PEXTLW", rs, rt, rd, sa)
         {
         }
     }

@@ -2,8 +2,8 @@
 {
     public class DIV : RegisterBase
     {
-        public DIV(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("DIV", rs, rt, rd, sa, funct)
+        public DIV(uint rs, uint rt, uint rd, uint sa)
+            : base("DIV", rs, rt, rd, sa)
         {
         }
 

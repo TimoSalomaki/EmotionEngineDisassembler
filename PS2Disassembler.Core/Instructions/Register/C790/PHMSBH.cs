@@ -2,8 +2,8 @@
 {
     public class PHMSBH : RegisterBase
     {
-        public PHMSBH(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PHMSBH", rs, rt, rd, sa, funct)
+        public PHMSBH(uint rs, uint rt, uint rd, uint sa) 
+            : base("PHMSBH", rs, rt, rd, sa)
         {
         }
     }

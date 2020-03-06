@@ -2,8 +2,8 @@
 {
     public class PEXCH : RegisterBase
     {
-        public PEXCH(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PEXCH", rs, rt, rd, sa, funct)
+        public PEXCH(uint rs, uint rt, uint rd, uint sa) 
+            : base("PEXCH", rs, rt, rd, sa)
         {
         }
 

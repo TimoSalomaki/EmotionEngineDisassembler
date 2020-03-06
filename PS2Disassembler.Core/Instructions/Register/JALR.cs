@@ -2,8 +2,8 @@
 {
     public class JALR : RegisterBase
     {
-        public JALR(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("JALR", rs, rt, rd, sa, funct)
+        public JALR(uint rs, uint rt, uint rd, uint sa)
+            : base("JALR", rs, rt, rd, sa)
         {
         }
 

@@ -2,8 +2,8 @@
 {
     public class DSRAV : RegisterBase
     {
-        public DSRAV(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("DSRAV", rs, rt, rd, sa, funct)
+        public DSRAV(uint rs, uint rt, uint rd, uint sa)
+            : base("DSRAV", rs, rt, rd, sa)
         {
         }
 

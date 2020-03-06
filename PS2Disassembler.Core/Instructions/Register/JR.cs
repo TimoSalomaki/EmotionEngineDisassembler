@@ -2,8 +2,8 @@
 {
     public class JR : RegisterBase
     {
-        public JR(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("JR", rs, rt, rd, sa, funct)
+        public JR(uint rs, uint rt, uint rd, uint sa)
+            : base("JR", rs, rt, rd, sa)
         {
         }
 

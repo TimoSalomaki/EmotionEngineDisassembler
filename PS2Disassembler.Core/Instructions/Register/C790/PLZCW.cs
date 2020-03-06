@@ -2,8 +2,8 @@
 {
     public class PLZCW : RegisterBase
     {
-        public PLZCW(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PLZCW", rs, rt, rd, sa, funct)
+        public PLZCW(uint rs, uint rt, uint rd, uint sa) 
+            : base("PLZCW", rs, rt, rd, sa)
         {
         }
 

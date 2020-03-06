@@ -2,8 +2,8 @@
 {
     public class PSRAVW : RegisterBase
     {
-        public PSRAVW(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PSRAVW", rs, rt, rd, sa, funct)
+        public PSRAVW(uint rs, uint rt, uint rd, uint sa) 
+            : base("PSRAVW", rs, rt, rd, sa)
         {
         }
 

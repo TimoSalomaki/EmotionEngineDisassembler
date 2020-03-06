@@ -2,8 +2,8 @@
 {
     public class DSRA : RegisterBase
     {
-        public DSRA(uint rs, uint rt, uint rd, uint sa, uint funct)
-            : base("DSRA", rs, rt, rd, sa, funct)
+        public DSRA(uint rs, uint rt, uint rd, uint sa)
+            : base("DSRA", rs, rt, rd, sa)
         {
         }
 

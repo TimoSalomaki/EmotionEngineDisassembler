@@ -2,8 +2,8 @@
 {
     public class PSUBSW : RegisterBase
     {
-        public PSUBSW(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PSUBSW", rs, rt, rd, sa, funct)
+        public PSUBSW(uint rs, uint rt, uint rd, uint sa) 
+            : base("PSUBSW", rs, rt, rd, sa)
         {
         }
     }

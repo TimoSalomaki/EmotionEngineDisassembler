@@ -2,8 +2,8 @@
 {
     public class PMFHI : RegisterBase
     {
-        public PMFHI(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PMFHI", rs, rt, rd, sa, funct)
+        public PMFHI(uint rs, uint rt, uint rd, uint sa) 
+            : base("PMFHI", rs, rt, rd, sa)
         {
         }
 

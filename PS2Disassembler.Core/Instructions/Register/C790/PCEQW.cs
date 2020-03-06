@@ -2,8 +2,8 @@
 {
     public class PCEQW : RegisterBase
     {
-        public PCEQW(uint rs, uint rt, uint rd, uint sa, uint funct) 
-            : base("PCEQW", rs, rt, rd, sa, funct)
+        public PCEQW(uint rs, uint rt, uint rd, uint sa) 
+            : base("PCEQW", rs, rt, rd, sa)
         {
         }
     }
