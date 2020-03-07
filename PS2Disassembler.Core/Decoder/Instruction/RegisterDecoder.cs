@@ -5,11 +5,11 @@ using PS2Disassembler.Core.Instructions.Register.C790;
 
 namespace PS2Disassembler.Core.Decoder.Instruction
 {
-    public abstract class RegisterDecoder : InstructionDecoderBase
+    public class RegisterDecoder : InstructionDecoderBase
     {
-        private static readonly Dictionary<uint, Type> OpCodes;
+        private readonly Dictionary<uint, Type> OpCodes;
 
-        static RegisterDecoder()
+        public RegisterDecoder()
         {
             OpCodes = new Dictionary<uint, Type>()
             {
@@ -70,7 +70,7 @@ namespace PS2Disassembler.Core.Decoder.Instruction
             };
         }
 
-        public static object Decode(uint bits)
+        public object Decode(uint bits)
         {
             var funct = bits & 0x3F;
             var classType = OpCodes[funct];

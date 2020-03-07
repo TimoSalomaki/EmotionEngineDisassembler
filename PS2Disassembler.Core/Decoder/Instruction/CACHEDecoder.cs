@@ -5,9 +5,9 @@ namespace PS2Disassembler.Core.Decoder.Instruction
 {
     public class CACHEDecoder : InstructionDecoderBase
     {
-        private static readonly Dictionary<uint, string> CacheInstructions;
+        private readonly Dictionary<uint, string> CacheInstructions;
 
-        static CACHEDecoder()
+        public CACHEDecoder()
         {
             CacheInstructions = new Dictionary<uint, string>()
             {
@@ -34,7 +34,7 @@ namespace PS2Disassembler.Core.Decoder.Instruction
             };
         }
 
-        public static object Decode(uint bits)
+        public object Decode(uint bits)
         {
             var classType = typeof(CACHE);
 

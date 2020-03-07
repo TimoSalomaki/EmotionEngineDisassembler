@@ -5,9 +5,9 @@ namespace PS2Disassembler.Core.Decoder.Instruction
 {
     public class OpCodeDecoder
     {
-        private static readonly Dictionary<uint, InstructionType> OpCodes;
+        private readonly Dictionary<uint, InstructionType> OpCodes;
 
-        static OpCodeDecoder()
+        public OpCodeDecoder()
         {
             OpCodes = new Dictionary<uint, InstructionType>()
             {
@@ -87,7 +87,7 @@ namespace PS2Disassembler.Core.Decoder.Instruction
             };
         }
 
-        public static InstructionType GetInstructionType(uint opCode)
+        public InstructionType GetInstructionType(uint opCode)
         {
             try
             {

@@ -9,9 +9,9 @@ namespace PS2Disassembler.Core.Decoder.Instruction
 {
     public class ImmediateDecoder : InstructionDecoderBase
     {
-        private static readonly Dictionary<uint, Type> OpCodes;
+        private readonly Dictionary<uint, Type> OpCodes;
 
-        static ImmediateDecoder()
+        public ImmediateDecoder()
         {
             OpCodes = new Dictionary<uint, Type>()
             {
@@ -66,7 +66,7 @@ namespace PS2Disassembler.Core.Decoder.Instruction
             };
         }
 
-        public static object Decode(uint opCode, uint bits)
+        public object Decode(uint opCode, uint bits)
         {
             var classType = OpCodes[opCode];
             var args = new object[]

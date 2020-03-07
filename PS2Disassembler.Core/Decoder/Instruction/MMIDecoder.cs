@@ -6,13 +6,13 @@ namespace PS2Disassembler.Core.Decoder.Instruction
 {
     public class MMIDecoder : InstructionDecoderBase
     {
-        private static readonly Dictionary<uint, Type> MmiCodes;
-        private static readonly Dictionary<uint, Type> Mmi0Codes;
-        private static readonly Dictionary<uint, Type> Mmi1Codes;
-        private static readonly Dictionary<uint, Type> Mmi2Codes;
-        private static readonly Dictionary<uint, Type> Mmi3Codes;
+        private readonly Dictionary<uint, Type> MmiCodes;
+        private readonly Dictionary<uint, Type> Mmi0Codes;
+        private readonly Dictionary<uint, Type> Mmi1Codes;
+        private readonly Dictionary<uint, Type> Mmi2Codes;
+        private readonly Dictionary<uint, Type> Mmi3Codes;
 
-        static MMIDecoder()
+        public MMIDecoder()
         {
             MmiCodes = new Dictionary<uint, Type>()
             {
@@ -135,7 +135,7 @@ namespace PS2Disassembler.Core.Decoder.Instruction
             };
         }
 
-        public static object Decode(uint bits)
+        public object Decode(uint bits)
         {
             var mmiNr = bits & 0x3F;
 

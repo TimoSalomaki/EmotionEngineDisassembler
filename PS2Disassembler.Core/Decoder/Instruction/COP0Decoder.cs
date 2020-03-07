@@ -7,11 +7,11 @@ namespace PS2Disassembler.Core.Decoder.Instruction
 {
     public class COP0Decoder : InstructionDecoderBase
     {
-        private static readonly Dictionary<uint, Type> MFDebugOpCodes;
-        private static readonly Dictionary<uint, Type> MTDebugOpCodes;
-        private static readonly Dictionary<uint, Type> C0OpCodes;
+        private readonly Dictionary<uint, Type> MFDebugOpCodes;
+        private readonly Dictionary<uint, Type> MTDebugOpCodes;
+        private readonly Dictionary<uint, Type> C0OpCodes;
 
-        static COP0Decoder()
+        public COP0Decoder()
         {
             MFDebugOpCodes = new Dictionary<uint, Type>()
             {
@@ -47,7 +47,7 @@ namespace PS2Disassembler.Core.Decoder.Instruction
             };
         }
 
-        public static object Decode(uint bits)
+        public object Decode(uint bits)
         {
             var typeNr = (bits >> 21) & 0x1F;
             Type classType = default;

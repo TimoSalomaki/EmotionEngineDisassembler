@@ -7,11 +7,11 @@ namespace PS2Disassembler.Core.Decoder.Instruction
 {
     public class FPUDecoder : InstructionDecoderBase
     {
-        private static readonly Dictionary<uint, Type> RSOpCodes;
-        private static readonly Dictionary<uint, Type> FuncOpCodes;
-        private static readonly Dictionary<uint, string> CCondMnemonics;
+        private readonly Dictionary<uint, Type> RSOpCodes;
+        private readonly Dictionary<uint, Type> FuncOpCodes;
+        private readonly Dictionary<uint, string> CCondMnemonics;
 
-        static FPUDecoder()
+        public FPUDecoder()
         {
             RSOpCodes = new Dictionary<uint, Type>()
             {
@@ -68,7 +68,7 @@ namespace PS2Disassembler.Core.Decoder.Instruction
             };
         }
 
-        public static object Decode(uint bits)
+        public object Decode(uint bits)
         {
             var rs = (bits >> 21) & 0x1F;
             var rt = (bits >> 16) & 0x1F;

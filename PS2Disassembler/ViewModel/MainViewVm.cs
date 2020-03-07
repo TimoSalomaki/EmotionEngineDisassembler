@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using ICSharpCode.AvalonEdit.Document;
 using PS2Disassembler.Commands;
@@ -46,34 +47,23 @@ namespace PS2Disassembler.ViewModel
             }
         }
 
-        public void Disassemble()
-        {
+        public async void Disassemble()
+        { 
             var sWatch = new Stopwatch();
-
-            TimeSpan parsingTime;
-            TimeSpan disassemblyTime;
-
             sWatch.Start();
 
-            StatusText = "Parsing input";
-            var parsedInput = _parser.ParseContent(Input.Text);
+            var disassembledInput = await _disassembler.DisassembleNonParsedInput(Input.Text, Input.LineCount, 16, 4);
 
-            sWatch.Stop();
-            parsingTime = sWatch.Elapsed;
-            sWatch.Restart();
-
-            var disassembledInput = _disassembler.Disassemble(parsedInput);
-            sWatch.Stop();
-            disassemblyTime = sWatch.Elapsed;
-
-            StatusText = $"Disassembly finished in {disassemblyTime} (parsing {parsingTime})";
+            //var hexInput = _parser.ParseContent(Input.Text);
+            //var disassembledInput = _disassembler.Disassemble(hexInput);
 
             Output.BeginUpdate();
-            Output.Remove(0, Output.TextLength);
-            Output.Insert(0, disassembledInput);
+            Output.Replace(0, Output.TextLength, disassembledInput.result);
             Output.EndUpdate();
 
-            
+            sWatch.Stop();
+
+            StatusText = $"Full process {sWatch.Elapsed} (parsing {disassembledInput.parseDuration}, decoding {disassembledInput.decodeDuration})";
         }
     }
 }

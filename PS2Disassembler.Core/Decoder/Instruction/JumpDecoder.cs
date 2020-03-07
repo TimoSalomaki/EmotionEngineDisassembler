@@ -2,9 +2,9 @@
 
 namespace PS2Disassembler.Core.Decoder.Instruction
 {
-    public abstract class JumpDecoder : InstructionDecoderBase
+    public class JumpDecoder : InstructionDecoderBase
     {
-        public static object Decode(uint opCode, uint bits)
+        public object Decode(uint opCode, uint bits)
         {
             var classType = opCode == 2 ? typeof(J) : typeof(JAL);
             var args = new object[]

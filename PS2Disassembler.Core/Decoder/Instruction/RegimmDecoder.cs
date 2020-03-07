@@ -6,11 +6,11 @@ using PS2Disassembler.Core.Instructions.Immediate.C790;
 
 namespace PS2Disassembler.Core.Decoder.Instruction
 {
-    public abstract class RegimmDecoder : InstructionDecoderBase
+    public class RegimmDecoder : InstructionDecoderBase
     {
-        private static readonly Dictionary<uint, Type> OpCodes;
+        private readonly Dictionary<uint, Type> OpCodes;
 
-        static RegimmDecoder()
+        public RegimmDecoder()
         {
             OpCodes = new Dictionary<uint, Type>()
             {
@@ -33,7 +33,7 @@ namespace PS2Disassembler.Core.Decoder.Instruction
             };
         }
 
-        public static object Decode(uint bits)
+        public object Decode(uint bits)
         {
             var opCode = (bits >> 16) & 0x1F;
 
