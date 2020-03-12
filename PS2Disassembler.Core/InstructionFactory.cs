@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-using PS2Disassembler.Core.Decoder.Instruction;
-using PS2Disassembler.Core.Decoder.Register;
+﻿using PS2Disassembler.Core.Decoder.Instruction;
 using PS2Disassembler.Core.Instructions;
 using PS2Disassembler.Core.Instructions.Pseudo;
 

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PS2Disassembler.Core.Parser
 {
     public interface IInputParser
     {
-        List<uint> ParseContent(string input);
+        List<uint> ParseContent(ReadOnlySpan<char> input, int lineCount);
     }
 }
