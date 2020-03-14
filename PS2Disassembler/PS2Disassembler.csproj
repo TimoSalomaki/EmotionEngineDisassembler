@@ -12,10 +12,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\disassemble.png" />
+    <None Remove="Icons\open.png" />
     <None Remove="MIPSSyntax.xshd" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Icons\disassemble.png" />
+    <Resource Include="Icons\open.png" />
     <EmbeddedResource Include="MIPSSyntax.xshd" />
   </ItemGroup>
 

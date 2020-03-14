@@ -21,8 +21,12 @@
         <avalonedit:TextEditor Document="{Binding Input}" Margin="6" ShowLineNumbers="True" FontFamily="Consolas" Grid.Row="1"/>
         <avalonedit:TextEditor x:Name="AssemblyEditor" Document="{Binding Output}" Grid.Column="1" Grid.Row="1" Margin="6" ShowLineNumbers="True" FontFamily="Consolas"/>
         <ToolBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <Button Command="{Binding DisassembleCommand}">Disassemble</Button>
-            <Button Click="ButtonBase_OnClick">Open File</Button>
+            <Button Click="ButtonBase_OnClick" Padding="0">
+                <Image Source="/Icons/open.png" Opacity="0.5" ToolTip="Open File"/>
+            </Button>
+            <Button Command="{Binding DisassembleCommand}" Padding="0">
+                <Image Source="/Icons/disassemble.png" Opacity="0.5" ToolTip="Disassemble"/>
+            </Button>
         </ToolBar>
         <StatusBar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <Label Content="{Binding StatusText}" HorizontalAlignment="Stretch"/>
